@@ -8,5 +8,4 @@ package mibg3;
  * @author Karam Al-Akhras
  */
 public class ErrorHant {
-    hej
 }
