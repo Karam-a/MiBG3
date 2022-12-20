@@ -4,6 +4,8 @@
  */
 package mibg3;
 
+import java.awt.event.ActionEvent;
+
 /**
  *
  * @author Karam Al-Akhras
@@ -162,4 +164,7 @@ public class Inloggningsruta extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
+
+
+
 }
