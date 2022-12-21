@@ -20,7 +20,8 @@ private static InfDB idb;
           }
          }
          new Inloggningsruta().setVisible(true);
-         
-        } 
+        }
+
     }
+
 
