@@ -1,3 +1,5 @@
+package mibg3;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import mibg3.Inloggningsruta;
@@ -17,7 +19,8 @@ private static InfDB idb;
 
           }
          }
-         Inloggningsruta start = new Inloggningsruta();
+         new Inloggningsruta().setVisible(true);
+         
         } 
     }
 
