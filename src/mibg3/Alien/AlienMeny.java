@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package mibg3;
+package mibg3.Alien;
 
 /**
  *
@@ -26,17 +26,56 @@ public class AlienMeny extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jInternalFrame1 = new javax.swing.JInternalFrame();
+        alienRutaNamn = new javax.swing.JLabel();
+        välkommenAlien = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jInternalFrame1.setVisible(true);
+
+        alienRutaNamn.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        alienRutaNamn.setText("<ALIEN>");
+
+        välkommenAlien.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        välkommenAlien.setText("Välkommen");
+
+        javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
+        jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
+        jInternalFrame1Layout.setHorizontalGroup(
+            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrame1Layout.createSequentialGroup()
+                .addContainerGap(343, Short.MAX_VALUE)
+                .addComponent(alienRutaNamn)
+                .addGap(132, 132, 132))
+            .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jInternalFrame1Layout.createSequentialGroup()
+                    .addGap(213, 213, 213)
+                    .addComponent(välkommenAlien)
+                    .addContainerGap(228, Short.MAX_VALUE)))
+        );
+        jInternalFrame1Layout.setVerticalGroup(
+            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jInternalFrame1Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(alienRutaNamn)
+                .addContainerGap(261, Short.MAX_VALUE))
+            .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jInternalFrame1Layout.createSequentialGroup()
+                    .addGap(16, 16, 16)
+                    .addComponent(välkommenAlien)
+                    .addContainerGap(262, Short.MAX_VALUE)))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jInternalFrame1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jInternalFrame1)
         );
 
         pack();
@@ -78,5 +117,8 @@ public class AlienMeny extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel alienRutaNamn;
+    private javax.swing.JInternalFrame jInternalFrame1;
+    private javax.swing.JLabel välkommenAlien;
     // End of variables declaration//GEN-END:variables
 }
