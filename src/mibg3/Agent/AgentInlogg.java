@@ -4,6 +4,9 @@
  */
 package mibg3.Agent;
 
+import oru.inf.InfDB;
+import oru.inf.InfException;
+import java.util.ArrayList;
 /**
  *
  * @author Karam Al-Akhras
@@ -14,6 +17,10 @@ public class AgentInlogg extends javax.swing.JFrame {
      * Creates new form NewJFrame
      */
     public AgentInlogg() {
+        användarnamn = new ArrayList<>();
+        lösenord = new ArrayList<>();
+        användarmatch = false;
+        lösenordmatch = false;
         initComponents();
     }
 
@@ -129,20 +136,51 @@ public class AgentInlogg extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
+        try{
+        användarnamn = mibdb.fetchColumn("SELECT Namn FROM Agent");
+        }
+        catch(InfException e){
+            System.out.println("Kunde inte ansluta till databasen.");
+        }
+        for(String namn : användarnamn){
+        if(evt.equals(namn)){
+            användarmatch = true;
+        }
+        }
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
-        // TODO add your handling code here:
+        try{
+            lösenord = mibdb.fetchColumn("SELECT Losenord FROM Agent");
+        }
+        catch(InfException e){
+            System.out.println("Kunde inte ansluta till databasen.");
+        }
+        for(String lösen : lösenord){
+            if(evt.equals(lösen)){
+                lösenordmatch = true;
+            }
+        }
     }//GEN-LAST:event_jPasswordField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        if(användarmatch == true && lösenordmatch == true){
+            AgentMeny meny = new AgentMeny();
+            meny.setVisible(true);
+        }
+        else{
+            System.out.println("Du har angett fel användarnamn eller lösenord.");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
      */
+    private InfDB mibdb;
+    private ArrayList <String> användarnamn;
+    private ArrayList <String> lösenord;
+    boolean användarmatch;
+    boolean lösenordmatch;
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
