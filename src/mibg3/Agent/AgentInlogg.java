@@ -137,13 +137,14 @@ public class AgentInlogg extends javax.swing.JFrame {
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         try{
+        String anv = jTextField1.getText();
         användarnamn = mibdb.fetchColumn("SELECT Namn FROM Agent");
         }
         catch(InfException e){
             System.out.println("Kunde inte ansluta till databasen.");
         }
         for(String namn : användarnamn){
-        if(evt.equals(namn)){
+        if(jTextField1.getText().equals(namn)){
             användarmatch = true;
         }
         }
@@ -151,13 +152,14 @@ public class AgentInlogg extends javax.swing.JFrame {
 
     private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
         try{
+             String los = jTextField1.getText();
             lösenord = mibdb.fetchColumn("SELECT Losenord FROM Agent");
         }
         catch(InfException e){
             System.out.println("Kunde inte ansluta till databasen.");
         }
         for(String lösen : lösenord){
-            if(evt.equals(lösen)){
+            if(jPasswordField1.getText().equals(lösen)){
                 lösenordmatch = true;
             }
         }
@@ -227,3 +229,4 @@ public class AgentInlogg extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
+användarnamn = mibdb.fetchColumn("SELECT Namn FROM Agent");
