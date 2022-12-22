@@ -17,10 +17,6 @@ public class AgentInlogg extends javax.swing.JFrame {
      * Creates new form NewJFrame
      */
     public AgentInlogg() {
-        användarnamn = new ArrayList<>();
-        lösenord = new ArrayList<>();
-        användarmatch = false;
-        lösenordmatch = false;
         initComponents();
     }
 
@@ -136,42 +132,32 @@ public class AgentInlogg extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        try{
-        String anv = jTextField1.getText();
-        användarnamn = mibdb.fetchColumn("SELECT Namn FROM Agent");
-        }
-        catch(InfException e){
-            System.out.println("Kunde inte ansluta till databasen.");
-        }
-        for(String namn : användarnamn){
-        if(jTextField1.getText().equals(namn)){
-            användarmatch = true;
-        }
-        }
+
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
-        try{
-             String los = jTextField1.getText();
-            lösenord = mibdb.fetchColumn("SELECT Losenord FROM Agent");
-        }
-        catch(InfException e){
-            System.out.println("Kunde inte ansluta till databasen.");
-        }
-        for(String lösen : lösenord){
-            if(jPasswordField1.getText().equals(lösen)){
-                lösenordmatch = true;
-            }
-        }
+      
     }//GEN-LAST:event_jPasswordField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if(användarmatch == true && lösenordmatch == true){
+        try{
+        String användarnamn = jTextField1.getText();
+        String lösenord = jPasswordField1.getText();
+        String inLoggNamn = "";
+        String lösen = "";
+        inLoggNamn = mibdb.fetchSingle("SELECT Namn FROM Agent WHERE Namn = " + "'" + användarnamn + "'");
+        lösen = mibdb.fetchSingle("SELECT Losenord FROM Agent WHERE Losenord = " + "'" + lösenord + "'");
+        
+        if(användarnamn.equalsIgnoreCase(inLoggNamn) && lösenord.equals(lösen)){
             AgentMeny meny = new AgentMeny();
             meny.setVisible(true);
         }
         else{
-            System.out.println("Du har angett fel användarnamn eller lösenord.");
+            System.out.println("Du har angett fel lösenord eller användarnamn. Vänligen försök igen.");
+        }
+        }
+        catch(InfException e){
+            System.out.println("Kunde inte ansluta till databasen.");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -179,10 +165,6 @@ public class AgentInlogg extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     private InfDB mibdb;
-    private ArrayList <String> användarnamn;
-    private ArrayList <String> lösenord;
-    boolean användarmatch;
-    boolean lösenordmatch;
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -229,4 +211,3 @@ public class AgentInlogg extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
-användarnamn = mibdb.fetchColumn("SELECT Namn FROM Agent");

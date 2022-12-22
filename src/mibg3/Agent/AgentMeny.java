@@ -4,6 +4,8 @@
  */
 package mibg3.Agent;
 
+import oru.inf.InfDB;
+import oru.inf.InfException;
 /**
  *
  * @author Karam Al-Akhras
