@@ -13,7 +13,7 @@ import oru.inf.InfException;
  */
 public class AgentInlogg extends javax.swing.JFrame {
 
-    public String inloggadAgentID;
+    private String inloggadAgentID;
     /**
      * Creates new form NewJFrame
      */
