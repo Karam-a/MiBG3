@@ -3,7 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package mibg3;
-
+import oru.inf.InfDB;
+import oru.inf.InfException;
 /**
  *
  * @author ninao
