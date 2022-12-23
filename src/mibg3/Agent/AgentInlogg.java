@@ -6,13 +6,14 @@ package mibg3.Agent;
 
 import oru.inf.InfDB;
 import oru.inf.InfException;
-import java.util.ArrayList;
+
 /**
  *
  * @author Karam Al-Akhras
  */
 public class AgentInlogg extends javax.swing.JFrame {
 
+    public String inloggadAgentID;
     /**
      * Creates new form NewJFrame
      */
@@ -140,17 +141,20 @@ public class AgentInlogg extends javax.swing.JFrame {
     }//GEN-LAST:event_jPasswordField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        try{
+ try{
+        mibdb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
         String användarnamn = jTextField1.getText();
         String lösenord = jPasswordField1.getText();
-        String inLoggNamn = "";
-        String lösen = "";
-        inLoggNamn = mibdb.fetchSingle("SELECT Namn FROM Agent WHERE Namn = " + "'" + användarnamn + "'");
-        lösen = mibdb.fetchSingle("SELECT Losenord FROM Agent WHERE Losenord = " + "'" + lösenord + "'");
+        String inLoggID;
+        String lösen;
         
-        if(användarnamn.equalsIgnoreCase(inLoggNamn) && lösenord.equals(lösen)){
+        inLoggID = mibdb.fetchSingle("SELECT Agent_ID FROM Agent WHERE Namn=" + "'" + användarnamn + "'");
+        lösen = mibdb.fetchSingle("SELECT Losenord FROM Agent WHERE Agent_ID =" + "'" + inLoggID + "'");
+        
+        if(lösenord.equals(lösen)){
             AgentMeny meny = new AgentMeny();
             meny.setVisible(true);
+            inloggadAgentID = inLoggID;
         }
         else{
             System.out.println("Du har angett fel lösenord eller användarnamn. Vänligen försök igen.");
