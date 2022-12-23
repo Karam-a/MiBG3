@@ -145,10 +145,14 @@ public class AgentMeny extends javax.swing.JFrame {
 
     private void knappAgentMinProfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_knappAgentMinProfilActionPerformed
         // TODO add your handling code here:
+        AgentProfil profil = new AgentProfil();
+        profil.setVisible(true);
     }//GEN-LAST:event_knappAgentMinProfilActionPerformed
 
     private void knappAgentHanteraAliensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_knappAgentHanteraAliensActionPerformed
         // TODO add your handling code here:
+        HanteraAliens meny = new HanteraAliens();
+        meny.setVisible(true);
     }//GEN-LAST:event_knappAgentHanteraAliensActionPerformed
 
     /**

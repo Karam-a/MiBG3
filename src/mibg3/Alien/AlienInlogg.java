@@ -4,6 +4,9 @@
  */
 package mibg3.Alien;
 
+import oru.inf.InfDB;
+import oru.inf.InfException;
+
 /**
  *
  * @author d-aly
@@ -13,6 +16,8 @@ public class AlienInlogg extends javax.swing.JFrame {
     /**
      * Creates new form AlienInlogg
      */
+    private String inloggadAlien;
+    InfDB mibdb;
     public AlienInlogg() {
         initComponents();
     }
@@ -131,7 +136,6 @@ public class AlienInlogg extends javax.swing.JFrame {
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
 
-            
     }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
@@ -140,6 +144,28 @@ public class AlienInlogg extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        try{
+            mibdb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
+            String användarnamn = jTextField2.getText();
+            String lösenord = jPasswordField1.getText();
+            String namn;
+            String lösen;
+            
+            namn = mibdb.fetchSingle("SELECT Alien_ID FROM Alien WHERE Namn = " + "'" + användarnamn + "'");
+            lösen = mibdb.fetchSingle("SELECT Losenord FROM Alien WHERE Alien_ID = " + "'" + namn + "'");
+            
+            if(lösenord.equals(lösen)){
+                AlienMeny meny = new AlienMeny();
+                meny.setVisible(true);
+                inloggadAlien = namn;
+            }
+            else{
+                System.out.println("Fel lösenord eller användarnamn.");
+            }
+        }
+        catch(InfException e){
+            System.out.println("Kunde inte ansluta.");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
