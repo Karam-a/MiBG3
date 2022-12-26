@@ -4,6 +4,7 @@
  */
 package mibg3;
 
+import mibg3.Admin.AdminInlogg;
 import mibg3.Alien.AlienInlogg;
 import mibg3.Agent.AgentInlogg;
 import java.awt.event.ActionEvent;
