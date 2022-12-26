@@ -4,12 +4,15 @@
  */
 package mibg3.Agent;
 
+import javax.swing.JOptionPane;
+import oru.inf.InfDB;
+import oru.inf.InfException;
 /**
  *
  * @author d-aly
  */
 public class NyttLösenord extends javax.swing.JFrame {
-
+InfDB mibdb;
     /**
      * Creates new form NyttLösenord
      */
@@ -30,8 +33,8 @@ public class NyttLösenord extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jPasswordField2 = new javax.swing.JPasswordField();
+        nuvarandeLösenKnapp = new javax.swing.JPasswordField();
+        nyttLösenKnapp = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -47,8 +50,19 @@ public class NyttLösenord extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel3.setText("Nytt lösenord:");
 
+        nuvarandeLösenKnapp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nuvarandeLösenKnappActionPerformed(evt);
+            }
+        });
+
         jButton1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jButton1.setText("OK");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
         jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
@@ -64,8 +78,8 @@ public class NyttLösenord extends javax.swing.JFrame {
                             .addComponent(jLabel3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPasswordField1, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
-                            .addComponent(jPasswordField2))))
+                            .addComponent(nuvarandeLösenKnapp, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
+                            .addComponent(nyttLösenKnapp))))
                 .addContainerGap(46, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrame1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -80,11 +94,11 @@ public class NyttLösenord extends javax.swing.JFrame {
                 .addGap(37, 37, 37)
                 .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nuvarandeLösenKnapp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
                 .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nyttLösenKnapp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addContainerGap())
@@ -103,6 +117,32 @@ public class NyttLösenord extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        try{
+            mibdb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
+            AgentInlogg id = new AgentInlogg();
+            String inloggad = id.getInloggadAgentID();
+            String nuvarandeLösen;
+            String sammaLösen = nuvarandeLösenKnapp.getText();
+            String nyttLösen = nyttLösenKnapp.getText();
+            
+            nuvarandeLösen = mibdb.fetchSingle("SELECT Losenord FROM Agent WHERE Agent_ID = "+ "'" + inloggad + "'");
+            if(sammaLösen.equals(nuvarandeLösen)){
+                mibdb.update("UPDATE Agent SET Losenord = "+ "'" + nyttLösen + "'" + " WHERE Agent_ID = " + "'" + inloggad + "'");
+                JOptionPane.showMessageDialog(null, "Du har ändrat ditt lösenord!");
+            }
+        }
+        catch(InfException e){
+            JOptionPane.showMessageDialog(null, "Kunde inte ansluta till databasen.");
+            
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void nuvarandeLösenKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuvarandeLösenKnappActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nuvarandeLösenKnappActionPerformed
 
     /**
      * @param args the command line arguments
@@ -145,7 +185,7 @@ public class NyttLösenord extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JPasswordField jPasswordField2;
+    private javax.swing.JPasswordField nuvarandeLösenKnapp;
+    private javax.swing.JPasswordField nyttLösenKnapp;
     // End of variables declaration//GEN-END:variables
 }
