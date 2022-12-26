@@ -167,6 +167,10 @@ public class AgentInlogg extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    public String getInloggadAgentID(){
+    return inloggadAgentID;
+    }
+    
     /**
      * @param args the command line arguments
      */
