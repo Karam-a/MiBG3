@@ -122,13 +122,11 @@ private InfDB mibdb;
         // TODO add your handling code here:
         try{
             mibdb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
-            AgentInlogg id = new AgentInlogg();
-            String inloggad = id.getInloggadAgentID();
             String nuvarandeLösen;
             String sammaLösen = nuvarandeLösenKnapp.getText();
             String nyttLösen = nyttLösenKnapp.getText();
             
-            nuvarandeLösen = mibdb.fetchSingle("SELECT Losenord FROM Agent WHERE Agent_ID = "+ "'" + inloggad + "'");
+            nuvarandeLösen = mibdb.fetchSingle("SELECT Losenord FROM Agent WHERE Agent_ID = "+ "'" + (mibg3.Agent.AgentInlogg.getInloggadAgentID()) + "'");
             if(nuvarandeLösen.equals(sammaLösen)){
                 mibdb.update("UPDATE Agent SET Losenord = "+ "'" + nyttLösen + "'" + " WHERE Losenord ="+ "'" + nuvarandeLösen + "'");
                 JOptionPane.showMessageDialog(null, "Du har ändrat ditt lösenord!");
