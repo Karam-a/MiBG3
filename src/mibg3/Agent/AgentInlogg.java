@@ -14,7 +14,7 @@ import oru.inf.InfException;
  */
 public class AgentInlogg extends javax.swing.JFrame {
 
-    private String inloggadAgentID;
+    private static String inloggadAgentID;
     /**
      * Creates new form NewJFrame
      */
@@ -167,7 +167,7 @@ public class AgentInlogg extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    public String getInloggadAgentID(){
+    public static String getInloggadAgentID(){
     return inloggadAgentID;
     }
     

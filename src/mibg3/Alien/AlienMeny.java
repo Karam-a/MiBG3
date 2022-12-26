@@ -29,6 +29,7 @@ public class AlienMeny extends javax.swing.JFrame {
         jInternalFrame1 = new javax.swing.JInternalFrame();
         alienRutaNamn = new javax.swing.JLabel();
         välkommenAlien = new javax.swing.JLabel();
+        ÄndraLösen = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -40,6 +41,14 @@ public class AlienMeny extends javax.swing.JFrame {
         välkommenAlien.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         välkommenAlien.setText("Välkommen");
 
+        ÄndraLösen.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        ÄndraLösen.setText("Ändra lösenord");
+        ÄndraLösen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ÄndraLösenActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
         jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
         jInternalFrame1Layout.setHorizontalGroup(
@@ -48,6 +57,10 @@ public class AlienMeny extends javax.swing.JFrame {
                 .addContainerGap(343, Short.MAX_VALUE)
                 .addComponent(alienRutaNamn)
                 .addGap(132, 132, 132))
+            .addGroup(jInternalFrame1Layout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addComponent(ÄndraLösen)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jInternalFrame1Layout.createSequentialGroup()
                     .addGap(213, 213, 213)
@@ -59,7 +72,9 @@ public class AlienMeny extends javax.swing.JFrame {
             .addGroup(jInternalFrame1Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addComponent(alienRutaNamn)
-                .addContainerGap(261, Short.MAX_VALUE))
+                .addGap(36, 36, 36)
+                .addComponent(ÄndraLösen)
+                .addContainerGap(199, Short.MAX_VALUE))
             .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jInternalFrame1Layout.createSequentialGroup()
                     .addGap(16, 16, 16)
@@ -80,6 +95,12 @@ public class AlienMeny extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void ÄndraLösenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ÄndraLösenActionPerformed
+        // TODO add your handling code here:
+        NyttLösenAlien meny = new NyttLösenAlien();
+        meny.setVisible(true);
+    }//GEN-LAST:event_ÄndraLösenActionPerformed
 
     /**
      * @param args the command line arguments
@@ -120,5 +141,6 @@ public class AlienMeny extends javax.swing.JFrame {
     private javax.swing.JLabel alienRutaNamn;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel välkommenAlien;
+    private javax.swing.JButton ÄndraLösen;
     // End of variables declaration//GEN-END:variables
 }

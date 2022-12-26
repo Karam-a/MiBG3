@@ -17,7 +17,7 @@ public class AlienInlogg extends javax.swing.JFrame {
     /**
      * Creates new form AlienInlogg
      */
-    private String inloggadAlien;
+    private static String inloggadAlien;
     InfDB mibdb;
     public AlienInlogg() {
         initComponents();
@@ -166,9 +166,13 @@ public class AlienInlogg extends javax.swing.JFrame {
         }
         catch(InfException e){
             JOptionPane.showMessageDialog(null, "Kunde inte ansluta.");
+        
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    public static String getInloggadAlien(){
+            return inloggadAlien;
+    }
     /**
      * @param args the command line arguments
      */
