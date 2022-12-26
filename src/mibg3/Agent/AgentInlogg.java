@@ -19,6 +19,7 @@ public class AgentInlogg extends javax.swing.JFrame {
      * Creates new form NewJFrame
      */
     public AgentInlogg() {
+        inloggadAgentID = "";
         initComponents();
     }
 
@@ -148,7 +149,6 @@ public class AgentInlogg extends javax.swing.JFrame {
         String lösenord = jPasswordField1.getText();
         String inLoggID;
         String lösen;
-        String haha;
        
         inLoggID = mibdb.fetchSingle("SELECT Agent_ID FROM Agent WHERE Namn=" + "'" + användarnamn + "'");
         lösen = mibdb.fetchSingle("SELECT Losenord FROM Agent WHERE Agent_ID =" + "'" + inLoggID + "'");

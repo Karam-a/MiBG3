@@ -9,7 +9,6 @@ package mibg3.Agent;
  * @author d-aly
  */
 public class AgentProfil extends javax.swing.JFrame {
-
     /**
      * Creates new form AgentProfil
      */
@@ -93,8 +92,7 @@ public class AgentProfil extends javax.swing.JFrame {
 
     private void ändraLösenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ändraLösenActionPerformed
         // TODO add your handling code here:
-        NyttLösenord meny = new NyttLösenord();
-        meny.setVisible(true);
+        new NyttLösenord().setVisible(true);
     }//GEN-LAST:event_ändraLösenActionPerformed
 
     /**

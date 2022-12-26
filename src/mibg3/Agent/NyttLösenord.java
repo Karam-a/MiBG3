@@ -12,7 +12,7 @@ import oru.inf.InfException;
  * @author d-aly
  */
 public class NyttLösenord extends javax.swing.JFrame {
-InfDB mibdb;
+private InfDB mibdb;
     /**
      * Creates new form NyttLösenord
      */
@@ -129,9 +129,12 @@ InfDB mibdb;
             String nyttLösen = nyttLösenKnapp.getText();
             
             nuvarandeLösen = mibdb.fetchSingle("SELECT Losenord FROM Agent WHERE Agent_ID = "+ "'" + inloggad + "'");
-            if(sammaLösen.equals(nuvarandeLösen)){
-                mibdb.update("UPDATE Agent SET Losenord = "+ "'" + nyttLösen + "'" + " WHERE Agent_ID =1");
+            if(nuvarandeLösen.equals(sammaLösen)){
+                mibdb.update("UPDATE Agent SET Losenord = "+ "'" + nyttLösen + "'" + " WHERE Losenord ="+ "'" + nuvarandeLösen + "'");
                 JOptionPane.showMessageDialog(null, "Du har ändrat ditt lösenord!");
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Fel användare.");
             }
         }
         catch(InfException e){
