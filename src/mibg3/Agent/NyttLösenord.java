@@ -130,7 +130,7 @@ InfDB mibdb;
             
             nuvarandeLösen = mibdb.fetchSingle("SELECT Losenord FROM Agent WHERE Agent_ID = "+ "'" + inloggad + "'");
             if(sammaLösen.equals(nuvarandeLösen)){
-                mibdb.update("UPDATE Agent SET Losenord = "+ "'" + nyttLösen + "'" + " WHERE Agent_ID = " + "'" + inloggad + "'");
+                mibdb.update("UPDATE Agent SET Losenord = "+ "'" + nyttLösen + "'" + " WHERE Agent_ID =1");
                 JOptionPane.showMessageDialog(null, "Du har ändrat ditt lösenord!");
             }
         }
