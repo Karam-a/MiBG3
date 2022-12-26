@@ -161,7 +161,7 @@ public class AlienInlogg extends javax.swing.JFrame {
                 inloggadAlien = namn;
             }
             else{
-                JOptionPane.showMessageDialog(null, "Fel lösenord eller användarnamn.");
+                JOptionPane.showMessageDialog(null, "Fel lösenord eller användarnamn. Vänligen försök igen.");
             }
         }
         catch(InfException e){
