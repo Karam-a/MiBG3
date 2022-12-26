@@ -2,7 +2,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package mibg3;
+package mibg3.Admin;
+import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 /**
@@ -160,11 +161,11 @@ public class AdminInlogg extends javax.swing.JFrame {
                 inloggadID = namn;
             }
             else{
-                System.out.println("Fel lösenord eller användarnamn.");
+                JOptionPane.showMessageDialog(null, "Fel lösenord eller användarnamn. Vänligen försök igen.");
             }
         }
         catch(InfException e){
-            System.out.println("Kunde inte ansluta.");
+            JOptionPane.showMessageDialog(null, "Kunde inte ansluta.");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

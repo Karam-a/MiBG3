@@ -4,8 +4,10 @@
  */
 package mibg3.Agent;
 
+import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
+import mibg3.Agent.AgentInlogg;
 /**
  *
  * @author Karam Al-Akhras
@@ -144,9 +146,10 @@ public class AgentMeny extends javax.swing.JFrame {
     }//GEN-LAST:event_knappAgentHanteraUtrustningActionPerformed
 
     private void knappAgentMinProfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_knappAgentMinProfilActionPerformed
-        // TODO add your handling code here:
+
         AgentProfil profil = new AgentProfil();
         profil.setVisible(true);
+        
     }//GEN-LAST:event_knappAgentMinProfilActionPerformed
 
     private void knappAgentHanteraAliensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_knappAgentHanteraAliensActionPerformed

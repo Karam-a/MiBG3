@@ -4,6 +4,7 @@
  */
 package mibg3.Alien;
 
+import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
@@ -16,7 +17,7 @@ public class AlienInlogg extends javax.swing.JFrame {
     /**
      * Creates new form AlienInlogg
      */
-    private String inloggadAlien;
+    private static String inloggadAlien;
     InfDB mibdb;
     public AlienInlogg() {
         initComponents();
@@ -160,14 +161,18 @@ public class AlienInlogg extends javax.swing.JFrame {
                 inloggadAlien = namn;
             }
             else{
-                System.out.println("Fel lösenord eller användarnamn.");
+                JOptionPane.showMessageDialog(null, "Fel lösenord eller användarnamn. Vänligen försök igen.");
             }
         }
         catch(InfException e){
-            System.out.println("Kunde inte ansluta.");
+            JOptionPane.showMessageDialog(null, "Kunde inte ansluta.");
+        
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    public static String getInloggadAlien(){
+            return inloggadAlien;
+    }
     /**
      * @param args the command line arguments
      */

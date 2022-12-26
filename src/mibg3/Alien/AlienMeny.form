@@ -46,6 +46,14 @@
                   <Component id="alienRutaNamn" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="132" max="-2" attributes="0"/>
               </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="ÄndraLösen" max="32767" attributes="0"/>
+                      <Component id="InfoOmOC" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="213" max="-2" attributes="0"/>
@@ -60,7 +68,11 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                   <Component id="alienRutaNamn" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="261" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                  <Component id="ÄndraLösen" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                  <Component id="InfoOmOC" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="131" max="32767" attributes="0"/>
               </Group>
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
@@ -88,6 +100,28 @@
             </Property>
             <Property name="text" type="java.lang.String" value="V&#xe4;lkommen"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="&#xc4;ndraL&#xf6;sen">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Dialog" size="18" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="&#xc4;ndra l&#xf6;senord"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="&#xc4;ndraL&#xf6;senActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="InfoOmOC">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Dialog" size="18" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Min omr&#xe5;deschef"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="InfoOmOCActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

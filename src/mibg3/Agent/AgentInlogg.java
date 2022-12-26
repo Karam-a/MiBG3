@@ -4,6 +4,7 @@
  */
 package mibg3.Agent;
 
+import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
@@ -13,11 +14,12 @@ import oru.inf.InfException;
  */
 public class AgentInlogg extends javax.swing.JFrame {
 
-    private String inloggadAgentID;
+    private static String inloggadAgentID;
     /**
      * Creates new form NewJFrame
      */
     public AgentInlogg() {
+        inloggadAgentID = "";
         initComponents();
     }
 
@@ -147,7 +149,6 @@ public class AgentInlogg extends javax.swing.JFrame {
         String lösenord = jPasswordField1.getText();
         String inLoggID;
         String lösen;
-        String haha;
        
         inLoggID = mibdb.fetchSingle("SELECT Agent_ID FROM Agent WHERE Namn=" + "'" + användarnamn + "'");
         lösen = mibdb.fetchSingle("SELECT Losenord FROM Agent WHERE Agent_ID =" + "'" + inLoggID + "'");
@@ -158,14 +159,18 @@ public class AgentInlogg extends javax.swing.JFrame {
             inloggadAgentID = inLoggID;
         }
         else{
-            System.out.println("Du har angett fel lösenord eller användarnamn. Vänligen försök igen.");
+            JOptionPane.showMessageDialog(null, "Du har angett fel lösenord eller användarnamn. Vänligen försök igen.");
         }
         }
         catch(InfException e){
-            System.out.println("Kunde inte ansluta till databasen.");
+            JOptionPane.showMessageDialog(null, "Kunde inte ansluta till databasen.");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    public static String getInloggadAgentID(){
+    return inloggadAgentID;
+    }
+    
     /**
      * @param args the command line arguments
      */

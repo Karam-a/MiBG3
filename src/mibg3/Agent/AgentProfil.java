@@ -9,7 +9,6 @@ package mibg3.Agent;
  * @author d-aly
  */
 public class AgentProfil extends javax.swing.JFrame {
-
     /**
      * Creates new form AgentProfil
      */
@@ -43,6 +42,11 @@ public class AgentProfil extends javax.swing.JFrame {
 
         ändraLösen.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         ändraLösen.setText("Ändra lösenord");
+        ändraLösen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ändraLösenActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
         jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
@@ -85,6 +89,11 @@ public class AgentProfil extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void ändraLösenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ändraLösenActionPerformed
+        // TODO add your handling code here:
+        new NyttLösenord().setVisible(true);
+    }//GEN-LAST:event_ändraLösenActionPerformed
 
     /**
      * @param args the command line arguments
