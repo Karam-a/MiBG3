@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package mibg3;
+import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 /**
@@ -160,11 +161,11 @@ public class AdminInlogg extends javax.swing.JFrame {
                 inloggadID = namn;
             }
             else{
-                System.out.println("Fel lösenord eller användarnamn.");
+                JOptionPane.showMessageDialog(null, "Fel lösenord eller användarnamn.");
             }
         }
         catch(InfException e){
-            System.out.println("Kunde inte ansluta.");
+            JOptionPane.showMessageDialog(null, "Kunde inte ansluta.");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

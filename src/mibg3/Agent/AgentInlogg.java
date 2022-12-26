@@ -4,6 +4,7 @@
  */
 package mibg3.Agent;
 
+import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
@@ -158,11 +159,11 @@ public class AgentInlogg extends javax.swing.JFrame {
             inloggadAgentID = inLoggID;
         }
         else{
-            System.out.println("Du har angett fel lösenord eller användarnamn. Vänligen försök igen.");
+            JOptionPane.showMessageDialog(null, "Du har angett fel lösenord eller användarnamn. Vänligen försök igen.");
         }
         }
         catch(InfException e){
-            System.out.println("Kunde inte ansluta till databasen.");
+            JOptionPane.showMessageDialog(null, "Kunde inte ansluta till databasen.");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
