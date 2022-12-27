@@ -15,6 +15,7 @@ import oru.inf.InfException;
 public class AgentInlogg extends javax.swing.JFrame {
 
     private static String inloggadAgentID;
+    public String agentNamn;
     /**
      * Creates new form NewJFrame
      */
@@ -171,6 +172,18 @@ public class AgentInlogg extends javax.swing.JFrame {
     return inloggadAgentID;
     }
     
+    // För guds skull nån ta en titt på det här innan jag hänger mig själv. När den används i AgentMeny returnerar den värdet "null". Har testat att ändra om SQL-frågan typ fem gånger, 
+    // inkluderat mibdb o all annan skit men den returnerar fortfarande "null"
+    public String getAgentNamn(){
+        try{
+            mibdb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
+            agentNamn = mibdb.fetchSingle("SELECT Namn FROM Agent WHERE Agent_ID ="+"'" +inloggadAgentID+"'");
+        }
+        catch(InfException e){
+            JOptionPane.showMessageDialog(null, "Kunde inte ansluta till databasen. Vänligen försök igen.");
+        }
+        return agentNamn;
+    }
     /**
      * @param args the command line arguments
      */

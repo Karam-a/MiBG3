@@ -13,10 +13,7 @@ import mibg3.Agent.AgentInlogg;
  * @author Karam Al-Akhras
  */
 public class AgentMeny extends javax.swing.JFrame {
-
-    /**
-     * Creates new form AgentMeny
-     */
+    private String agID;
     public AgentMeny() {
         initComponents();
     }
@@ -37,20 +34,19 @@ public class AgentMeny extends javax.swing.JFrame {
         knappAgentHanteraAliens = new javax.swing.JButton();
         knappAgentMinProfil = new javax.swing.JButton();
         knappAgentHanteraUtrustning = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jInternalFrame1.setVisible(true);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel1.setText("Välkommen Agent");
+        jLabel1.setText("Välkommen");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setText("Välj ett alternativ nedan");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel3.setText("<AG_ID>");
+        jLabel3.setText(hämtaAgentNamn());
 
         knappAgentHanteraAliens.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         knappAgentHanteraAliens.setText("Hantera Aliens");
@@ -76,26 +72,10 @@ public class AgentMeny extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setText("jLabel4");
-
         javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
         jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
         jInternalFrame1Layout.setHorizontalGroup(
             jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                .addGap(57, 57, 57)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                        .addGap(135, 135, 135)
-                        .addComponent(jLabel2)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrame1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3)
-                        .addGap(49, 49, 49))))
             .addGroup(jInternalFrame1Layout.createSequentialGroup()
                 .addGap(78, 78, 78)
                 .addComponent(knappAgentMinProfil, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -103,23 +83,29 @@ public class AgentMeny extends javax.swing.JFrame {
                 .addComponent(knappAgentHanteraAliens)
                 .addGap(18, 18, 18)
                 .addComponent(knappAgentHanteraUtrustning)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 91, Short.MAX_VALUE))
+            .addGroup(jInternalFrame1Layout.createSequentialGroup()
+                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jInternalFrame1Layout.createSequentialGroup()
+                        .addGap(171, 171, 171)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel3))
+                    .addGroup(jInternalFrame1Layout.createSequentialGroup()
+                        .addGap(229, 229, 229)
+                        .addComponent(jLabel2)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jInternalFrame1Layout.setVerticalGroup(
             jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel3))
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel2))
-                    .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(20, 20, 20)
+                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel3))
                 .addGap(18, 18, 18)
+                .addComponent(jLabel2)
+                .addGap(55, 55, 55)
                 .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(knappAgentMinProfil, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(knappAgentHanteraAliens, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -149,7 +135,6 @@ public class AgentMeny extends javax.swing.JFrame {
 
         AgentProfil profil = new AgentProfil();
         profil.setVisible(true);
-        
     }//GEN-LAST:event_knappAgentMinProfilActionPerformed
 
     private void knappAgentHanteraAliensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_knappAgentHanteraAliensActionPerformed
@@ -158,6 +143,11 @@ public class AgentMeny extends javax.swing.JFrame {
         meny.setVisible(true);
     }//GEN-LAST:event_knappAgentHanteraAliensActionPerformed
 
+   public String hämtaAgentNamn(){
+        AgentInlogg tlf = new AgentInlogg();
+        agID = tlf.getAgentNamn();
+        return agID;
+    }
     /**
      * @param args the command line arguments
      */
@@ -198,7 +188,6 @@ public class AgentMeny extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JButton knappAgentHanteraAliens;
     private javax.swing.JButton knappAgentHanteraUtrustning;
     private javax.swing.JButton knappAgentMinProfil;

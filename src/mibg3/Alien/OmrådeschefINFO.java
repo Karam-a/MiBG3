@@ -19,13 +19,13 @@ public class OmrådeschefINFO extends javax.swing.JFrame {
         initComponents();
     }
     private static String hämtaOCTel(){
-        AlienMeny tel = new AlienMeny();
+       AlienMeny tel = new AlienMeny();
        String telefon = tel.getOCTel();
        return telefon;
     }
     
     private static String hämtaOCNamn(){
-        AlienMeny namn = new AlienMeny();
+       AlienMeny namn = new AlienMeny();
        String namnet = namn.getOCNamn();
        return namnet;
     }
