@@ -123,7 +123,7 @@ public class RegAlien extends javax.swing.JFrame {
                             .addComponent(jLabel7)
                             .addComponent(jLabel5)
                             .addComponent(jLabel4)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(DatumField)
@@ -183,9 +183,11 @@ public class RegAlien extends javax.swing.JFrame {
     }//GEN-LAST:event_DatumFieldActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        // inte komplett än!!
         try{
             mibdb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
+            String fraga = "INSERT INTO Alien (Alien_ID, Registreringsdatum, Losenord, Namn, Telefon"
+            
             String namn = NamnField.getText();
             String lösen = LösenordField.getText();
             String ansvarig = AnsvAgentField.getText();
