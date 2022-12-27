@@ -4,6 +4,7 @@
  */
 package mibg3.Alien;
 
+import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
@@ -138,7 +139,7 @@ public class AlienMeny extends javax.swing.JFrame {
             
         }
         catch(InfException e){
-            
+            JOptionPane.showMessageDialog(null, "Kunde inte ansluta till databasen, vänligen försök igen.");
         }
     }//GEN-LAST:event_InfoOmOCActionPerformed
 

@@ -15,7 +15,7 @@ import oru.inf.InfException;
 public class AgentInlogg extends javax.swing.JFrame {
 
     private static String inloggadAgentID;
-    public String agentNamn;
+    public static String agentNamn;
     /**
      * Creates new form NewJFrame
      */
@@ -178,6 +178,7 @@ public class AgentInlogg extends javax.swing.JFrame {
         try{
             mibdb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
             agentNamn = mibdb.fetchSingle("SELECT Namn FROM Agent WHERE Agent_ID ="+"'" +inloggadAgentID+"'");
+            return agentNamn;
         }
         catch(InfException e){
             JOptionPane.showMessageDialog(null, "Kunde inte ansluta till databasen. Vänligen försök igen.");

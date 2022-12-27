@@ -13,7 +13,6 @@ import mibg3.Agent.AgentInlogg;
  * @author Karam Al-Akhras
  */
 public class AgentMeny extends javax.swing.JFrame {
-    private String agID;
     public AgentMeny() {
         initComponents();
     }
@@ -143,9 +142,9 @@ public class AgentMeny extends javax.swing.JFrame {
         meny.setVisible(true);
     }//GEN-LAST:event_knappAgentHanteraAliensActionPerformed
 
-   public String hämtaAgentNamn(){
+   private String hämtaAgentNamn(){
         AgentInlogg tlf = new AgentInlogg();
-        agID = tlf.getAgentNamn();
+       String agID = tlf.getAgentNamn();
         return agID;
     }
     /**
