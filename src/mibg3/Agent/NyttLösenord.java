@@ -132,7 +132,7 @@ private InfDB mibdb;
                 JOptionPane.showMessageDialog(null, "Du har ändrat ditt lösenord!");
             }
             else{
-                JOptionPane.showMessageDialog(null, "Fel användare.");
+                JOptionPane.showMessageDialog(null, "Lösenordet du angav är felaktigt eller längre än 6 tecken. Vänligen försök igen.");
             }
         }
         catch(InfException e){
