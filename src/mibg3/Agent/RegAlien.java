@@ -209,7 +209,7 @@ public class RegAlien extends javax.swing.JFrame {
         try{
             // Instansierar databasen.
             mibdb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
-            mibdb.insert("INSERT INTO Alien VALUES('" + id + "' , '" + "'" + datum + "'" + "' , '" + lösen + "' , '" + namn + "' , '" + telefon + "' , '" + plats + "' , '" + ansvarig+ ")");
+            mibdb.insert("INSERT INTO Alien VALUES('" + id + "' , '" + "'" + datum + "'" + "' , '" +"'" +lösen+"'" + "' , '" + "'" +namn + "'"+ "' , '" +"'"+ telefon+"'" + "' , '" + plats + "' , '" + ansvarig+ ")");
             LyckadReg reg = new LyckadReg();
             reg.setVisible(true);
             
