@@ -194,8 +194,9 @@ public class RegAlien extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // inte komplett än!!
         try{
-            mibdb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
-            String fraga = "INSERT INTO Alien (Alien_ID, Registreringsdatum, Losenord, Namn, Telefon"
+            mibdb = new InfDB("mibdb", "3306", "mibdba", 
+                    "mibkey");
+           // String fraga = "INSERT INTO Alien (Alien_ID, Registreringsdatum, Losenord, Namn, Telefon"
             
             String namn = NamnField.getText();
             String lösen = LösenordField.getText();
@@ -205,9 +206,9 @@ public class RegAlien extends javax.swing.JFrame {
             String plats = PlatsField.getText();
             String id = AlienIDFIELD.getText();
             
-            mibdb.insert("INSERT INTO Alien VALUES(" + id + "' , '" + datum + "' , '" + lösen + "' , '" + namn + "' , "' + telefon + "' , "' + plats + "' , "' + ansvarig + "'")");
+            mibdb.insert("INSERT INTO Alien VALUES(" + id + "' , '" + datum + "' , '" + lösen + "' , '" + namn + "' , '" + telefon + "' , '" + plats + "' , '" + ansvarig+ ")");
             
-            db.insert("INSERT INTO agent VALUES(1,'Hestu the seed guy')");
+          
         }
         catch(InfException e){
             
