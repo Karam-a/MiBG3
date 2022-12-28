@@ -4,6 +4,8 @@
  */
 package mibg3.Agent;
 
+import javax.swing.JOptionPane;
+import mibg3.Alien.LyckadReg;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
@@ -193,24 +195,25 @@ public class RegAlien extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // inte komplett än!!
+        // String fraga = "INSERT INTO Alien (Alien_ID, Registreringsdatum, Losenord, Namn, Telefon"
         try{
-            mibdb = new InfDB("mibdb", "3306", "mibdba", 
-                    "mibkey");
-           // String fraga = "INSERT INTO Alien (Alien_ID, Registreringsdatum, Losenord, Namn, Telefon"
+            mibdb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
             
             String namn = NamnField.getText();
             String lösen = LösenordField.getText();
-            String ansvarig = AnsvAgentField.getText();
+            int ansvarig = Integer.parseInt( AnsvAgentField.getText());
             String telefon = TelField.getText();
             String datum = DatumField.getText();
-            String plats = PlatsField.getText();
-            String id = AlienIDFIELD.getText();
+            int plats = Integer.parseInt( PlatsField.getText());
+            int id = Integer.parseInt( AlienIDFIELD.getText());
             
             mibdb.insert("INSERT INTO Alien VALUES(" + id + "' , '" + datum + "' , '" + lösen + "' , '" + namn + "' , '" + telefon + "' , '" + plats + "' , '" + ansvarig+ ")");
+            LyckadReg reg = new LyckadReg();
+            reg.setVisible(true);
             
-          
         }
         catch(InfException e){
+            JOptionPane.showMessageDialog(null, "Gick inte att ansluta.");
             
         }
     }//GEN-LAST:event_jButton1ActionPerformed
