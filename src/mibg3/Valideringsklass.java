@@ -7,25 +7,19 @@ import javax.swing.JOptionPane;
 
 public class Valideringsklass {
 
-    public boolean nameNotNumber(String name) {
-        if (name.isEmpty()) {
+    public boolean värdeExisterar(String varde) {
+        if(varde.isEmpty()) {
             return false;
         }
-
-        try {
-            double d = Double.parseDouble(name);
-            return false;
-
-        } catch (NumberFormatException nfe) {
-
-            return true;
-
+        else{
+        return true;
+        }
         }
 
-    }
     
-    public boolean validPassword(String password){
-        if (password.length() >= 7){
+    
+    public boolean giltigtLosenod(String losenord){
+        if (losenord.length() >= 7){
            
             return false;
         }
@@ -34,23 +28,23 @@ public class Valideringsklass {
         }
     }
     
-    public boolean numberNotName(String number) {
-        if (number == null) {
+    public boolean nummerEjNamn(String nummer) {
+        if (nummer == null) {
             return false;
         }
 
         try {
-            double d = Double.parseDouble(number);
+            double d = Double.parseDouble(nummer);
             return true;
 
-        } catch (NumberFormatException nfe) {
+        } catch (NumberFormatException nf) {
 
             return false;
 
         }
     }
 
-    public static boolean validDatum(String datum) {
+    public static boolean giltigtDatum(String datum) {
 
         if (datum.trim().equals("") && !datum.isEmpty()) {
             return true;
@@ -75,7 +69,6 @@ public class Valideringsklass {
     
 
     public void main(String args[]) {
-        //validDatum("yyyy-mm-dd");
     }
 
 }
