@@ -43,7 +43,9 @@ public class RegAlien extends javax.swing.JFrame {
         LösenordField = new javax.swing.JPasswordField();
         AnsvAgentField = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        PlatsComboBox = new javax.swing.JComboBox<>();
+        PlatsField = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        AlienIDFIELD = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -106,7 +108,8 @@ public class RegAlien extends javax.swing.JFrame {
             }
         });
 
-        PlatsComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jLabel8.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel8.setText("Alien-ID:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -123,20 +126,22 @@ public class RegAlien extends javax.swing.JFrame {
                             .addComponent(jLabel7)
                             .addComponent(jLabel5)
                             .addComponent(jLabel4)
-                            .addComponent(jLabel3))
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel8))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(DatumField)
+                            .addComponent(DatumField, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
                             .addComponent(NamnField)
                             .addComponent(TelField)
                             .addComponent(LösenordField)
                             .addComponent(AnsvAgentField)
-                            .addComponent(PlatsComboBox, 0, 95, Short.MAX_VALUE))))
+                            .addComponent(PlatsField)
+                            .addComponent(AlienIDFIELD))))
                 .addContainerGap(114, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -165,14 +170,18 @@ public class RegAlien extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(PlatsComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(PlatsField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(AnsvAgentField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(AlienIDFIELD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
                 .addComponent(jButton1)
-                .addGap(25, 25, 25))
+                .addContainerGap())
         );
 
         pack();
@@ -192,8 +201,13 @@ public class RegAlien extends javax.swing.JFrame {
             String lösen = LösenordField.getText();
             String ansvarig = AnsvAgentField.getText();
             String telefon = TelField.getText();
+            String datum = DatumField.getText();
+            String plats = PlatsField.getText();
+            String id = AlienIDFIELD.getText();
             
+            mibdb.insert("INSERT INTO Alien VALUES(" + id + "' , '" + datum + "' , '" + lösen + "' , '" + namn + "' , "' + telefon + "' , "' + plats + "' , "' + ansvarig + "'")");
             
+            db.insert("INSERT INTO agent VALUES(1,'Hestu the seed guy')");
         }
         catch(InfException e){
             
@@ -252,11 +266,12 @@ public class RegAlien extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField AlienIDFIELD;
     private javax.swing.JTextField AnsvAgentField;
     private javax.swing.JTextField DatumField;
     private javax.swing.JPasswordField LösenordField;
     private javax.swing.JTextField NamnField;
-    private javax.swing.JComboBox<String> PlatsComboBox;
+    private javax.swing.JTextField PlatsField;
     private javax.swing.JTextField TelField;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
@@ -266,5 +281,6 @@ public class RegAlien extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     // End of variables declaration//GEN-END:variables
 }
