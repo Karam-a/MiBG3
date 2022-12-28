@@ -5,6 +5,7 @@
 package mibg3.Agent;
 
 import javax.swing.JOptionPane;
+import mibg3.Valideringsklass;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
@@ -145,7 +146,8 @@ public class AgentInlogg extends javax.swing.JFrame {
     }//GEN-LAST:event_jPasswordField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
- try{
+
+        try{
         mibdb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
         String användarnamn = jTextField1.getText();
         String lösenord = jPasswordField1.getText();

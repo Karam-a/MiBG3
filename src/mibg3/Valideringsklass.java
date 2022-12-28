@@ -4,28 +4,32 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.text.ParseException;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 public class Valideringsklass {
 
-    public boolean värdeExisterar(String varde) {
-        if(varde.isEmpty()) {
-            return false;
+    public static boolean värdeExisterar(JTextField varde) {
+        boolean fylld;
+        if(varde.getText().isEmpty()) {
+            fylld = false;
         }
         else{
-        return true;
+            fylld = true;
         }
+        return fylld;
         }
 
     
     
-    public boolean giltigtLosenod(String losenord){
-        if (losenord.length() >= 7){
-           
-            return false;
+    public static boolean giltigtLosenord(String losenord){
+       boolean giltigt;
+        if(losenord.length() >= 7){
+            giltigt = false;
         }
         else{
-        return true;
+        giltigt = true;
         }
+        return giltigt;
     }
     
     public boolean nummerEjNamn(String nummer) {

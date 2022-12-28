@@ -6,6 +6,7 @@ package mibg3.Agent;
 
 import javax.swing.JOptionPane;
 import mibg3.Alien.LyckadReg;
+import mibg3.Valideringsklass;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
@@ -196,11 +197,7 @@ public class RegAlien extends javax.swing.JFrame {
     private void okAlienRegKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okAlienRegKnappActionPerformed
         // inte komplett än!!
         // String fraga = "INSERT INTO Alien (Alien_ID, Registreringsdatum, Losenord, Namn, Telefon"
-        try{
-            // Instansierar databasen.
-            mibdb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
-            
-            // Lokala variabeldeklarationer.
+        // Lokala variabeldeklarationer.
             String namn = NamnField.getText();
             String lösen = LösenordField.getText();
             String telefon = TelField.getText();
@@ -208,9 +205,11 @@ public class RegAlien extends javax.swing.JFrame {
             int plats = Integer.parseInt( PlatsField.getText());
             int id = Integer.parseInt( AlienIDFIELD.getText());
             int ansvarig = Integer.parseInt( AnsvAgentField.getText());
-            
-            
-            mibdb.insert("INSERT INTO Alien VALUES(" + id + "' , '" + datum + "' , '" + lösen + "' , '" + namn + "' , '" + telefon + "' , '" + plats + "' , '" + ansvarig+ ")");
+            if(Valideringsklass.giltigtLosenord(lösen) && Valideringsklass.värdeExisterar(NamnField) && Valideringsklass.värdeExisterar(DatumField) && Valideringsklass.värdeExisterar(PlatsField) && Valideringsklass.värdeExisterar(AlienIDFIELD) && Valideringsklass.värdeExisterar(AnsvAgentField)){
+        try{
+            // Instansierar databasen.
+            mibdb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
+            mibdb.insert("INSERT INTO Alien VALUES('" + id + "' , '" + "'" + datum + "'" + "' , '" + lösen + "' , '" + namn + "' , '" + telefon + "' , '" + plats + "' , '" + ansvarig+ ")");
             LyckadReg reg = new LyckadReg();
             reg.setVisible(true);
             
@@ -219,6 +218,8 @@ public class RegAlien extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Gick inte att ansluta.");
             
         }
+            }
+            
     }//GEN-LAST:event_okAlienRegKnappActionPerformed
 
     private void NamnFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NamnFieldActionPerformed
