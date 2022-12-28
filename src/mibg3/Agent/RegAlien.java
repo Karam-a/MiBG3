@@ -44,7 +44,7 @@ public class RegAlien extends javax.swing.JFrame {
         TelField = new javax.swing.JTextField();
         LösenordField = new javax.swing.JPasswordField();
         AnsvAgentField = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        okAlienRegKnapp = new javax.swing.JButton();
         PlatsField = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         AlienIDFIELD = new javax.swing.JTextField();
@@ -102,11 +102,11 @@ public class RegAlien extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jButton1.setText("OK");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        okAlienRegKnapp.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        okAlienRegKnapp.setText("OK");
+        okAlienRegKnapp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                okAlienRegKnappActionPerformed(evt);
             }
         });
 
@@ -142,7 +142,7 @@ public class RegAlien extends javax.swing.JFrame {
                 .addContainerGap(114, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(okAlienRegKnapp, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -182,7 +182,7 @@ public class RegAlien extends javax.swing.JFrame {
                     .addComponent(jLabel8)
                     .addComponent(AlienIDFIELD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(okAlienRegKnapp)
                 .addContainerGap())
         );
 
@@ -193,19 +193,22 @@ public class RegAlien extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_DatumFieldActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void okAlienRegKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okAlienRegKnappActionPerformed
         // inte komplett än!!
         // String fraga = "INSERT INTO Alien (Alien_ID, Registreringsdatum, Losenord, Namn, Telefon"
         try{
+            // Instansierar databasen.
             mibdb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
             
+            // Lokala variabeldeklarationer.
             String namn = NamnField.getText();
             String lösen = LösenordField.getText();
-            int ansvarig = Integer.parseInt( AnsvAgentField.getText());
             String telefon = TelField.getText();
             String datum = DatumField.getText();
             int plats = Integer.parseInt( PlatsField.getText());
             int id = Integer.parseInt( AlienIDFIELD.getText());
+            int ansvarig = Integer.parseInt( AnsvAgentField.getText());
+            
             
             mibdb.insert("INSERT INTO Alien VALUES(" + id + "' , '" + datum + "' , '" + lösen + "' , '" + namn + "' , '" + telefon + "' , '" + plats + "' , '" + ansvarig+ ")");
             LyckadReg reg = new LyckadReg();
@@ -216,7 +219,7 @@ public class RegAlien extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Gick inte att ansluta.");
             
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_okAlienRegKnappActionPerformed
 
     private void NamnFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NamnFieldActionPerformed
         // TODO add your handling code here:
@@ -277,7 +280,6 @@ public class RegAlien extends javax.swing.JFrame {
     private javax.swing.JTextField NamnField;
     private javax.swing.JTextField PlatsField;
     private javax.swing.JTextField TelField;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -286,5 +288,6 @@ public class RegAlien extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JButton okAlienRegKnapp;
     // End of variables declaration//GEN-END:variables
 }
