@@ -142,9 +142,9 @@ public class AgentMeny extends javax.swing.JFrame {
         meny.setVisible(true);
     }//GEN-LAST:event_knappAgentHanteraAliensActionPerformed
 
-   private String hämtaAgentNamn(){
+   private static String hämtaAgentNamn(){
         AgentInlogg tlf = new AgentInlogg();
-       String agID = tlf.getAgentNamn();
+        String agID = AgentInlogg.getAgentNamn();
         return agID;
     }
     /**

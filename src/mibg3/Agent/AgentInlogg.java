@@ -15,12 +15,13 @@ import oru.inf.InfException;
 public class AgentInlogg extends javax.swing.JFrame {
 
     private static String inloggadAgentID;
-    public static String agentNamn;
+    private static String agentNamn;
     /**
      * Creates new form NewJFrame
      */
     public AgentInlogg() {
         inloggadAgentID = "";
+        agentNamn = "";
         initComponents();
     }
 
@@ -150,14 +151,18 @@ public class AgentInlogg extends javax.swing.JFrame {
         String lösenord = jPasswordField1.getText();
         String inLoggID;
         String lösen;
+        String namn;
        
         inLoggID = mibdb.fetchSingle("SELECT Agent_ID FROM Agent WHERE Namn=" + "'" + användarnamn + "'");
         lösen = mibdb.fetchSingle("SELECT Losenord FROM Agent WHERE Agent_ID =" + "'" + inLoggID + "'");
+        namn = mibdb.fetchSingle("SELECT Namn FROM Agent WHERE Agent_ID ="+"'" +inLoggID+"'");
+        
         
         if(lösenord.equals(lösen)){
             AgentMeny meny = new AgentMeny();
             meny.setVisible(true);
             inloggadAgentID = inLoggID;
+            agentNamn = namn;
         }
         else{
             JOptionPane.showMessageDialog(null, "Du har angett fel lösenord eller användarnamn. Vänligen försök igen.");
@@ -174,15 +179,8 @@ public class AgentInlogg extends javax.swing.JFrame {
     
     // För guds skull nån ta en titt på det här innan jag hänger mig själv. När den används i AgentMeny returnerar den värdet "null". Har testat att ändra om SQL-frågan typ fem gånger, 
     // inkluderat mibdb o all annan skit men den returnerar fortfarande "null"
-    public String getAgentNamn(){
-        try{
-            mibdb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
-            agentNamn = mibdb.fetchSingle("SELECT Namn FROM Agent WHERE Agent_ID ="+"'" +inloggadAgentID+"'");
-            return agentNamn;
-        }
-        catch(InfException e){
-            JOptionPane.showMessageDialog(null, "Kunde inte ansluta till databasen. Vänligen försök igen.");
-        }
+  
+    public static String getAgentNamn(){
         return agentNamn;
     }
     /**
