@@ -15,7 +15,7 @@ import mibg3.Agent.AgentInlogg;
 public class Inloggningsruta extends javax.swing.JFrame {
 
     /**
-     * Creates new form Inloggningsruta
+     * Creates new form Inloggningsruta.
      */
     public Inloggningsruta() {
         initComponents();
@@ -117,7 +117,10 @@ public class Inloggningsruta extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+/**
+ * Här är koden för att när man klickar på en av knapparna så kommer man till inloggningen för antingen alien, agent eller admin.
+ * @param evt 
+ */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
     AgentInlogg agi = new AgentInlogg();    
     agi.setVisible(true);

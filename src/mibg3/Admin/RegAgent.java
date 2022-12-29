@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package mibg3.Agent;
+package mibg3.Admin;
 
 import javax.swing.JOptionPane;
 import mibg3.Valideringsklass;
@@ -13,13 +13,13 @@ import oru.inf.InfException;
  *
  * @author d-aly
  */
-public class RegAlien extends javax.swing.JFrame {
+public class RegAgent extends javax.swing.JFrame {
     private InfDB mibdb;
 
     /**
-     * Creates new form RegAlien
+     * Creates new form RegAgent
      */
-    public RegAlien() {
+    public RegAgent() {
         initComponents();
     }
 
@@ -32,51 +32,24 @@ public class RegAlien extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        NamnField = new javax.swing.JTextField();
+        AnstDatumField = new javax.swing.JTextField();
+        LösenordField = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        TelField = new javax.swing.JTextField();
+        AGID = new javax.swing.JLabel();
+        okAlienRegKnapp = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        AdminField = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        OmrådeField = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        DatumField = new javax.swing.JTextField();
-        NamnField = new javax.swing.JTextField();
-        TelField = new javax.swing.JTextField();
-        LösenordField = new javax.swing.JPasswordField();
-        AnsvAgentField = new javax.swing.JTextField();
-        okAlienRegKnapp = new javax.swing.JButton();
-        PlatsField = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        AlienIDFIELD = new javax.swing.JTextField();
+        AgentIDField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel1.setText("Här kan du registrera nya aliens!");
-
-        jLabel2.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel2.setText("Datum:");
-
-        jLabel3.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel3.setText("Namn:");
-
-        jLabel4.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel4.setText("Lösenord:");
-
-        jLabel5.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel5.setText("Telefon:");
-
-        jLabel6.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel6.setText("Plats:");
-
-        jLabel7.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel7.setText("Ansvarig agent:");
-
-        DatumField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DatumFieldActionPerformed(evt);
-            }
-        });
 
         NamnField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,9 +57,9 @@ public class RegAlien extends javax.swing.JFrame {
             }
         });
 
-        TelField.addActionListener(new java.awt.event.ActionListener() {
+        AnstDatumField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TelFieldActionPerformed(evt);
+                AnstDatumFieldActionPerformed(evt);
             }
         });
 
@@ -96,11 +69,17 @@ public class RegAlien extends javax.swing.JFrame {
             }
         });
 
-        AnsvAgentField.addActionListener(new java.awt.event.ActionListener() {
+        jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel1.setText("Här kan du registrera nya agenter!");
+
+        TelField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AnsvAgentFieldActionPerformed(evt);
+                TelFieldActionPerformed(evt);
             }
         });
+
+        AGID.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        AGID.setText("AgentID:");
 
         okAlienRegKnapp.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         okAlienRegKnapp.setText("OK");
@@ -110,8 +89,29 @@ public class RegAlien extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel3.setText("Namn:");
+
+        jLabel4.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel4.setText("Telefon:");
+
         jLabel8.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel8.setText("Alien-ID:");
+        jLabel8.setText("Område:");
+
+        jLabel5.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel5.setText("Anställningsdatum:");
+
+        jLabel6.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel6.setText("Administratör:");
+
+        jLabel7.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel7.setText("Lösenord:");
+
+        AgentIDField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AgentIDFieldActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -123,23 +123,23 @@ public class RegAlien extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(AGID)
                             .addComponent(jLabel7)
                             .addComponent(jLabel5)
                             .addComponent(jLabel4)
                             .addComponent(jLabel3)
-                            .addComponent(jLabel8))
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel6))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(DatumField, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
+                            .addComponent(AgentIDField)
                             .addComponent(NamnField)
-                            .addComponent(TelField)
+                            .addComponent(AnstDatumField)
                             .addComponent(LösenordField)
-                            .addComponent(AnsvAgentField)
-                            .addComponent(PlatsField)
-                            .addComponent(AlienIDFIELD))))
-                .addContainerGap(114, Short.MAX_VALUE))
+                            .addComponent(AdminField)
+                            .addComponent(OmrådeField)
+                            .addComponent(TelField, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(99, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(okAlienRegKnapp, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -155,8 +155,8 @@ public class RegAlien extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(78, 78, 78)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(DatumField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))))
+                            .addComponent(AgentIDField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(AGID))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -164,23 +164,23 @@ public class RegAlien extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(LösenordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
                     .addComponent(TelField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(AnstDatumField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(PlatsField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(AdminField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(AnsvAgentField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(LösenordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(AlienIDFIELD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(OmrådeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
                 .addComponent(okAlienRegKnapp)
                 .addContainerGap())
@@ -189,52 +189,52 @@ public class RegAlien extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void DatumFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DatumFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_DatumFieldActionPerformed
-
-    private void okAlienRegKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okAlienRegKnappActionPerformed
-     /** Lokala variabeldeklarationer. Dessa ska hämta värdet på det vi skriver in när man registrerar en ny
-      * alien och ta lokalvariablerna som sedan sätts in i insert metoden för databasen så att informationen vi skriver in sätts in i databasen.
-      */
-            String namn = NamnField.getText();
-            String lösen = LösenordField.getText();
-            String telefon = TelField.getText();
-            String datum = DatumField.getText();
-            int plats = Integer.parseInt( PlatsField.getText());
-            int id = Integer.parseInt( AlienIDFIELD.getText());
-            int ansvarig = Integer.parseInt( AnsvAgentField.getText());
-            if(Valideringsklass.giltigtLosenord(lösen) && Valideringsklass.värdeExisterar(NamnField) && Valideringsklass.värdeExisterar(DatumField) && Valideringsklass.värdeExisterar(PlatsField) && Valideringsklass.värdeExisterar(AlienIDFIELD) && Valideringsklass.värdeExisterar(AnsvAgentField)){
-        try{
-            // Instansierar databasen.
-            mibdb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
-            mibdb.insert("INSERT INTO Alien VALUES(" + id + " , " + "'" + datum + "'" + " , " + "'" + lösen + "'" + " , " + "'" + namn + "'" + " , " + "'" + telefon + "'" + " , " + plats + " , " + ansvarig + ")");
-           JOptionPane.showMessageDialog(null, "Grattis! En ny alien har registrerats i systemet.");
-          
-        }
-        catch(InfException e){
-            JOptionPane.showMessageDialog(null, "Gick inte att ansluta.");
-            
-        }
-            }
-            
-    }//GEN-LAST:event_okAlienRegKnappActionPerformed
-
     private void NamnFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NamnFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_NamnFieldActionPerformed
+
+    private void AnstDatumFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnstDatumFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AnstDatumFieldActionPerformed
 
     private void LösenordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LösenordFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_LösenordFieldActionPerformed
 
-    private void AnsvAgentFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnsvAgentFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AnsvAgentFieldActionPerformed
-
     private void TelFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TelFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TelFieldActionPerformed
+
+    private void okAlienRegKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okAlienRegKnappActionPerformed
+        /** Lokala variabeldeklarationer. Dessa ska hämta värdet på det vi skriver in när man registrerar en ny
+        * alien och ta lokalvariablerna som sedan sätts in i insert metoden för databasen så att informationen vi skriver in sätts in i databasen.
+        */
+        String namn = NamnField.getText();
+        String telefon = TelField.getText();
+        String datum = AnstDatumField.getText();
+        String admin = AdminField.getText();
+        String lösen = LösenordField.getText();
+        int plats = Integer.parseInt( OmrådeField.getText());
+        int id = Integer.parseInt( AgentIDField.getText());
+        if(Valideringsklass.giltigtLosenord(lösen) && Valideringsklass.värdeExisterar(NamnField) && Valideringsklass.värdeExisterar(AgentIDField) && Valideringsklass.värdeExisterar(AdminField) && Valideringsklass.värdeExisterar(OmrådeField) && Valideringsklass.värdeExisterar(TelField)){
+            try{
+                // Instansierar databasen.
+                mibdb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
+                mibdb.insert("INSERT INTO Agent VALUES(" + id + " , " + "'" + namn + "'" + " , " + "'" + telefon + "'" + " , " + "'" + datum + "'" + " , " + "'" + admin + "'" + " , " + "'" + lösen + "'" + " , " + plats + ")");
+                JOptionPane.showMessageDialog(null, "Grattis! En ny agent har registrerats i systemet.");
+
+            }
+            catch(InfException e){
+                JOptionPane.showMessageDialog(null, "Gick inte att ansluta.");
+
+            }
+        }
+
+    }//GEN-LAST:event_okAlienRegKnappActionPerformed
+
+    private void AgentIDFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgentIDFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AgentIDFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -253,34 +253,34 @@ public class RegAlien extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegAlien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegAgent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegAlien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegAgent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegAlien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegAgent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegAlien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegAgent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RegAlien().setVisible(true);
+                new RegAgent().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField AlienIDFIELD;
-    private javax.swing.JTextField AnsvAgentField;
-    private javax.swing.JTextField DatumField;
+    private javax.swing.JLabel AGID;
+    private javax.swing.JTextField AdminField;
+    private javax.swing.JTextField AgentIDField;
+    private javax.swing.JTextField AnstDatumField;
     private javax.swing.JPasswordField LösenordField;
     private javax.swing.JTextField NamnField;
-    private javax.swing.JTextField PlatsField;
+    private javax.swing.JTextField OmrådeField;
     private javax.swing.JTextField TelField;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

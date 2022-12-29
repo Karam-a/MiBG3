@@ -7,8 +7,17 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 public class Valideringsklass {
+    /**
+     * I den här klassen kollar vi valideringen av saker när man loggar in.
+     * @param varde
+     * @return 
+     */
 
     public static boolean värdeExisterar(JTextField varde) {
+        /**
+         * Den här metoden kontrollerar att värdena på fälten man skriver in inte är tomma.
+         * Är de tomma så ska den returnera true, annars false.
+         */
         boolean fylld;
         if(varde.getText().isEmpty()) {
             fylld = false;
@@ -22,6 +31,10 @@ public class Valideringsklass {
     
     
     public static boolean giltigtLosenord(String losenord){
+        /**
+         * Den här metoden ska kolla om lösenordet man skriver in är ett giltigt antal tecken
+         * som ska vara 6 baserat på hur vi såg det på databasen. 
+         */
        boolean giltigt;
         if(losenord.length() >= 7){
             giltigt = false;

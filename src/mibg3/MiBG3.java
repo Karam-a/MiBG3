@@ -18,8 +18,9 @@ private static InfDB idb;
 
           }
          }
-// Startar programmet. Kallar på metoden "Inloggningsruta" där användaren 
-// sedan väljer om de är en alien, agent eller admin.
+/** Startar programmet. Kallar på metoden "Inloggningsruta" där användaren 
+* sedan väljer om de är en alien, agent eller admin.
+*/
          new Inloggningsruta().setVisible(true);
         }
     

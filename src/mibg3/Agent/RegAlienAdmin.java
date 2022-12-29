@@ -13,13 +13,13 @@ import oru.inf.InfException;
  *
  * @author d-aly
  */
-public class RegAlien extends javax.swing.JFrame {
+public class RegAlienAdmin extends javax.swing.JFrame {
     private InfDB mibdb;
 
     /**
-     * Creates new form RegAlien
+     * Creates new form RegAlienAdmin
      */
-    public RegAlien() {
+    public RegAlienAdmin() {
         initComponents();
     }
 
@@ -32,7 +32,6 @@ public class RegAlien extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -43,6 +42,7 @@ public class RegAlien extends javax.swing.JFrame {
         NamnField = new javax.swing.JTextField();
         TelField = new javax.swing.JTextField();
         LösenordField = new javax.swing.JPasswordField();
+        jLabel1 = new javax.swing.JLabel();
         AnsvAgentField = new javax.swing.JTextField();
         okAlienRegKnapp = new javax.swing.JButton();
         PlatsField = new javax.swing.JTextField();
@@ -50,9 +50,6 @@ public class RegAlien extends javax.swing.JFrame {
         AlienIDFIELD = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel1.setText("Här kan du registrera nya aliens!");
 
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel2.setText("Datum:");
@@ -95,6 +92,9 @@ public class RegAlien extends javax.swing.JFrame {
                 LösenordFieldActionPerformed(evt);
             }
         });
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel1.setText("Här kan du registrera nya aliens!");
 
         AnsvAgentField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -181,7 +181,7 @@ public class RegAlien extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(AlienIDFIELD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                 .addComponent(okAlienRegKnapp)
                 .addContainerGap())
         );
@@ -193,36 +193,13 @@ public class RegAlien extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_DatumFieldActionPerformed
 
-    private void okAlienRegKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okAlienRegKnappActionPerformed
-     /** Lokala variabeldeklarationer. Dessa ska hämta värdet på det vi skriver in när man registrerar en ny
-      * alien och ta lokalvariablerna som sedan sätts in i insert metoden för databasen så att informationen vi skriver in sätts in i databasen.
-      */
-            String namn = NamnField.getText();
-            String lösen = LösenordField.getText();
-            String telefon = TelField.getText();
-            String datum = DatumField.getText();
-            int plats = Integer.parseInt( PlatsField.getText());
-            int id = Integer.parseInt( AlienIDFIELD.getText());
-            int ansvarig = Integer.parseInt( AnsvAgentField.getText());
-            if(Valideringsklass.giltigtLosenord(lösen) && Valideringsklass.värdeExisterar(NamnField) && Valideringsklass.värdeExisterar(DatumField) && Valideringsklass.värdeExisterar(PlatsField) && Valideringsklass.värdeExisterar(AlienIDFIELD) && Valideringsklass.värdeExisterar(AnsvAgentField)){
-        try{
-            // Instansierar databasen.
-            mibdb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
-            mibdb.insert("INSERT INTO Alien VALUES(" + id + " , " + "'" + datum + "'" + " , " + "'" + lösen + "'" + " , " + "'" + namn + "'" + " , " + "'" + telefon + "'" + " , " + plats + " , " + ansvarig + ")");
-           JOptionPane.showMessageDialog(null, "Grattis! En ny alien har registrerats i systemet.");
-          
-        }
-        catch(InfException e){
-            JOptionPane.showMessageDialog(null, "Gick inte att ansluta.");
-            
-        }
-            }
-            
-    }//GEN-LAST:event_okAlienRegKnappActionPerformed
-
     private void NamnFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NamnFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_NamnFieldActionPerformed
+
+    private void TelFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TelFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TelFieldActionPerformed
 
     private void LösenordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LösenordFieldActionPerformed
         // TODO add your handling code here:
@@ -232,9 +209,32 @@ public class RegAlien extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_AnsvAgentFieldActionPerformed
 
-    private void TelFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TelFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TelFieldActionPerformed
+    private void okAlienRegKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okAlienRegKnappActionPerformed
+        /** Lokala variabeldeklarationer. Dessa ska hämta värdet på det vi skriver in när man registrerar en ny
+        * alien och ta lokalvariablerna som sedan sätts in i insert metoden för databasen så att informationen vi skriver in sätts in i databasen.
+        */
+        String namn = NamnField.getText();
+        String lösen = LösenordField.getText();
+        String telefon = TelField.getText();
+        String datum = DatumField.getText();
+        int plats = Integer.parseInt( PlatsField.getText());
+        int id = Integer.parseInt( AlienIDFIELD.getText());
+        int ansvarig = Integer.parseInt( AnsvAgentField.getText());
+        if(Valideringsklass.giltigtLosenord(lösen) && Valideringsklass.värdeExisterar(NamnField) && Valideringsklass.värdeExisterar(DatumField) && Valideringsklass.värdeExisterar(PlatsField) && Valideringsklass.värdeExisterar(AlienIDFIELD) && Valideringsklass.värdeExisterar(AnsvAgentField)){
+            try{
+                // Instansierar databasen.
+                mibdb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
+                mibdb.insert("INSERT INTO Alien VALUES(" + id + " , " + "'" + datum + "'" + " , " + "'" + lösen + "'" + " , " + "'" + namn + "'" + " , " + "'" + telefon + "'" + " , " + plats + " , " + ansvarig + ")");
+                JOptionPane.showMessageDialog(null, "Grattis! En ny alien har registrerats i systemet.");
+
+            }
+            catch(InfException e){
+                JOptionPane.showMessageDialog(null, "Gick inte att ansluta.");
+
+            }
+        }
+
+    }//GEN-LAST:event_okAlienRegKnappActionPerformed
 
     /**
      * @param args the command line arguments
@@ -253,20 +253,20 @@ public class RegAlien extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegAlien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegAlienAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegAlien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegAlienAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegAlien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegAlienAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegAlien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegAlienAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RegAlien().setVisible(true);
+                new RegAlienAdmin().setVisible(true);
             }
         });
     }

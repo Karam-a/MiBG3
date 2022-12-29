@@ -13,7 +13,9 @@ import mibg3.Agent.AgentInlogg;
  * @author Karam Al-Akhras
  */
 public class AgentMeny extends javax.swing.JFrame {
-    public AgentMeny() {
+    private static String ettNamn;
+    public AgentMeny(String namn) {
+        ettNamn = namn;
         initComponents();
     }
 
@@ -142,10 +144,8 @@ public class AgentMeny extends javax.swing.JFrame {
         meny.setVisible(true);
     }//GEN-LAST:event_knappAgentHanteraAliensActionPerformed
 
-   private static String hämtaAgentNamn(){
-        AgentInlogg tlf = new AgentInlogg();
-        String agID = AgentInlogg.getAgentNamn();
-        return agID;
+   public static String hämtaAgentNamn(){
+        return ettNamn;
     }
     /**
      * @param args the command line arguments
@@ -177,7 +177,6 @@ public class AgentMeny extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AgentMeny().setVisible(true);
             }
         });
     }

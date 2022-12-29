@@ -161,7 +161,7 @@ public class AgentInlogg extends javax.swing.JFrame {
         
         
         if(lösenord.equals(lösen)){
-            AgentMeny meny = new AgentMeny();
+            AgentMeny meny = new AgentMeny(namn);
             meny.setVisible(true);
             inloggadAgentID = inLoggID;
             agentNamn = namn;
@@ -178,13 +178,7 @@ public class AgentInlogg extends javax.swing.JFrame {
     public static String getInloggadAgentID(){
     return inloggadAgentID;
     }
-    
-    // För guds skull nån ta en titt på det här innan jag hänger mig själv. När den används i AgentMeny returnerar den värdet "null". Har testat att ändra om SQL-frågan typ fem gånger, 
-    // inkluderat mibdb o all annan skit men den returnerar fortfarande "null"
   
-    public static String getAgentNamn(){
-        return agentNamn;
-    }
     /**
      * @param args the command line arguments
      */
