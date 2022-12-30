@@ -44,9 +44,9 @@ public class AdminInlogg extends javax.swing.JFrame {
 
         jInternalFrame1.setVisible(true);
 
-        jLabel3.setText("Välkomen Adiministratör!");
+        jLabel3.setText("Välkommen Administratör!");
 
-        jLabel4.setText("Vänligen skriv in ditt användernamn och lösenord.");
+        jLabel4.setText("Vänligen ange ditt användarnamn och lösenord.");
 
         jLabel5.setText("Användarnamn");
 

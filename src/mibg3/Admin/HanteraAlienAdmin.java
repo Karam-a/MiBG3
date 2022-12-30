@@ -4,8 +4,6 @@
  */
 package mibg3.Admin;
 
-import mibg3.Agent.RegAlienAdmin;
-
 /**
  *
  * @author d-aly

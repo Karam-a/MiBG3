@@ -109,12 +109,12 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
-            <Property name="text" type="java.lang.String" value="V&#xe4;lkomen Adiministrat&#xf6;r!"/>
+            <Property name="text" type="java.lang.String" value="V&#xe4;lkommen Administrat&#xf6;r!"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
-            <Property name="text" type="java.lang.String" value="V&#xe4;nligen skriv in ditt anv&#xe4;ndernamn och l&#xf6;senord."/>
+            <Property name="text" type="java.lang.String" value="V&#xe4;nligen ange ditt anv&#xe4;ndarnamn och l&#xf6;senord."/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
