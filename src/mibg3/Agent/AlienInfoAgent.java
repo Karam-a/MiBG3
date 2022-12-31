@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 // Instansiering av variabler som presenteras i framens utvalda labels. Även databsen.
 public class AlienInfoAgent extends javax.swing.JFrame {
+
 private InfDB mibdb;
 private String aNamn;
 private String aID;
@@ -14,10 +15,11 @@ private String aRegDat;
 private String aTelNr;
 private String ansvAg;
 private String nuvPlats;
-
+private String faktOmr;
 //instansiering till Combo Box, värden i CB ändras automatiskt efter de aliens som finns i databasen.
-private String cbNyckel;
-private String cbVärde;
+//private String cbNyckel;
+//private String cbVärde;
+
 
 //Kontruktor. Skapar en HashMap av alla aliens i systemet, som sedan blir alternativen i vår combo box. ÄNDRA INTE ANNARS FÅR JAG RYCK, TACK PUSS O HEJ.
     public AlienInfoAgent() {
@@ -68,7 +70,7 @@ private String cbVärde;
         alienInformationMainLabel.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         alienInformationMainLabel.setText("Alieninformation");
 
-        alienValCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "blomma", "my book", "Braxen" }));
+        alienValCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bobbo", "My Book", "Braxen" }));
 
         alienLabel.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         alienLabel.setText("Alien:");
@@ -112,15 +114,15 @@ private String cbVärde;
 
         returnAlienTelNrLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         returnAlienTelNrLabel.setForeground(new java.awt.Color(255, 51, 51));
-        returnAlienTelNrLabel.setText("<telNr>");
+        returnAlienTelNrLabel.setText(getTelNr());
 
         returnAlienAnsAgentLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         returnAlienAnsAgentLabel.setForeground(new java.awt.Color(255, 51, 51));
-        returnAlienAnsAgentLabel.setText("<ansAgent>");
+        returnAlienAnsAgentLabel.setText(getAnsvarAg());
 
         returnAlienNuvPlatsLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         returnAlienNuvPlatsLabel.setForeground(new java.awt.Color(255, 51, 51));
-        returnAlienNuvPlatsLabel.setText("<nuvPlats>");
+        returnAlienNuvPlatsLabel.setText(getNuvPlats());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -214,25 +216,54 @@ private String cbVärde;
    
     private String getAlienNamn(){
       aNamn = alienValCB.getSelectedItem().toString();
-      return alienValCB.getSelectedItem().toString();
+      return aNamn;
     }
     
     private String getAlienID(){
-        try{aID = mibdb.fetchSingle("SELECT Alien_ID FROM Alien WHERE Namn=" + "'" + aNamn + "'");}
+        try{aID = mibdb.fetchSingle("SELECT Alien_ID FROM Alien WHERE Namn=" + "'" + getAlienNamn() + "'");}
         catch(InfException e){errorLol();}
         return aID;
     }
     
     private String getRegDat(){
-    try{aRegDat = mibdb.fetchSingle("SELECT Registreringsdatum FROM Alien WHERE Namn=" + "'" + aNamn + "'");}
+    try{aRegDat = mibdb.fetchSingle("SELECT Registreringsdatum FROM Alien WHERE Namn=" + "'" + getAlienNamn() + "'");}
     catch(InfException e){errorLol();}
     return aRegDat;
     }
    
    
+    private String getTelNr(){
+    try{aTelNr = mibdb.fetchSingle("SELECT Telefon FROM Alien WHERE Namn=" + "'" + getAlienNamn() + "'");}
+    catch(InfException e){errorLol();}
+    return aTelNr;
+    }
+    
+    private String getAnsvarAg(){
+        String tlfAag;
+        try{
+        tlfAag = mibdb.fetchSingle("SELECT Ansvarig_Agent FROM Alien WHERE Namn=" + "'" + getAlienNamn() + "'");
+        ansvAg = mibdb.fetchSingle("SELECT Namn FROM Agent WHERE Agent_ID=" + tlfAag);
+              System.out.println(ansvAg);}
+    catch(InfException e){errorLol();}
+    return ansvAg;
+    }
+    
+    private String getNuvPlats(){
+        String tlfOmr;
+        String finnsI;
+    try{
+        tlfOmr = mibdb.fetchSingle("SELECT Plats FROM Alien WHERE Namn=" + "'" + getAlienNamn() + "'");
+        nuvPlats = mibdb.fetchSingle("SELECT Benamning FROM Plats WHERE Plats_ID=" + tlfOmr);
+        finnsI = mibdb.fetchSingle("SELECT Finns_I FROM Plats WHERE Plats_ID=" + tlfOmr);
+        faktOmr = mibdb.fetchSingle("SELECT Benamning FROM Omrade WHERE Omrades_ID=" + finnsI);
+    }
+    catch(InfException e){errorLol();}
+    return nuvPlats + "," + faktOmr;
+    }
     
     private void sokPaValdAlienKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sokPaValdAlienKnappActionPerformed
-        // TODO add your handling code here:
+    aNamn = alienValCB.getSelectedItem().toString();
+    getAlienNamn();
     }//GEN-LAST:event_sokPaValdAlienKnappActionPerformed
 
     /**
