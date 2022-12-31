@@ -51,7 +51,6 @@ private String faktOmr;
         alienValCB = new javax.swing.JComboBox<>();
         alienLabel = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        sokPaValdAlienKnapp = new javax.swing.JButton();
         alienNamnLabel = new javax.swing.JLabel();
         alienIDLabel = new javax.swing.JLabel();
         regDatumAlienLabel = new javax.swing.JLabel();
@@ -71,16 +70,14 @@ private String faktOmr;
         alienInformationMainLabel.setText("Alieninformation");
 
         alienValCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bobbo", "My Book", "Braxen" }));
+        alienValCB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                alienValCBActionPerformed(evt);
+            }
+        });
 
         alienLabel.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         alienLabel.setText("Alien:");
-
-        sokPaValdAlienKnapp.setText("Sök på vald Alien");
-        sokPaValdAlienKnapp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sokPaValdAlienKnappActionPerformed(evt);
-            }
-        });
 
         alienNamnLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         alienNamnLabel.setText("Namn:");
@@ -136,11 +133,11 @@ private String faktOmr;
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(alienNamnLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(returnAlienNamnLabel))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(alienIDLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(returnAlienIDLabel))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(regDatumAlienLabel)
@@ -148,27 +145,25 @@ private String faktOmr;
                                 .addComponent(returnAlienRegDatumLabel))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(telNrLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(returnAlienTelNrLabel))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(ansvarigAgentLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(returnAlienAnsAgentLabel))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(nuvarandePlatsLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(returnAlienNuvPlatsLabel))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(56, 56, 56)
                         .addComponent(alienInformationMainLabel))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
+                        .addGap(84, 84, 84)
                         .addComponent(alienLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(alienValCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(sokPaValdAlienKnapp)))
-                .addContainerGap(25, Short.MAX_VALUE))
+                        .addComponent(alienValCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -177,9 +172,8 @@ private String faktOmr;
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(alienLabel)
-                    .addComponent(alienValCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(sokPaValdAlienKnapp))
-                .addGap(2, 2, 2)
+                    .addComponent(alienValCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(3, 3, 3)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -242,8 +236,7 @@ private String faktOmr;
         String tlfAag;
         try{
         tlfAag = mibdb.fetchSingle("SELECT Ansvarig_Agent FROM Alien WHERE Namn=" + "'" + getAlienNamn() + "'");
-        ansvAg = mibdb.fetchSingle("SELECT Namn FROM Agent WHERE Agent_ID=" + tlfAag);
-              System.out.println(ansvAg);}
+        ansvAg = mibdb.fetchSingle("SELECT Namn FROM Agent WHERE Agent_ID=" + tlfAag);}
     catch(InfException e){errorLol();}
     return ansvAg;
     }
@@ -258,13 +251,13 @@ private String faktOmr;
         faktOmr = mibdb.fetchSingle("SELECT Benamning FROM Omrade WHERE Omrades_ID=" + finnsI);
     }
     catch(InfException e){errorLol();}
-    return nuvPlats + "," + faktOmr;
+    return nuvPlats + ", " + faktOmr;
     }
     
-    private void sokPaValdAlienKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sokPaValdAlienKnappActionPerformed
-    aNamn = alienValCB.getSelectedItem().toString();
-    getAlienNamn();
-    }//GEN-LAST:event_sokPaValdAlienKnappActionPerformed
+    //Lite problem med det här, den ändrar inte vald aliens namn. How da fuq do i make it work.
+    private void alienValCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alienValCBActionPerformed
+      getAlienNamn();
+    }//GEN-LAST:event_alienValCBActionPerformed
 
     /**
      * @param args the command line arguments
@@ -317,7 +310,6 @@ private String faktOmr;
     private javax.swing.JLabel returnAlienNuvPlatsLabel;
     private javax.swing.JLabel returnAlienRegDatumLabel;
     private javax.swing.JLabel returnAlienTelNrLabel;
-    private javax.swing.JButton sokPaValdAlienKnapp;
     private javax.swing.JLabel telNrLabel;
     // End of variables declaration//GEN-END:variables
 }
