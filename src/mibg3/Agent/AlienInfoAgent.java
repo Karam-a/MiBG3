@@ -65,6 +65,7 @@ private String tillfälligtNamn;
         returnAlienTelNrLabel = new javax.swing.JLabel();
         returnAlienAnsAgentLabel = new javax.swing.JLabel();
         returnAlienNuvPlatsLabel = new javax.swing.JLabel();
+        sokPaValdAlienKnapp = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -75,6 +76,11 @@ private String tillfälligtNamn;
         alienValCB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 alienValCBActionPerformed(evt);
+            }
+        });
+        alienValCB.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                alienValCBPropertyChange(evt);
             }
         });
 
@@ -123,6 +129,13 @@ private String tillfälligtNamn;
         returnAlienNuvPlatsLabel.setForeground(new java.awt.Color(255, 51, 51));
         returnAlienNuvPlatsLabel.setText(getNuvPlats());
 
+        sokPaValdAlienKnapp.setText("Sök!");
+        sokPaValdAlienKnapp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sokPaValdAlienKnappActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -161,11 +174,13 @@ private String tillfälligtNamn;
                         .addGap(56, 56, 56)
                         .addComponent(alienInformationMainLabel))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(84, 84, 84)
+                        .addGap(48, 48, 48)
                         .addComponent(alienLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(alienValCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(50, Short.MAX_VALUE))
+                        .addComponent(alienValCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(sokPaValdAlienKnapp, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,8 +189,9 @@ private String tillfälligtNamn;
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(alienLabel)
-                    .addComponent(alienValCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(3, 3, 3)
+                    .addComponent(alienValCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sokPaValdAlienKnapp))
+                .addGap(2, 2, 2)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -268,6 +284,14 @@ private String tillfälligtNamn;
      JOptionPane.showMessageDialog(null, getAlienNamn());
     }//GEN-LAST:event_alienValCBActionPerformed
 
+    private void alienValCBPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_alienValCBPropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_alienValCBPropertyChange
+
+    private void sokPaValdAlienKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sokPaValdAlienKnappActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sokPaValdAlienKnappActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -319,6 +343,7 @@ private String tillfälligtNamn;
     private javax.swing.JLabel returnAlienNuvPlatsLabel;
     private javax.swing.JLabel returnAlienRegDatumLabel;
     private javax.swing.JLabel returnAlienTelNrLabel;
+    private javax.swing.JButton sokPaValdAlienKnapp;
     private javax.swing.JLabel telNrLabel;
     // End of variables declaration//GEN-END:variables
 }
