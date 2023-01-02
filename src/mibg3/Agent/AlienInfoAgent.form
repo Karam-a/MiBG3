@@ -29,10 +29,15 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
+                          <Group type="102" attributes="0">
                               <Component id="alienNamnLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="returnAlienNamnLabel" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="alienIDLabel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="returnAlienIDLabel" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="regDatumAlienLabel" min="-2" max="-2" attributes="0"/>
@@ -54,40 +59,6 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="returnAlienNuvPlatsLabel" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="alienIDLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="returnAlienIDLabel" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace pref="57" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="ändraPlatsField" max="32767" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="ändraPlats" min="-2" pref="73" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="ändraAgentField" max="32767" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="ändraAgent" min="-2" pref="73" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="ändraTelField" max="32767" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="ändraTel" min="-2" pref="73" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="ändraRegField" max="32767" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="ändraReg" min="-2" pref="73" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="ändraNamnField" min="-2" pref="139" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="ändraNamn" min="-2" pref="73" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="jLabel1" alignment="0" min="-2" pref="139" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -95,15 +66,13 @@
                       <Component id="alienInformationMainLabel" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
                       <Component id="alienLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="alienValCB" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="sokPaValdAlienKnapp" min="-2" pref="75" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace pref="50" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -111,56 +80,44 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <Component id="alienInformationMainLabel" min="-2" pref="42" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="alienLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="alienValCB" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="sokPaValdAlienKnapp" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="alienNamnLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="returnAlienNamnLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="ändraNamn" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="ändraNamnField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="alienIDLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="returnAlienIDLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="regDatumAlienLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="returnAlienRegDatumLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="ändraReg" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="ändraRegField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="telNrLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="returnAlienTelNrLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="ändraTel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="ändraTelField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="ansvarigAgentLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="returnAlienAnsAgentLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="ändraAgent" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="ändraAgentField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="nuvarandePlatsLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="returnAlienNuvPlatsLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="ändraPlats" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="ändraPlatsField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="17" max="32767" attributes="0"/>
+              <EmptySpace pref="38" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -326,57 +283,6 @@
         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
           <Connection code="getNuvPlats()" type="code"/>
         </Property>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="sokPaValdAlienKnapp">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="S&#xf6;k!"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="sokPaValdAlienKnappActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="&#xe4;ndraNamn">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="&#xc4;ndra"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="&#xe4;ndraNamnActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="&#xe4;ndraReg">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="&#xc4;ndra"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="&#xe4;ndraTel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="&#xc4;ndra"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="&#xe4;ndraAgent">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="&#xc4;ndra"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="&#xe4;ndraPlats">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="&#xc4;ndra"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="&#xe4;ndraNamnField">
-    </Component>
-    <Component class="javax.swing.JTextField" name="&#xe4;ndraRegField">
-    </Component>
-    <Component class="javax.swing.JTextField" name="&#xe4;ndraTelField">
-    </Component>
-    <Component class="javax.swing.JTextField" name="&#xe4;ndraAgentField">
-    </Component>
-    <Component class="javax.swing.JTextField" name="&#xe4;ndraPlatsField">
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel1">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Du kan inte &#xe4;ndra Alien ID."/>
       </Properties>
     </Component>
   </SubComponents>
