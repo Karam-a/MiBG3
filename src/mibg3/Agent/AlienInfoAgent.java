@@ -268,10 +268,11 @@ private String faktOmr;
        returnAlienNuvPlatsLabel.setText(getNuvPlats());
        returnAlienRegDatumLabel.setText(getRegDat());
        returnAlienTelNrLabel.setText(getTelNr());
+       String bruh = "bruh";
     }//GEN-LAST:event_alienValCBActionPerformed
 
     private void alienValCBPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_alienValCBPropertyChange
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_alienValCBPropertyChange
 
 
