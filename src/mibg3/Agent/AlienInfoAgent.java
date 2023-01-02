@@ -17,7 +17,6 @@ private String aTelNr;
 private String ansvAg;
 private String nuvPlats;
 private String faktOmr;
-private String tillfälligtNamn;
 //instansiering till Combo Box, värden i CB ändras automatiskt efter de aliens som finns i databasen.
 //private String cbNyckel;
 //private String cbVärde;
@@ -65,7 +64,6 @@ private String tillfälligtNamn;
         returnAlienTelNrLabel = new javax.swing.JLabel();
         returnAlienAnsAgentLabel = new javax.swing.JLabel();
         returnAlienNuvPlatsLabel = new javax.swing.JLabel();
-        sokPaValdAlienKnapp = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -129,13 +127,6 @@ private String tillfälligtNamn;
         returnAlienNuvPlatsLabel.setForeground(new java.awt.Color(255, 51, 51));
         returnAlienNuvPlatsLabel.setText(getNuvPlats());
 
-        sokPaValdAlienKnapp.setText("Sök!");
-        sokPaValdAlienKnapp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sokPaValdAlienKnappActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -174,24 +165,21 @@ private String tillfälligtNamn;
                         .addGap(56, 56, 56)
                         .addComponent(alienInformationMainLabel))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
+                        .addGap(82, 82, 82)
                         .addComponent(alienLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(alienValCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(sokPaValdAlienKnapp, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(32, Short.MAX_VALUE))
+                        .addComponent(alienValCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(alienInformationMainLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
+                .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(alienLabel)
-                    .addComponent(alienValCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(sokPaValdAlienKnapp))
-                .addGap(2, 2, 2)
+                    .addComponent(alienValCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -223,8 +211,7 @@ private String tillfälligtNamn;
         pack();
     }// </editor-fold>//GEN-END:initComponents
    private void errorLol(){
-   JOptionPane.showMessageDialog(null, "Något gick fel, försök igen");
-   }
+   JOptionPane.showMessageDialog(null, "Något gick fel, försök igen");}
    
     private String getAlienNamn(){
       aNamn = alienValCB.getSelectedItem().toString();
@@ -232,20 +219,20 @@ private String tillfälligtNamn;
     }
     
     private String getAlienID(){
-        try{aID = mibdb.fetchSingle("SELECT Alien_ID FROM Alien WHERE Namn=" + "'" + getAlienNamn() + "'");}
+        try{aID = mibdb.fetchSingle("SELECT Alien_ID FROM Alien WHERE Namn=" + "'" + aNamn + "'");}
         catch(InfException e){errorLol();}
         return aID;
     }
     
     private String getRegDat(){
-    try{aRegDat = mibdb.fetchSingle("SELECT Registreringsdatum FROM Alien WHERE Namn=" + "'" + getAlienNamn() + "'");}
+    try{aRegDat = mibdb.fetchSingle("SELECT Registreringsdatum FROM Alien WHERE Namn=" + "'" + aNamn + "'");}
     catch(InfException e){errorLol();}
     return aRegDat;
     }
    
    
     private String getTelNr(){
-    try{aTelNr = mibdb.fetchSingle("SELECT Telefon FROM Alien WHERE Namn=" + "'" + getAlienNamn() + "'");}
+    try{aTelNr = mibdb.fetchSingle("SELECT Telefon FROM Alien WHERE Namn=" + "'" + aNamn + "'");}
     catch(InfException e){errorLol();}
     return aTelNr;
     }
@@ -253,7 +240,7 @@ private String tillfälligtNamn;
     private String getAnsvarAg(){
         String tlfAag;
         try{
-        tlfAag = mibdb.fetchSingle("SELECT Ansvarig_Agent FROM Alien WHERE Namn=" + "'" + getAlienNamn() + "'");
+        tlfAag = mibdb.fetchSingle("SELECT Ansvarig_Agent FROM Alien WHERE Namn=" + "'" + aNamn+ "'");
         ansvAg = mibdb.fetchSingle("SELECT Namn FROM Agent WHERE Agent_ID=" + tlfAag);}
     catch(InfException e){errorLol();}
     return ansvAg;
@@ -263,7 +250,7 @@ private String tillfälligtNamn;
         String tlfOmr;
         String finnsI;
     try{
-        tlfOmr = mibdb.fetchSingle("SELECT Plats FROM Alien WHERE Namn=" + "'" + getAlienNamn() + "'");
+        tlfOmr = mibdb.fetchSingle("SELECT Plats FROM Alien WHERE Namn=" + "'" + aNamn + "'");
         nuvPlats = mibdb.fetchSingle("SELECT Benamning FROM Plats WHERE Plats_ID=" + tlfOmr);
         finnsI = mibdb.fetchSingle("SELECT Finns_I FROM Plats WHERE Plats_ID=" + tlfOmr);
         faktOmr = mibdb.fetchSingle("SELECT Benamning FROM Omrade WHERE Omrades_ID=" + finnsI);
@@ -274,33 +261,21 @@ private String tillfälligtNamn;
     
     //Lite problem med det här, den ändrar inte vald aliens namn. How da fuq do i make it work.
     private void alienValCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alienValCBActionPerformed
-
-      String ettNamn = "";
-     for(int i = 0; i < alienValCB.getItemCount(); i++){
-         String namn = alienValCB.getItemAt(i);  
-         ettNamn = namn;
-      }
-     tillfälligtNamn = ettNamn;
-     JOptionPane.showMessageDialog(null, getAlienNamn());
+       aNamn = alienValCB.getSelectedItem().toString();
+       returnAlienAnsAgentLabel.setText(getAnsvarAg());
+       returnAlienIDLabel.setText(getAlienID());
+       returnAlienNamnLabel.setText(aNamn);
+       returnAlienNuvPlatsLabel.setText(getNuvPlats());
+       returnAlienRegDatumLabel.setText(getRegDat());
+       returnAlienTelNrLabel.setText(getTelNr());
     }//GEN-LAST:event_alienValCBActionPerformed
 
     private void alienValCBPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_alienValCBPropertyChange
         // TODO add your handling code here:
     }//GEN-LAST:event_alienValCBPropertyChange
 
-    private void sokPaValdAlienKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sokPaValdAlienKnappActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_sokPaValdAlienKnappActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -318,7 +293,7 @@ private String tillfälligtNamn;
             java.util.logging.Logger.getLogger(AlienInfoAgent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+       // ArrayList<String> namn = mibdb.fetchColumn("SELECT Namn FROM Alien");
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -343,7 +318,6 @@ private String tillfälligtNamn;
     private javax.swing.JLabel returnAlienNuvPlatsLabel;
     private javax.swing.JLabel returnAlienRegDatumLabel;
     private javax.swing.JLabel returnAlienTelNrLabel;
-    private javax.swing.JButton sokPaValdAlienKnapp;
     private javax.swing.JLabel telNrLabel;
     // End of variables declaration//GEN-END:variables
 }
