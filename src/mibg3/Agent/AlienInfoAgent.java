@@ -4,6 +4,7 @@ import mibg3.Valideringsklass;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 import java.util.ArrayList;
+import java.lang.Iterable;
 
 // Instansiering av variabler som presenteras i framens utvalda labels. Även databsen.
 public class AlienInfoAgent extends javax.swing.JFrame {
@@ -16,6 +17,7 @@ private String aTelNr;
 private String ansvAg;
 private String nuvPlats;
 private String faktOmr;
+private String tillfälligtNamn;
 //instansiering till Combo Box, värden i CB ändras automatiskt efter de aliens som finns i databasen.
 //private String cbNyckel;
 //private String cbVärde;
@@ -256,7 +258,14 @@ private String faktOmr;
     
     //Lite problem med det här, den ändrar inte vald aliens namn. How da fuq do i make it work.
     private void alienValCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alienValCBActionPerformed
-      getAlienNamn();
+
+      String ettNamn = "";
+     for(int i = 0; i < alienValCB.getItemCount(); i++){
+         String namn = alienValCB.getItemAt(i);  
+         ettNamn = namn;
+      }
+     tillfälligtNamn = ettNamn;
+     JOptionPane.showMessageDialog(null, getAlienNamn());
     }//GEN-LAST:event_alienValCBActionPerformed
 
     /**
