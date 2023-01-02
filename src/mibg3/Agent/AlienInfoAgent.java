@@ -17,7 +17,7 @@ private String aTelNr;
 private String ansvAg;
 private String nuvPlats;
 private String faktOmr;
-private String ras;
+private String aRas;
 //instansiering till Combo Box, värden i CB ändras automatiskt efter de aliens som finns i databasen.
 //private String cbNyckel;
 //private String cbVärde;
@@ -77,6 +77,7 @@ private String ras;
         ändraPlatsField = new javax.swing.JTextField();
         rasLabel = new javax.swing.JLabel();
         returnAlienRasLabel = new javax.swing.JLabel();
+        alienIDLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -182,6 +183,9 @@ private String ras;
         returnAlienRasLabel.setForeground(new java.awt.Color(255, 51, 51));
         returnAlienRasLabel.setText(getNuvPlats());
 
+        alienIDLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        alienIDLabel1.setText("ID kan ej redigeras.");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -193,58 +197,56 @@ private String ras;
                         .addGap(38, 38, 38)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+                                .addComponent(regDatumAlienLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(returnAlienRegDatumLabel))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(alienNamnLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(returnAlienNamnLabel))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(telNrLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(returnAlienTelNrLabel))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(ansvarigAgentLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(returnAlienAnsAgentLabel))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(nuvarandePlatsLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(returnAlienNuvPlatsLabel))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(rasLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(returnAlienRasLabel))
+                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(alienIDLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(returnAlienIDLabel)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(regDatumAlienLabel)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(returnAlienRegDatumLabel))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(alienNamnLabel)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(returnAlienNamnLabel))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(telNrLabel)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(returnAlienTelNrLabel))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(ansvarigAgentLabel)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(returnAlienAnsAgentLabel))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(nuvarandePlatsLabel)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(returnAlienNuvPlatsLabel))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(rasLabel)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(returnAlienRasLabel)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 164, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(ändraPlatsField)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(ändraPlats, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(ändraAgentField)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(ändraAgent, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(ändraTelField)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(ändraTel, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(ändraNamnField, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(ändraNamn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(ändraRegField)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(ändraReg, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                .addComponent(returnAlienIDLabel)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 164, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(ändraPlatsField)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(ändraPlats, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(ändraAgentField)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(ändraAgent, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(ändraTelField)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(ändraTel, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(ändraNamnField, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(ändraNamn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(ändraRegField)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(ändraReg, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(alienIDLabel1)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(56, 56, 56)
                         .addComponent(alienInformationMainLabel))
@@ -274,7 +276,8 @@ private String ras;
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(alienIDLabel)
-                    .addComponent(returnAlienIDLabel))
+                    .addComponent(returnAlienIDLabel)
+                    .addComponent(alienIDLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(regDatumAlienLabel)
@@ -357,9 +360,22 @@ private String ras;
     return nuvPlats + ", " + faktOmr;
     }
     
-    private String getRas(){
-        try{
-            if()
+    //Börjat lite lätt med metoden. 
+    private void getRas(){
+        boolean squid;
+        boolean boglodite;
+        boolean worm;
+        try{ 
+            if(aID = mibdb.fetchSingle("SELECT Alien_ID FROM Squid")){
+                squid = true;
+                boglodite = false;
+                worm = false;
+            }
+            int valdAlien = Integer.parseInt(aID);
+            switch (valdAlien){
+                case 
+            
+            }
         }
     }
     
@@ -372,7 +388,6 @@ private String ras;
        returnAlienNuvPlatsLabel.setText(getNuvPlats());
        returnAlienRegDatumLabel.setText(getRegDat());
        returnAlienTelNrLabel.setText(getTelNr());
-       String bruh = "bruh";
     }//GEN-LAST:event_alienValCBActionPerformed
 
     private void alienValCBPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_alienValCBPropertyChange
@@ -475,6 +490,7 @@ private String ras;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel alienIDLabel;
+    private javax.swing.JLabel alienIDLabel1;
     private javax.swing.JLabel alienInformationMainLabel;
     private javax.swing.JLabel alienLabel;
     private javax.swing.JLabel alienNamnLabel;
