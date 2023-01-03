@@ -2,22 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package mibg3.Agent;
-
-import oru.inf.InfDB;
-import oru.inf.InfException;
+package mibg3.Admin;
 
 /**
  *
  * @author d-aly
  */
-public class HanteraUtrustning extends javax.swing.JFrame {
-    private InfDB mibdb;
+public class HanteraUtrustningAdmin extends javax.swing.JFrame {
 
     /**
-     * Creates new form HanteraUtrustning
+     * Creates new form HanteraUtrustningAdmin
      */
-    public HanteraUtrustning() {
+    public HanteraUtrustningAdmin() {
         initComponents();
     }
 
@@ -38,7 +34,7 @@ public class HanteraUtrustning extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        jLabel1.setText("Vänligen välj vilken typ av utrustning du vill registrera.");
+        jLabel1.setText("Vänligen välj vilken typ av utrustning du vill avregistrera.");
 
         kommunikationKnapp.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         kommunikationKnapp.setText("Kommunikation");
@@ -75,7 +71,7 @@ public class HanteraUtrustning extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(kommunikationKnapp)
-                .addGap(80, 80, 80)
+                .addGap(89, 89, 89)
                 .addComponent(vapenKommunikation, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton3)
@@ -91,7 +87,7 @@ public class HanteraUtrustning extends javax.swing.JFrame {
                     .addComponent(kommunikationKnapp, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(vapenKommunikation, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         pack();
@@ -99,19 +95,19 @@ public class HanteraUtrustning extends javax.swing.JFrame {
 
     private void kommunikationKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kommunikationKnappActionPerformed
         // TODO add your handling code here:
-        KommunikationReg meny = new KommunikationReg();
+        kommunikationAvreg meny = new kommunikationAvreg();
         meny.setVisible(true);
     }//GEN-LAST:event_kommunikationKnappActionPerformed
 
     private void vapenKommunikationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vapenKommunikationActionPerformed
         // TODO add your handling code here:
-        vapenReg meny = new vapenReg();
+        vapenAvreg meny = new vapenAvreg();
         meny.setVisible(true);
     }//GEN-LAST:event_vapenKommunikationActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        teknikReg meny = new teknikReg();
+        teknikAvreg meny = new teknikAvreg();
         meny.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -132,20 +128,20 @@ public class HanteraUtrustning extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(HanteraUtrustning.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HanteraUtrustningAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(HanteraUtrustning.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HanteraUtrustningAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(HanteraUtrustning.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HanteraUtrustningAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(HanteraUtrustning.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HanteraUtrustningAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new HanteraUtrustning().setVisible(true);
+                new HanteraUtrustningAdmin().setVisible(true);
             }
         });
     }

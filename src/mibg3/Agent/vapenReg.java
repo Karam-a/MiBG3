@@ -7,18 +7,16 @@ package mibg3.Agent;
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
-
 /**
  *
  * @author d-aly
  */
-public class KommunikationReg extends javax.swing.JFrame {
-    private InfDB mibdb;
-
+public class vapenReg extends javax.swing.JFrame {
+private InfDB mibdb;
     /**
-     * Creates new form KommunikationReg
+     * Creates new form vapenReg
      */
-    public KommunikationReg() {
+    public vapenReg() {
         initComponents();
     }
 
@@ -31,20 +29,25 @@ public class KommunikationReg extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        kaliber = new javax.swing.JLabel();
+        kaliberField = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        benämningVapen = new javax.swing.JLabel();
         benämningField = new javax.swing.JTextField();
         OKknapp = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        överföringField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        kaliber.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        kaliber.setText("Kaliber:");
+
+        kaliberField.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         jLabel1.setText("Vänligen ange uppgifter:");
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel2.setText("Benämning:");
+        benämningVapen.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        benämningVapen.setText("Benämning:");
 
         benämningField.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
@@ -56,29 +59,23 @@ public class KommunikationReg extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel3.setText("Överföringsteknik:");
-
-        överföringField.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
+                        .addComponent(benämningVapen)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(överföringField))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel2)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(benämningField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jLabel1)))
-                .addContainerGap(114, Short.MAX_VALUE))
+                        .addComponent(benämningField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(kaliber)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(kaliberField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(112, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(OKknapp, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -87,16 +84,16 @@ public class KommunikationReg extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(28, Short.MAX_VALUE)
+                .addContainerGap(23, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                    .addComponent(benämningVapen)
                     .addComponent(benämningField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(överföringField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(kaliberField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(kaliber))
                 .addGap(18, 18, 18)
                 .addComponent(OKknapp)
                 .addGap(22, 22, 22))
@@ -110,12 +107,10 @@ public class KommunikationReg extends javax.swing.JFrame {
         try{
             mibdb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
             String benämning = benämningField.getText();
-            String överföringsteknik = överföringField.getText();
-            String tlfNID = "";
+            String kaliberv = kaliberField.getText();
             String nästaid = mibdb.getAutoIncrement("Utrustning", "Utrustnings_ID");
             mibdb.insert("INSERT INTO Utrustning VALUES(" + nästaid + "," + "'" + benämning + "')");
-            tlfNID = nästaid;
-            mibdb.insert("INSERT INTO Kommunikation VALUES(" + tlfNID + "," + "'" + överföringsteknik + "')");
+            mibdb.insert("INSERT INTO Vapen VALUES(" + nästaid + "," + "'" + kaliberv + "')");
             JOptionPane.showMessageDialog(null, "Du har registrerat " + benämning + "!");
         }
         catch(InfException e){
@@ -140,20 +135,20 @@ public class KommunikationReg extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(KommunikationReg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(vapenReg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(KommunikationReg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(vapenReg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(KommunikationReg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(vapenReg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(KommunikationReg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(vapenReg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new KommunikationReg().setVisible(true);
+                new vapenReg().setVisible(true);
             }
         });
     }
@@ -161,9 +156,9 @@ public class KommunikationReg extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton OKknapp;
     private javax.swing.JTextField benämningField;
+    private javax.swing.JLabel benämningVapen;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField överföringField;
+    private javax.swing.JLabel kaliber;
+    private javax.swing.JTextField kaliberField;
     // End of variables declaration//GEN-END:variables
 }
