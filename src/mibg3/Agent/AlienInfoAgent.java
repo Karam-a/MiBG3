@@ -18,6 +18,10 @@ private String ansvAg;
 private String nuvPlats;
 private String faktOmr;
 private String aRas;
+private int valdRas;
+private boolean squid;
+private boolean boglodite;
+private boolean worm;
 //instansiering till Combo Box, värden i CB ändras automatiskt efter de aliens som finns i databasen.
 //private String cbNyckel;
 //private String cbVärde;
@@ -181,7 +185,7 @@ private String aRas;
 
         returnAlienRasLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         returnAlienRasLabel.setForeground(new java.awt.Color(255, 51, 51));
-        returnAlienRasLabel.setText(getNuvPlats());
+        returnAlienRasLabel.setText(getRas());
 
         alienIDLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         alienIDLabel1.setText("ID kan ej redigeras.");
@@ -360,23 +364,24 @@ private String aRas;
     return nuvPlats + ", " + faktOmr;
     }
     
-    //Börjat lite lätt med metoden. 
-    private void getRas(){
-        boolean squid;
-        boolean boglodite;
-        boolean worm;
+
+    private String getRas(){
         try{ 
-            if(aID = mibdb.fetchSingle("SELECT Alien_ID FROM Squid")){
-                squid = true;
-                boglodite = false;
-                worm = false;
+                if(mibdb.fetchSingle("SELECT Alien_ID FROM Squid").contains(aID)){
+                    aRas = "Squid";
+                }
+                else if (mibdb.fetchSingle("Select Alien_ID FROM boglodite").contains(aID)){
+                    aRas = "Boglodite";
+                }
+                else if(mibdb.fetchSingle("SELECT Alien_ID FROM boglodite").contains(aID)){
+                    aRas = "Worm";
+                }
+                else{
+                    aRas = "Alien Saknar Ras.";
+                }
             }
-            int valdAlien = Integer.parseInt(aID);
-            switch (valdAlien){
-                case 
-            
-            }
-        }
+        catch(InfException e){errorLol();}
+        return aRas;
     }
     
     //Lite problem med det här, den ändrar inte vald aliens namn. How da fuq do i make it work.
@@ -388,6 +393,7 @@ private String aRas;
        returnAlienNuvPlatsLabel.setText(getNuvPlats());
        returnAlienRegDatumLabel.setText(getRegDat());
        returnAlienTelNrLabel.setText(getTelNr());
+       returnAlienRasLabel.setText(getRas());
     }//GEN-LAST:event_alienValCBActionPerformed
 
     private void alienValCBPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_alienValCBPropertyChange

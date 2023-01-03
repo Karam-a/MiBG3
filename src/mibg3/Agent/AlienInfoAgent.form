@@ -402,7 +402,7 @@
           <Color blue="33" green="33" red="ff" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="getNuvPlats()" type="code"/>
+          <Connection code="getRas()" type="code"/>
         </Property>
       </Properties>
     </Component>
