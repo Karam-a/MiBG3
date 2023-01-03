@@ -18,10 +18,6 @@ private String ansvAg;
 private String nuvPlats;
 private String faktOmr;
 private String aRas;
-private int valdRas;
-private boolean squid;
-private boolean boglodite;
-private boolean worm;
 //instansiering till Combo Box, värden i CB ändras automatiskt efter de aliens som finns i databasen.
 //private String cbNyckel;
 //private String cbVärde;
@@ -368,17 +364,13 @@ private boolean worm;
     private String getRas(){
         try{ 
                 if(mibdb.fetchSingle("SELECT Alien_ID FROM Squid").contains(aID)){
-                    aRas = "Squid";
-                }
+                    aRas = "Squid";}
                 else if (mibdb.fetchSingle("Select Alien_ID FROM boglodite").contains(aID)){
-                    aRas = "Boglodite";
-                }
+                    aRas = "Boglodite";}
                 else if(mibdb.fetchSingle("SELECT Alien_ID FROM boglodite").contains(aID)){
-                    aRas = "Worm";
-                }
+                    aRas = "Worm";}
                 else{
-                    aRas = "Alien Saknar Ras.";
-                }
+                    aRas = "Alien Saknar Ras.";}
             }
         catch(InfException e){errorLol();}
         return aRas;
