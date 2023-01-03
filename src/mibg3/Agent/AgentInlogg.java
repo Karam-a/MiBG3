@@ -150,6 +150,7 @@ public class AgentInlogg extends javax.swing.JFrame {
             meny.setVisible(true);
             inloggadAgentID = inLoggID;
             agentNamn = namn;
+            this.dispose();
         }
         else{
             JOptionPane.showMessageDialog(null, "Du har angett fel lösenord eller användarnamn. Vänligen försök igen.");
