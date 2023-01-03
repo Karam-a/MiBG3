@@ -130,6 +130,8 @@ public class AgentMeny extends javax.swing.JFrame {
 
     private void knappAgentHanteraUtrustningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_knappAgentHanteraUtrustningActionPerformed
         // TODO add your handling code here:
+        HanteraUtrustning meny = new HanteraUtrustning();
+        meny.setVisible(true);
     }//GEN-LAST:event_knappAgentHanteraUtrustningActionPerformed
 
     private void knappAgentMinProfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_knappAgentMinProfilActionPerformed
