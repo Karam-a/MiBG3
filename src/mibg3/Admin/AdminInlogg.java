@@ -159,6 +159,7 @@ public class AdminInlogg extends javax.swing.JFrame {
                 AdminMeny meny = new AdminMeny();
                 meny.setVisible(true);
                 inloggadID = namn;
+                this.dispose();
             }
             else{
                 JOptionPane.showMessageDialog(null, "Fel lösenord eller användarnamn. Vänligen försök igen.");

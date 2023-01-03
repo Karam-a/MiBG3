@@ -159,6 +159,7 @@ public class AlienInlogg extends javax.swing.JFrame {
                 AlienMeny meny = new AlienMeny();
                 meny.setVisible(true);
                 inloggadAlien = namn;
+                this.dispose();
             }
             else{
                 JOptionPane.showMessageDialog(null, "Fel lösenord eller användarnamn. Vänligen försök igen.");
