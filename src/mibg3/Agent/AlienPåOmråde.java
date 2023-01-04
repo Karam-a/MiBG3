@@ -4,20 +4,20 @@
  */
 package mibg3.Agent;
 
+import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import javax.swing.table.DefaultTableModel;
-
+/**
+ *
+ * @author d-aly
+ */
 
 public class AlienPåOmråde extends javax.swing.JFrame {
     private InfDB mibdb;
     private ArrayList<String> platsLista; 
-    private DefaultTableModel modp1;
-    private DefaultTableModel modp2;
-    private DefaultTableModel modp3;
-    private DefaultTableModel modp4;
+    private String plats;
+    private String område;
 
     /**
      * Creates new form AlienPåOmråde
