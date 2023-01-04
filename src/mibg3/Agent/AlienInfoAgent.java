@@ -29,20 +29,13 @@ private ArrayList<String> namn;
         try{
             //ansluter till databasen
         mibdb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
-        
-        // hämtar antalet aliens i databasen
-        //int antalAliens = Integer.parseInt(mibdb.fetchSingle("SELECT count(*) FROM Alien"));
-        
-        //Lägger till alla aliens i en arraylist "Aliens i DB." Loopar tills varje alien i databasen är tillagd. 
-       // ArrayList<String> aliensIDB = mibdb.fetchColumn("SELECT namn FROM Alien");
-             //JOptionPane.showMessageDialog(null, aliensIDB);
-           
+
         }
         catch(InfException e){
             JOptionPane.showMessageDialog(null, "Kunde inte ansluta till databasen, vänligen försök igen.");
         }
         initComponents();
-         namnLista();
+       // namnLista();
         
     }
 
@@ -86,7 +79,6 @@ private ArrayList<String> namn;
         alienInformationMainLabel.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         alienInformationMainLabel.setText("Alieninformation");
 
-        alienValCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj en Alien" }));
         alienValCB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 alienValCBActionPerformed(evt);
@@ -329,9 +321,11 @@ private ArrayList<String> namn;
     }
    
     private String getAlienNamn(){
-      aNamn = alienValCB.getSelectedItem().toString();
-      return aNamn;
+    namnLista();        
+          aNamn = alienValCB.getSelectedItem().toString();
+          return aNamn;
     }
+      
     
     private String getAlienID(){
         try{aID = mibdb.fetchSingle("SELECT Alien_ID FROM Alien WHERE Namn=" + "'" + aNamn + "'");}
@@ -373,15 +367,14 @@ private ArrayList<String> namn;
     catch(InfException e){errorLol();}
     return nuvPlats + ", " + faktOmr;
     }
-    
 
     private String getRas(){
         try{ 
-                if(mibdb.fetchSingle("SELECT Alien_ID FROM Squid").contains(aID)){
+                if(mibdb.fetchSingle("SELECT Alien_ID FROM Squid WHERE Alien_ID = " + "'" + aID + "'").equals(aID)){
                     aRas = "Squid";}
-                else if (mibdb.fetchSingle("Select Alien_ID FROM boglodite").contains(aID)){
+                else if (mibdb.fetchSingle("SELECT Alien_ID FROM Boglodite WHERE Alien_ID = " + "'" + aID + "'").equals(aID)){
                     aRas = "Boglodite";}
-                else if(mibdb.fetchSingle("SELECT Alien_ID FROM boglodite").contains(aID)){
+                else if(mibdb.fetchSingle("SELECT Alien_ID FROM Worm WHERE Alien_ID = " + "'" + aID + "'").equals(aID)){
                     aRas = "Worm";}
                 else{
                     aRas = "Alien Saknar Ras.";}
