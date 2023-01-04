@@ -15,6 +15,8 @@ import java.util.ArrayList;
 public class AlienPåOmråde extends javax.swing.JFrame {
     private InfDB mibdb;
     private ArrayList<String> platsLista; 
+    private String plats;
+    private String område;
 
     /**
      * Creates new form AlienPåOmråde
@@ -46,6 +48,34 @@ public class AlienPåOmråde extends javax.swing.JFrame {
         områdeLista();
         return "Här kan du söka på aliens efter område.";
         
+    }
+    //INTE KLART
+    public String getPlats(){
+        String tlfOmr;
+        String finnsI;
+    try{
+        tlfOmr = mibdb.fetchSingle("SELECT Plats FROM Område WHERE Namn=" + "'" + aNamn + "'");
+        plats = mibdb.fetchSingle("SELECT Benamning FROM Plats WHERE Plats_ID=" + tlfOmr);
+        finnsI = mibdb.fetchSingle("SELECT Finns_I FROM Plats WHERE Plats_ID=" + tlfOmr);
+        område = mibdb.fetchSingle("SELECT Benamning FROM Omrade WHERE Omrades_ID=" + finnsI);
+    }
+    catch(InfException e){
+    
+    }
+    }
+  
+    //INTE KLART
+    public void kollaAliensOmråde(){
+        try{
+        String valtOmråde = områdeCB.getSelectedItem().toString();
+        switch(valtOmråde){
+            case "Örebro":
+                mibdb.fetchSingle("SELECT Namn FROM Alien WHERE Plats=");
+        }
+    }
+        catch(InfException e){
+            
+        }
     }
     /**
      * This method is called from within the constructor to initialize the form.
