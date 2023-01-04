@@ -369,13 +369,13 @@ private ArrayList<String> namn;
     }
 
     private String getRas(){
-        try{ 
-                if(mibdb.fetchSingle("SELECT Alien_ID FROM Squid WHERE Alien_ID = " + "'" + aID + "'").equals(aID)){
+        try{
+                if(mibdb.fetchColumn("SELECT * FROM Squid WHERE Alien_ID=" + "'" + aID + "'").contains(aID) && aID !=null){
                     aRas = "Squid";}
-                else if (mibdb.fetchSingle("SELECT Alien_ID FROM Boglodite WHERE Alien_ID = " + "'" + aID + "'").equals(aID)){
+                else if (mibdb.fetchColumn("SELECT * FROM Boglodite WHERE Alien_ID=" + "'" + aID + "'").contains(aID) && aID !=null){
                     aRas = "Boglodite";}
-                else if(mibdb.fetchSingle("SELECT Alien_ID FROM Worm WHERE Alien_ID = " + "'" + aID + "'").equals(aID)){
-                    aRas = "Worm";}
+                else if(mibdb.fetchColumn("SELECT * FROM Worm WHERE Alien_ID = "+ "'" + aID + "'").contains(aID) && aID !=null){
+                    aRas="Worm";}
                 else{
                     aRas = "Alien Saknar Ras.";}
             }
