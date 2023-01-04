@@ -73,6 +73,10 @@ private ArrayList<String> namn;
         rasLabel = new javax.swing.JLabel();
         returnAlienRasLabel = new javax.swing.JLabel();
         alienIDLabel1 = new javax.swing.JLabel();
+        ändraRasCB = new javax.swing.JComboBox<>();
+        ändraRas = new javax.swing.JButton();
+        ändraRasAntalArmBoog = new javax.swing.JTextField();
+        rasLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -180,6 +184,29 @@ private ArrayList<String> namn;
         alienIDLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         alienIDLabel1.setText("ID kan ej redigeras.");
 
+        ändraRasCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Boglodite", "Squid", "Worm" }));
+        ändraRasCB.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                ändraRasCBItemStateChanged(evt);
+            }
+        });
+
+        ändraRas.setText("Ändra");
+        ändraRas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ändraRasActionPerformed(evt);
+            }
+        });
+
+        ändraRasAntalArmBoog.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ändraRasAntalArmBoogActionPerformed(evt);
+            }
+        });
+
+        rasLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        rasLabel1.setText("Antal Armar/Boogies (Endast vid rasbyte):");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -207,23 +234,20 @@ private ArrayList<String> namn;
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(returnAlienAnsAgentLabel))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(nuvarandePlatsLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(returnAlienNuvPlatsLabel))
-                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(rasLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(returnAlienRasLabel))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(alienIDLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(returnAlienIDLabel)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 164, Short.MAX_VALUE)
+                                .addComponent(returnAlienIDLabel))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(nuvarandePlatsLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(returnAlienNuvPlatsLabel))
+                            .addComponent(rasLabel1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(ändraPlatsField)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(ändraPlats, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(ändraAgentField)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -240,7 +264,16 @@ private ArrayList<String> namn;
                                 .addComponent(ändraRegField)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(ändraReg, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(alienIDLabel1)))
+                            .addComponent(alienIDLabel1)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(ändraRasAntalArmBoog, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(ändraRasCB, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(ändraPlatsField))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(ändraPlats, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(ändraRas, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(56, 56, 56)
                         .addComponent(alienInformationMainLabel))
@@ -299,8 +332,14 @@ private ArrayList<String> namn;
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rasLabel)
-                    .addComponent(returnAlienRasLabel))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(returnAlienRasLabel)
+                    .addComponent(ändraRasCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ändraRas))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ändraRasAntalArmBoog, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rasLabel1))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         pack();
@@ -383,7 +422,27 @@ private ArrayList<String> namn;
         return aRas;
     }
     
-    //Lite problem med det här, den ändrar inte vald aliens namn. How da fuq do i make it work.
+    private void taBortFranRas(){
+   try{
+       String rasCheck = getRas();
+       if("Alien Saknar Ras.".equals(rasCheck)){
+       }
+       else switch(rasCheck){
+           case "Squid":
+               mibdb.delete("DELETE FROM Squid WHERE Alien_ID=" + aID);
+               break;
+           case "Boglodite":
+               mibdb.delete("DELETE FROM Boglodite WHERE Alien_ID=" + aID);
+               break;
+           case "Worm":
+               mibdb.delete("DELETE FROM Worm WHERE Alien_ID=" + aID);
+               break;
+       }
+   }
+   catch(InfException e){JOptionPane.showMessageDialog(null, "Något gick fel med ändring av rasen, försök igen.");}
+    }
+    
+  //Efter ändring körs metoden igen, och uppdaterar den nuvarande sidan.
     private void alienValCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alienValCBActionPerformed
        aNamn = alienValCB.getSelectedItem().toString();
        returnAlienAnsAgentLabel.setText(getAnsvarAg());
@@ -393,6 +452,7 @@ private ArrayList<String> namn;
        returnAlienRegDatumLabel.setText(getRegDat());
        returnAlienTelNrLabel.setText(getTelNr());
        returnAlienRasLabel.setText(getRas());
+       
     }//GEN-LAST:event_alienValCBActionPerformed
 
     private void alienValCBPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_alienValCBPropertyChange
@@ -406,7 +466,7 @@ private ArrayList<String> namn;
             mibdb.update("UPDATE Alien SET Namn ="+ "'" + namn + "'" + "WHERE Namn ="+ "'" + aNamn + "'");
             JOptionPane.showMessageDialog(null, "Namnet är ändrat.");
             returnAlienNamnLabel.setText(aNamn);
-        }
+            }
         catch(InfException e){
             JOptionPane.showMessageDialog(null, "Det gick inte att ändra namnet.");
         }
@@ -465,6 +525,43 @@ private ArrayList<String> namn;
         }
     }//GEN-LAST:event_ändraPlatsActionPerformed
 
+    private void ändraRasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ändraRasActionPerformed
+        try{
+            int antAB = Integer.parseInt(ändraRasAntalArmBoog.getText());
+            String valdRas = ändraRasCB.getSelectedItem().toString();
+            switch (valdRas){
+                case "Boglodite":
+                    taBortFranRas();
+                    mibdb.insert("INSERT INTO Boglodite(Alien_ID,Antal_Boogies) VALUES(" + aID + "," + "'" + antAB + "'" + ")");
+                    break;
+                case "Squid":
+                    taBortFranRas();
+                    mibdb.insert("INSERT INTO Squid (Alien_ID,Antal_armar) VALUES(" + aID +"," +"'" + antAB + "'"+ ")");
+                    break;
+                case "Worm":
+                    taBortFranRas();
+                    mibdb.insert("INSERT INTO Worm (Alien_ID) VALUES(" + aID + ")");
+                    break;
+            }
+            
+        }
+        catch(InfException e){JOptionPane.showMessageDialog(null, "Rasändring misslyckades, vänligen försök igen.");}
+        JOptionPane.showMessageDialog(null, "Rasbyte lyckades! Alien " + aNamn+ " är nu "+ getRas() + "!");
+        returnAlienRasLabel.setText(getRas());
+    }//GEN-LAST:event_ändraRasActionPerformed
+
+    private void ändraRasAntalArmBoogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ändraRasAntalArmBoogActionPerformed
+        //-//
+    }//GEN-LAST:event_ändraRasAntalArmBoogActionPerformed
+
+    private void ändraRasCBItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ändraRasCBItemStateChanged
+        if(ändraRasCB.getSelectedItem().equals("Worm")){
+            ändraRasAntalArmBoog.setText("0");
+            ändraRasAntalArmBoog.setEnabled(false);}
+        else{
+            ändraRasAntalArmBoog.setEnabled(true);}
+    }//GEN-LAST:event_ändraRasCBItemStateChanged
+
 
     public static void main(String args[]) {
         try {
@@ -504,6 +601,7 @@ private ArrayList<String> namn;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel nuvarandePlatsLabel;
     private javax.swing.JLabel rasLabel;
+    private javax.swing.JLabel rasLabel1;
     private javax.swing.JLabel regDatumAlienLabel;
     private javax.swing.JLabel returnAlienAnsAgentLabel;
     private javax.swing.JLabel returnAlienIDLabel;
@@ -519,6 +617,9 @@ private ArrayList<String> namn;
     private javax.swing.JTextField ändraNamnField;
     private javax.swing.JButton ändraPlats;
     private javax.swing.JTextField ändraPlatsField;
+    private javax.swing.JButton ändraRas;
+    private javax.swing.JTextField ändraRasAntalArmBoog;
+    private javax.swing.JComboBox<String> ändraRasCB;
     private javax.swing.JButton ändraReg;
     private javax.swing.JTextField ändraRegField;
     private javax.swing.JButton ändraTel;
