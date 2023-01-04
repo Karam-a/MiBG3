@@ -113,15 +113,68 @@ public class HanteraUtrustningAdmin extends javax.swing.JFrame {
         utrNamn = utrustningCB.getSelectedItem().toString();
         return utrNamn;
     }
+   
+    
+    private void delVap(){
+    try{mibdb.delete("DELETE FROM Vapen WHERE Utrustnings_ID = " + "'" + id + "'");}
+    catch(InfException e){JOptionPane.showMessageDialog(null, "Det gick inte att avregistrera utrustningen av typen vapen.");}
+    }
+    
+    private void delKom(){
+        try{mibdb.delete("DELETE FROM Kommunikation WHERE Utrustnings_ID = " + "'" + id + "'");}
+        catch(InfException e){JOptionPane.showMessageDialog(null, "Det gick inte att avregistrera utrustningen av typen kommunikation.");}
+    }
+    
+    private void delTek(){
+        try{mibdb.delete("DELETE FROM Teknik WHERE Utrustnings_ID = " + "'" + id + "'");}
+        catch(InfException e){JOptionPane.showMessageDialog(null, "Det gick inte att avregistrera utrustningen av typen teknik.");}
+    }
+    
+    private void delUtr(){
+        try{
+            mibdb.delete("DELETE FROM Utrustning WHERE Utrustnings_ID = " + "'" + id + "'");
+        
+                }
+        catch(InfException e){JOptionPane.showMessageDialog(null, "Det gick inte att avregistrera utrustningen från tabellen Utrustning.");}
+    }
+    
+    private void delInnehar(){
+        try{
+            mibdb.delete("DELETE FROM innehar_utrustning WHERE Utrustnings_ID = " + "'" + id + "'");
+        }
+        catch(InfException e){
+            JOptionPane.showMessageDialog(null, "Det gick inte att avregistrera utrustningen från tabellen innehar_utrustning.");
+        }
+    }
     
     private void avregKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_avregKnappActionPerformed
        try{
-        id = mibdb.fetchSingle("SELECT Utrustnings_ID FROM Utrustning WHERE Benamning =" + "'" + getNamn() + "'");
-        String utrID;
-        utrID = mibdb.fetchSingle("SELECT Utrustnings_ID FROM ")
+            id = mibdb.fetchSingle("SELECT Utrustnings_ID FROM Utrustning WHERE Benamning =" + "'" + getNamn() + "'");
+        
+            if(mibdb.fetchColumn("SELECT * FROM Vapen WHERE Utrustnings_ID =" + "'" + id + "'").contains(id) && id !=null){
+            delVap();
+            delInnehar();
+            delUtr();
+            JOptionPane.showMessageDialog(null, "Avregistrering lyckad!");
+            }
+            else if (mibdb.fetchColumn("SELECT * FROM Kommunikation WHERE Utrustnings_ID =" + "'" + id + "'").contains(id) && id !=null){
+            delKom();
+            delInnehar();
+            delUtr();
+            JOptionPane.showMessageDialog(null, "Avregistrering lyckad!");
+            }
+            else if(mibdb.fetchColumn("SELECT * FROM Teknik WHERE Utrustnings_ID =" + "'" + id + "'").contains(id) && id !=null){
+            delTek();
+            delInnehar();
+            delUtr();
+            JOptionPane.showMessageDialog(null, "Avregistrering lyckad!");
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Något gick fel.");
+            }
        }
        catch(InfException e){
-           JOptionPane.showMessageDialog(null, "Något gick fel.");
+           JOptionPane.showMessageDialog(null, "Gick inte att ansluta till databasen.");
        }
         
     }//GEN-LAST:event_avregKnappActionPerformed
