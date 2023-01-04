@@ -31,9 +31,9 @@ public class AgentMeny extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         knappAgentHanteraAliens = new javax.swing.JButton();
-        knappAgentMinProfil = new javax.swing.JButton();
         knappAgentHanteraUtrustning = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -53,19 +53,19 @@ public class AgentMeny extends javax.swing.JFrame {
             }
         });
 
-        knappAgentMinProfil.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        knappAgentMinProfil.setText("Min Profil");
-        knappAgentMinProfil.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                knappAgentMinProfilActionPerformed(evt);
-            }
-        });
-
         knappAgentHanteraUtrustning.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         knappAgentHanteraUtrustning.setText("Hantera Utrustning");
         knappAgentHanteraUtrustning.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 knappAgentHanteraUtrustningActionPerformed(evt);
+            }
+        });
+
+        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jButton1.setText("Ändra lösenord");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -76,20 +76,22 @@ public class AgentMeny extends javax.swing.JFrame {
             .addGroup(jInternalFrame1Layout.createSequentialGroup()
                 .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jInternalFrame1Layout.createSequentialGroup()
+                        .addGap(69, 69, 69)
+                        .addComponent(jLabel2))
+                    .addGroup(jInternalFrame1Layout.createSequentialGroup()
                         .addGap(45, 45, 45)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addComponent(jLabel2))
-                    .addComponent(jSeparator1))
+                        .addGap(21, 21, 21)
+                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton1)
+                            .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(knappAgentHanteraUtrustning)
+                                .addGroup(jInternalFrame1Layout.createSequentialGroup()
+                                    .addComponent(knappAgentHanteraAliens)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jSeparator1))))))
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                .addGap(58, 58, 58)
-                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(knappAgentHanteraAliens)
-                    .addComponent(knappAgentMinProfil, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(knappAgentHanteraUtrustning))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jInternalFrame1Layout.setVerticalGroup(
             jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -99,14 +101,14 @@ public class AgentMeny extends javax.swing.JFrame {
                 .addGap(13, 13, 13)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(knappAgentMinProfil, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14)
-                .addComponent(knappAgentHanteraAliens, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(knappAgentHanteraAliens, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(knappAgentHanteraUtrustning, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(79, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -129,17 +131,16 @@ public class AgentMeny extends javax.swing.JFrame {
         meny.setVisible(true);
     }//GEN-LAST:event_knappAgentHanteraUtrustningActionPerformed
 
-    private void knappAgentMinProfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_knappAgentMinProfilActionPerformed
-
-        AgentProfil profil = new AgentProfil();
-        profil.setVisible(true);
-    }//GEN-LAST:event_knappAgentMinProfilActionPerformed
-
     private void knappAgentHanteraAliensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_knappAgentHanteraAliensActionPerformed
         // TODO add your handling code here:
         HanteraAliens meny = new HanteraAliens();
         meny.setVisible(true);
     }//GEN-LAST:event_knappAgentHanteraAliensActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        new NyttLösenord().setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
    public static String hämtaAgentNamn(){
         return ettNamn;
@@ -179,12 +180,12 @@ public class AgentMeny extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JButton knappAgentHanteraAliens;
     private javax.swing.JButton knappAgentHanteraUtrustning;
-    private javax.swing.JButton knappAgentMinProfil;
     // End of variables declaration//GEN-END:variables
 }

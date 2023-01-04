@@ -47,7 +47,7 @@ public class RegAgent extends javax.swing.JFrame {
         OmrådeField = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        AgentIDField = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -107,11 +107,8 @@ public class RegAgent extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel7.setText("Lösenord:");
 
-        AgentIDField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AgentIDFieldActionPerformed(evt);
-            }
-        });
+        jLabel2.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel2.setText("ID:et anges automatiskt");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -131,14 +128,15 @@ public class RegAgent extends javax.swing.JFrame {
                             .addComponent(jLabel8)
                             .addComponent(jLabel6))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(AgentIDField)
-                            .addComponent(NamnField)
-                            .addComponent(AnstDatumField)
-                            .addComponent(LösenordField)
-                            .addComponent(AdminField)
-                            .addComponent(OmrådeField)
-                            .addComponent(TelField, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(NamnField)
+                                .addComponent(AnstDatumField)
+                                .addComponent(LösenordField)
+                                .addComponent(AdminField)
+                                .addComponent(OmrådeField)
+                                .addComponent(TelField, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel2))))
                 .addContainerGap(99, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -153,10 +151,10 @@ public class RegAgent extends javax.swing.JFrame {
                         .addGap(25, 25, 25)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(78, 78, 78)
+                        .addGap(79, 79, 79)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(AgentIDField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(AGID))))
+                            .addComponent(AGID)
+                            .addComponent(jLabel2))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -181,7 +179,7 @@ public class RegAgent extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(OmrådeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addComponent(okAlienRegKnapp)
                 .addContainerGap())
         );
@@ -215,11 +213,11 @@ public class RegAgent extends javax.swing.JFrame {
         String admin = AdminField.getText();
         String lösen = LösenordField.getText();
         int plats = Integer.parseInt( OmrådeField.getText());
-        int id = Integer.parseInt( AgentIDField.getText());
-        if(Valideringsklass.giltigtLosenord(lösen) && Valideringsklass.värdeExisterar(NamnField) && Valideringsklass.värdeExisterar(AgentIDField) && Valideringsklass.värdeExisterar(AdminField) && Valideringsklass.värdeExisterar(OmrådeField) && Valideringsklass.värdeExisterar(TelField)){
+        if(Valideringsklass.giltigtLosenord(lösen) && Valideringsklass.värdeExisterar(NamnField) && Valideringsklass.värdeExisterar(AdminField) && Valideringsklass.värdeExisterar(OmrådeField) && Valideringsklass.värdeExisterar(TelField)){
             try{
                 // Instansierar databasen.
                 mibdb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
+                int id = Integer.parseInt(mibdb.getAutoIncrement("Agent", "Agent_ID"));
                 mibdb.insert("INSERT INTO Agent VALUES(" + id + " , " + "'" + namn + "'" + " , " + "'" + telefon + "'" + " , " + "'" + datum + "'" + " , " + "'" + admin + "'" + " , " + "'" + lösen + "'" + " , " + plats + ")");
                 JOptionPane.showMessageDialog(null, "Grattis! En ny agent har registrerats i systemet.");
 
@@ -231,10 +229,6 @@ public class RegAgent extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_okAlienRegKnappActionPerformed
-
-    private void AgentIDFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgentIDFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AgentIDFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -274,13 +268,13 @@ public class RegAgent extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AGID;
     private javax.swing.JTextField AdminField;
-    private javax.swing.JTextField AgentIDField;
     private javax.swing.JTextField AnstDatumField;
     private javax.swing.JPasswordField LösenordField;
     private javax.swing.JTextField NamnField;
     private javax.swing.JTextField OmrådeField;
     private javax.swing.JTextField TelField;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
