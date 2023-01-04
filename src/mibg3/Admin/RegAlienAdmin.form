@@ -36,16 +36,19 @@
                           <Component id="jLabel4" alignment="1" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel3" alignment="1" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel8" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel10" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="DatumField" alignment="0" pref="95" max="32767" attributes="0"/>
-                          <Component id="NamnField" alignment="0" max="32767" attributes="0"/>
-                          <Component id="TelField" alignment="0" max="32767" attributes="0"/>
-                          <Component id="LösenordField" alignment="0" max="32767" attributes="0"/>
-                          <Component id="AnsvAgentField" alignment="0" max="32767" attributes="0"/>
-                          <Component id="PlatsField" alignment="0" max="32767" attributes="0"/>
-                          <Component id="AlienIDFIELD" alignment="0" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="DatumField" alignment="0" pref="95" max="32767" attributes="0"/>
+                              <Component id="NamnField" alignment="0" max="32767" attributes="0"/>
+                              <Component id="TelField" alignment="0" max="32767" attributes="0"/>
+                              <Component id="LösenordField" alignment="0" max="32767" attributes="0"/>
+                              <Component id="AnsvAgentField" alignment="0" max="32767" attributes="0"/>
+                              <Component id="PlatsField" alignment="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -102,9 +105,11 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="AlienIDFIELD" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="49" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="30" max="32767" attributes="0"/>
               <Component id="okAlienRegKnapp" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -214,7 +219,21 @@
         <Property name="text" type="java.lang.String" value="Alien-ID:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="AlienIDFIELD">
+    <Component class="javax.swing.JLabel" name="jLabel9">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Dialog" size="12" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="ID:et anges automatiskt"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel10">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Dialog" size="12" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Ras:"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

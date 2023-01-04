@@ -47,7 +47,8 @@ public class RegAlienAdmin extends javax.swing.JFrame {
         okAlienRegKnapp = new javax.swing.JButton();
         PlatsField = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        AlienIDFIELD = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -113,6 +114,12 @@ public class RegAlienAdmin extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel8.setText("Alien-ID:");
 
+        jLabel9.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel9.setText("ID:et anges automatiskt");
+
+        jLabel10.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel10.setText("Ras:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -129,16 +136,18 @@ public class RegAlienAdmin extends javax.swing.JFrame {
                             .addComponent(jLabel5)
                             .addComponent(jLabel4)
                             .addComponent(jLabel3)
-                            .addComponent(jLabel8))
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel10))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(DatumField, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
-                            .addComponent(NamnField)
-                            .addComponent(TelField)
-                            .addComponent(LösenordField)
-                            .addComponent(AnsvAgentField)
-                            .addComponent(PlatsField)
-                            .addComponent(AlienIDFIELD))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(DatumField, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
+                                .addComponent(NamnField)
+                                .addComponent(TelField)
+                                .addComponent(LösenordField)
+                                .addComponent(AnsvAgentField)
+                                .addComponent(PlatsField))
+                            .addComponent(jLabel9))))
                 .addContainerGap(114, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -180,8 +189,10 @@ public class RegAlienAdmin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(AlienIDFIELD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                    .addComponent(jLabel9))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addComponent(okAlienRegKnapp)
                 .addContainerGap())
         );
@@ -218,12 +229,12 @@ public class RegAlienAdmin extends javax.swing.JFrame {
         String telefon = TelField.getText();
         String datum = DatumField.getText();
         int plats = Integer.parseInt( PlatsField.getText());
-        int id = Integer.parseInt( AlienIDFIELD.getText());
         int ansvarig = Integer.parseInt( AnsvAgentField.getText());
-        if(Valideringsklass.giltigtLosenord(lösen) && Valideringsklass.värdeExisterar(NamnField) && Valideringsklass.värdeExisterar(DatumField) && Valideringsklass.värdeExisterar(PlatsField) && Valideringsklass.värdeExisterar(AlienIDFIELD) && Valideringsklass.värdeExisterar(AnsvAgentField)){
+        if(Valideringsklass.giltigtLosenord(lösen) && Valideringsklass.värdeExisterar(NamnField) && Valideringsklass.värdeExisterar(DatumField) && Valideringsklass.värdeExisterar(PlatsField) && Valideringsklass.värdeExisterar(AnsvAgentField)){
             try{
                 // Instansierar databasen.
                 mibdb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
+                int id = Integer.parseInt(mibdb.getAutoIncrement("Alien", "Alien_ID"));
                 mibdb.insert("INSERT INTO Alien VALUES(" + id + " , " + "'" + datum + "'" + " , " + "'" + lösen + "'" + " , " + "'" + namn + "'" + " , " + "'" + telefon + "'" + " , " + plats + " , " + ansvarig + ")");
                 JOptionPane.showMessageDialog(null, "Grattis! En ny alien har registrerats i systemet.");
 
@@ -272,7 +283,6 @@ public class RegAlienAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField AlienIDFIELD;
     private javax.swing.JTextField AnsvAgentField;
     private javax.swing.JTextField DatumField;
     private javax.swing.JPasswordField LösenordField;
@@ -280,6 +290,7 @@ public class RegAlienAdmin extends javax.swing.JFrame {
     private javax.swing.JTextField PlatsField;
     private javax.swing.JTextField TelField;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -287,6 +298,7 @@ public class RegAlienAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JButton okAlienRegKnapp;
     // End of variables declaration//GEN-END:variables
 }
