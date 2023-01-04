@@ -4,19 +4,52 @@
  */
 package mibg3.Admin;
 
+import oru.inf.InfDB;
+import oru.inf.InfException;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author d-aly
  */
 public class HanteraUtrustningAdmin extends javax.swing.JFrame {
+    private InfDB mibdb;
+    private ArrayList<String> utrustningNamn;
+    private String utrNamn;
+    private String id;
 
     /**
      * Creates new form HanteraUtrustningAdmin
      */
     public HanteraUtrustningAdmin() {
+        try{
+            mibdb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
+        }
+        catch(InfException e){
+            JOptionPane.showMessageDialog(null, "Det gick inte att ansluta till databasen.");
+        }
         initComponents();
     }
 
+    
+      private void utrustningLista(){
+          try{
+            utrustningNamn = mibdb.fetchColumn("SELECT Benamning FROM Utrustning");
+            for(String utrustning : utrustningNamn){
+            utrustningCB.addItem(utrustning);
+        }
+       }
+       catch(InfException e){
+           JOptionPane.showMessageDialog(null, "Det gick inte att ansluta till databasen.");
+       }
+    }
+    
+    private String message(){
+        utrustningLista();
+        String message = "Vänligen välj ett vapen att avregistrera.";
+        return message;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,36 +60,21 @@ public class HanteraUtrustningAdmin extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        kommunikationKnapp = new javax.swing.JButton();
-        vapenKommunikation = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        utrustningCB = new javax.swing.JComboBox<>();
+        avregKnapp = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        jLabel1.setText("Vänligen välj vilken typ av utrustning du vill avregistrera.");
+        jLabel1.setText(message());
 
-        kommunikationKnapp.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        kommunikationKnapp.setText("Kommunikation");
-        kommunikationKnapp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                kommunikationKnappActionPerformed(evt);
-            }
-        });
+        utrustningCB.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
-        vapenKommunikation.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        vapenKommunikation.setText("Vapen");
-        vapenKommunikation.addActionListener(new java.awt.event.ActionListener() {
+        avregKnapp.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        avregKnapp.setText("Avregistrera");
+        avregKnapp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                vapenKommunikationActionPerformed(evt);
-            }
-        });
-
-        jButton3.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jButton3.setText("Teknik");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                avregKnappActionPerformed(evt);
             }
         });
 
@@ -65,51 +83,48 @@ public class HanteraUtrustningAdmin extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(25, 25, 25))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(kommunikationKnapp)
-                .addGap(89, 89, 89)
-                .addComponent(vapenKommunikation, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton3)
-                .addGap(58, 58, 58))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(131, 131, 131)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(149, 149, 149)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(avregKnapp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(utrustningCB, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(132, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
+                .addGap(26, 26, 26)
                 .addComponent(jLabel1)
-                .addGap(58, 58, 58)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(kommunikationKnapp, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(vapenKommunikation, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(utrustningCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addComponent(avregKnapp)
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void kommunikationKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kommunikationKnappActionPerformed
-        // TODO add your handling code here:
-        kommunikationAvreg meny = new kommunikationAvreg();
-        meny.setVisible(true);
-    }//GEN-LAST:event_kommunikationKnappActionPerformed
-
-    private void vapenKommunikationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vapenKommunikationActionPerformed
-        // TODO add your handling code here:
-        vapenAvreg meny = new vapenAvreg();
-        meny.setVisible(true);
-    }//GEN-LAST:event_vapenKommunikationActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-        teknikAvreg meny = new teknikAvreg();
-        meny.setVisible(true);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    
+    private String getNamn(){
+        utrNamn = utrustningCB.getSelectedItem().toString();
+        return utrNamn;
+    }
+    
+    private void avregKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_avregKnappActionPerformed
+       try{
+        id = mibdb.fetchSingle("SELECT Utrustnings_ID FROM Utrustning WHERE Benamning =" + "'" + getNamn() + "'");
+        String utrID;
+        utrID = mibdb.fetchSingle("SELECT Utrustnings_ID FROM ")
+       }
+       catch(InfException e){
+           JOptionPane.showMessageDialog(null, "Något gick fel.");
+       }
+        
+    }//GEN-LAST:event_avregKnappActionPerformed
 
     /**
      * @param args the command line arguments
@@ -147,9 +162,8 @@ public class HanteraUtrustningAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton avregKnapp;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JButton kommunikationKnapp;
-    private javax.swing.JButton vapenKommunikation;
+    private javax.swing.JComboBox<String> utrustningCB;
     // End of variables declaration//GEN-END:variables
 }

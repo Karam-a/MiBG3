@@ -31,7 +31,6 @@ public class HanteraAliens extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         regAlien = new javax.swing.JButton();
         alienInfoKnapp = new javax.swing.JButton();
-        spåraAlienKnapp = new javax.swing.JButton();
         sokEfterRasKnapp = new javax.swing.JButton();
         regUtrustKnapp = new javax.swing.JButton();
         sokOCKnapp = new javax.swing.JButton();
@@ -59,9 +58,6 @@ public class HanteraAliens extends javax.swing.JFrame {
             }
         });
 
-        spåraAlienKnapp.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        spåraAlienKnapp.setText("Spåra alien");
-
         sokEfterRasKnapp.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         sokEfterRasKnapp.setText("Sök efter ras");
 
@@ -78,23 +74,20 @@ public class HanteraAliens extends javax.swing.JFrame {
             .addGroup(jInternalFrame1Layout.createSequentialGroup()
                 .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                                .addComponent(regAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(regUtrustKnapp, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(alienInfoKnapp, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                                .addComponent(spåraAlienKnapp, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(16, 16, 16)
-                                .addComponent(sokOCKnapp, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(sokEfterRasKnapp, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(13, 13, 13)
+                        .addComponent(regAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(regUtrustKnapp, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(alienInfoKnapp, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jInternalFrame1Layout.createSequentialGroup()
                         .addGap(63, 63, 63)
-                        .addComponent(jLabel1)))
+                        .addComponent(jLabel1))
+                    .addGroup(jInternalFrame1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(sokOCKnapp, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(sokEfterRasKnapp, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jInternalFrame1Layout.setVerticalGroup(
@@ -107,12 +100,11 @@ public class HanteraAliens extends javax.swing.JFrame {
                     .addComponent(regAlien)
                     .addComponent(regUtrustKnapp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(alienInfoKnapp))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(spåraAlienKnapp)
                     .addComponent(sokOCKnapp)
                     .addComponent(sokEfterRasKnapp))
-                .addGap(175, 175, 175))
+                .addGap(168, 168, 168))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -182,6 +174,5 @@ public class HanteraAliens extends javax.swing.JFrame {
     private javax.swing.JButton regUtrustKnapp;
     private javax.swing.JButton sokEfterRasKnapp;
     private javax.swing.JButton sokOCKnapp;
-    private javax.swing.JButton spåraAlienKnapp;
     // End of variables declaration//GEN-END:variables
 }
