@@ -18,6 +18,7 @@ private String ansvAg;
 private String nuvPlats;
 private String faktOmr;
 private String aRas;
+private ArrayList<String> namn;
 //instansiering till Combo Box, värden i CB ändras automatiskt efter de aliens som finns i databasen.
 //private String cbNyckel;
 //private String cbVärde;
@@ -35,12 +36,13 @@ private String aRas;
         //Lägger till alla aliens i en arraylist "Aliens i DB." Loopar tills varje alien i databasen är tillagd. 
        // ArrayList<String> aliensIDB = mibdb.fetchColumn("SELECT namn FROM Alien");
              //JOptionPane.showMessageDialog(null, aliensIDB);
-            
+           
         }
         catch(InfException e){
             JOptionPane.showMessageDialog(null, "Kunde inte ansluta till databasen, vänligen försök igen.");
         }
         initComponents();
+         namnLista();
         
     }
 
@@ -84,7 +86,7 @@ private String aRas;
         alienInformationMainLabel.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         alienInformationMainLabel.setText("Alieninformation");
 
-        alienValCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bobbo", "My Book", "Braxen" }));
+        alienValCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Välj en Alien" }));
         alienValCB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 alienValCBActionPerformed(evt);
@@ -313,6 +315,18 @@ private String aRas;
     }// </editor-fold>//GEN-END:initComponents
    private void errorLol(){
    JOptionPane.showMessageDialog(null, "Något gick fel, försök igen");}
+   
+   private void namnLista(){
+       try{
+        namn = mibdb.fetchColumn("SELECT Namn FROM Alien");
+        for(String alienNamn : namn){
+            alienValCB.addItem(alienNamn);
+        }
+       }
+       catch(InfException e){
+           JOptionPane.showMessageDialog(null, "Det gick inte att ansluta till databasen.");
+       }
+    }
    
     private String getAlienNamn(){
       aNamn = alienValCB.getSelectedItem().toString();
