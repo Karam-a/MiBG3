@@ -246,7 +246,7 @@ private ArrayList<String> namn;
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(returnAlienNuvPlatsLabel))
                             .addComponent(rasLabel1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(ändraAgentField)
@@ -275,13 +275,16 @@ private ArrayList<String> namn;
                                     .addComponent(ändraPlats, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(ändraRas, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(56, 56, 56)
-                        .addComponent(alienInformationMainLabel))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(82, 82, 82)
-                        .addComponent(alienLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(alienValCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(56, 56, 56)
+                                .addComponent(alienInformationMainLabel))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(82, 82, 82)
+                                .addComponent(alienLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(alienValCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -547,6 +550,7 @@ private ArrayList<String> namn;
         }
         catch(InfException e){JOptionPane.showMessageDialog(null, "Rasändring misslyckades, vänligen försök igen.");}
         JOptionPane.showMessageDialog(null, "Rasbyte lyckades! Alien " + aNamn+ " är nu "+ getRas() + "!");
+        ändraRasAntalArmBoog.setText("");
         returnAlienRasLabel.setText(getRas());
     }//GEN-LAST:event_ändraRasActionPerformed
 
