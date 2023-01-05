@@ -8,32 +8,54 @@ import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author d-aly
  */
 
 public class AlienPåOmråde extends javax.swing.JFrame {
+    //initierar  databasen, även modellen bakom de fyra tabellerna.
     private InfDB mibdb;
+    private DefaultTableModel modP1;
+    private DefaultTableModel modP2;
+    private DefaultTableModel modP3;
+    private DefaultTableModel modP4;
+    private ArrayList<String> listP1;
+    private ArrayList<String> listP2;
+    private ArrayList<String> listP3;
+    private ArrayList<String> listP4;
+    
+    
     private ArrayList<String> platsLista; 
     private String plats;
     private String område;
 
-    /**
-     * Creates new form AlienPåOmråde
-     */
+    
     public AlienPåOmråde() {
+          
+          //Ansluter till databasen, görs i konstruktorn så det ej behöver repeteras i resten av koden.
         try{
             mibdb = new InfDB("mibdb", "3306", "mibdba", "mibkey");   
         }
         catch(InfException e){
             JOptionPane.showMessageDialog(null, "Det gick inte att ansluta till databasen.");
         }
-        initComponents();
+        
+        //Initierar modellerna, samt tilldelar dem till en fältvariabel av typen DefaultTableModel
+        
+        listP1 = new ArrayList<>();
+        listP2 = new ArrayList<>();
+        listP3 = new ArrayList<>();
+        listP4 = new ArrayList<>();
+       initComponents();
+       fyllTabeller();
+         //Lägg till metod. 
         
     }
 
-    private void områdeLista(){
+   /* private void områdeLista(){
          try{
             platsLista = mibdb.fetchColumn("SELECT Benamning FROM Plats");
             for(String plats : platsLista){
@@ -45,39 +67,46 @@ public class AlienPåOmråde extends javax.swing.JFrame {
        }
     
     }
-    private String message(){
-        områdeLista();
-        return "Här kan du söka på aliens efter område.";
-        
-    }
-    //INTE KLART
-    public String getPlats(){
-        String tlfOmr;
-        String finnsI;
-    try{
-        tlfOmr = mibdb.fetchSingle("SELECT Plats FROM Område WHERE Namn=" + "'" + aNamn + "'");
-        plats = mibdb.fetchSingle("SELECT Benamning FROM Plats WHERE Plats_ID=" + tlfOmr);
-        finnsI = mibdb.fetchSingle("SELECT Finns_I FROM Plats WHERE Plats_ID=" + tlfOmr);
-        område = mibdb.fetchSingle("SELECT Benamning FROM Omrade WHERE Omrades_ID=" + finnsI);
-    }
-    catch(InfException e){
+    */
     
+    private void hamtaData(){
+    try{
+        listP1 = mibdb.fetchColumn("SELECT Namn from Alien where Plats = 1");
+        listP2= mibdb.fetchColumn("SELECT Namn from ALIEN where PLATS = 2");
+        listP3 = mibdb.fetchColumn("SELECT NAMN from ALIEN where PLATS = 3");
+        listP4 = mibdb.fetchColumn("SELECT NAMN from ALIEN where PLATS = 4");
     }
+    catch(InfException E){JOptionPane.showMessageDialog(null, "Finns ingen data att hämta. Fuck you");}
     }
-  
-    //INTE KLART
-    public void kollaAliensOmråde(){
-        try{
-        String valtOmråde = områdeCB.getSelectedItem().toString();
-        switch(valtOmråde){
-            case "Örebro":
-                mibdb.fetchSingle("SELECT Namn FROM Alien WHERE Plats=");
+    
+    private void fyllTabeller(){
+   // int rad; //Radnummer
+   // int index; //Position/index
+        hamtaData();
+        modP1 = (DefaultTableModel) p1Mod.getModel();
+        modP2 = (DefaultTableModel) p2Mod.getModel();
+        modP3 = (DefaultTableModel) p3Mod.getModel();
+        modP4 = (DefaultTableModel) p4Mod.getModel();
+        
+        for(String namn : listP1){
+        modP1.addRow(new Object[]{namn});
         }
-    }
-        catch(InfException e){
-            
+        for(String namn2 : listP2){
+        modP2.addRow(new Object[]{namn2});
         }
+        for(String namn3 : listP3){
+        modP3.addRow(new Object[]{namn3});
+        }
+        for(String namn4 : listP4){
+        modP4.addRow(new Object[]{namn4});
+        }
+        }
+    
+    
+    private String message(){
+        return "Här kan du söka på aliens efter område.";
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -118,17 +147,14 @@ public class AlienPåOmråde extends javax.swing.JFrame {
 
         p1Mod.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
-                "Alien ID", "Namn"
+                "Namn"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false
+                false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -138,21 +164,18 @@ public class AlienPåOmråde extends javax.swing.JFrame {
         jScrollPane3.setViewportView(p1Mod);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
-        jLabel3.setText("Aliens (områden)");
+        jLabel3.setText(message());
 
         p2Mod.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
-                "Alien ID", "Namn"
+                "Namn"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false
+                false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -163,17 +186,14 @@ public class AlienPåOmråde extends javax.swing.JFrame {
 
         p4Mod.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
-                "Alien ID", "Namn"
+                "Namn"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false
+                false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -184,17 +204,14 @@ public class AlienPåOmråde extends javax.swing.JFrame {
 
         p3Mod.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
-                "Alien ID", "Namn"
+                "Namn"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false
+                false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -220,42 +237,40 @@ public class AlienPåOmråde extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(156, 156, 156)
-                        .addComponent(jLabel3)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(63, 63, 63)
+                                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(63, 63, 63)
-                                                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(63, 63, 63)
-                                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGap(0, 10, Short.MAX_VALUE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(59, 59, 59)
-                                        .addComponent(p3Lab)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(p4Lab)
-                                        .addGap(85, 85, 85))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(67, 67, 67)
-                                        .addComponent(p1Lab)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(p2Lab)
-                                        .addGap(71, 71, 71))))
-                            .addComponent(jSeparator1))))
-                .addContainerGap())
+                                                .addGap(67, 67, 67)
+                                                .addComponent(p1Lab)))
+                                        .addGap(63, 63, 63)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addComponent(p2Lab)
+                                                .addGap(69, 69, 69)))))
+                                .addContainerGap(14, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(59, 59, 59)
+                                .addComponent(p3Lab)
+                                .addGap(194, 194, 194)
+                                .addComponent(p4Lab)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addComponent(jSeparator1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -273,8 +288,8 @@ public class AlienPåOmråde extends javax.swing.JFrame {
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(p4Lab)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(p4Lab, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(p3Lab))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
