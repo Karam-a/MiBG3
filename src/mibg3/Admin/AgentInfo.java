@@ -4,6 +4,9 @@
  */
 package mibg3.Admin;
 
+import oru.inf.InfDB;
+import oru.inf.InfException;
+
 /**
  *
  * @author d-aly
