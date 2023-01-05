@@ -24,7 +24,7 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Component id="jSeparator1" alignment="1" max="32767" attributes="0"/>
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
@@ -66,7 +66,7 @@
                           </Group>
                           <Component id="rasLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="36" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="ändraAgentField" max="32767" attributes="0"/>
@@ -88,17 +88,17 @@
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="ändraReg" min="-2" pref="73" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="alienIDLabel1" min="-2" max="-2" attributes="0"/>
+                          <Component id="alienIDLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Component id="ändraRasAntalArmBoog" alignment="0" max="32767" attributes="0"/>
                                   <Component id="ändraRasCB" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="ändraPlatsField" max="32767" attributes="0"/>
+                                  <Component id="ändraPlatsField" alignment="1" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="ändraPlats" min="-2" pref="73" max="-2" attributes="0"/>
-                                  <Component id="ändraRas" min="-2" pref="73" max="-2" attributes="0"/>
+                                  <Component id="ändraPlats" alignment="0" min="-2" pref="73" max="-2" attributes="0"/>
+                                  <Component id="ändraRas" alignment="0" min="-2" pref="73" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -183,12 +183,79 @@
                   <Component id="ändraRasAntalArmBoog" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="rasLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="40" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
+    <Component class="javax.swing.JLabel" name="rasLabel">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="14" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Ras:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="returnAlienRasLabel">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="14" style="0"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="33" green="33" red="ff" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="getRas()" type="code"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="alienIDLabel1">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="14" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="ID kan ej redigeras."/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="&#xe4;ndraRasCB">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="3">
+            <StringItem index="0" value="Boglodite"/>
+            <StringItem index="1" value="Squid"/>
+            <StringItem index="2" value="Worm"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="&#xe4;ndraRasCBItemStateChanged"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JButton" name="&#xe4;ndraRas">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&#xc4;ndra"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="&#xe4;ndraRasActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="&#xe4;ndraRasAntalArmBoog">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="&#xe4;ndraRasAntalArmBoogActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="rasLabel1">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="14" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Antal Armar/Boogies (Endast vid rasbyte):"/>
+      </Properties>
+    </Component>
     <Component class="javax.swing.JLabel" name="alienInformationMainLabel">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -391,73 +458,6 @@
     <Component class="javax.swing.JTextField" name="&#xe4;ndraAgentField">
     </Component>
     <Component class="javax.swing.JTextField" name="&#xe4;ndraPlatsField">
-    </Component>
-    <Component class="javax.swing.JLabel" name="rasLabel">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="14" style="0"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Ras:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="returnAlienRasLabel">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="14" style="0"/>
-        </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="33" green="33" red="ff" type="rgb"/>
-        </Property>
-        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="getRas()" type="code"/>
-        </Property>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="alienIDLabel1">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="14" style="0"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="ID kan ej redigeras."/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JComboBox" name="&#xe4;ndraRasCB">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="3">
-            <StringItem index="0" value="Boglodite"/>
-            <StringItem index="1" value="Squid"/>
-            <StringItem index="2" value="Worm"/>
-          </StringArray>
-        </Property>
-      </Properties>
-      <Events>
-        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="&#xe4;ndraRasCBItemStateChanged"/>
-      </Events>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-      </AuxValues>
-    </Component>
-    <Component class="javax.swing.JButton" name="&#xe4;ndraRas">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="&#xc4;ndra"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="&#xe4;ndraRasActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JTextField" name="&#xe4;ndraRasAntalArmBoog">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="&#xe4;ndraRasAntalArmBoogActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JLabel" name="rasLabel1">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="14" style="0"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Antal Armar/Boogies (Endast vid rasbyte):"/>
-      </Properties>
     </Component>
   </SubComponents>
 </Form>

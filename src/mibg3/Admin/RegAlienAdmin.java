@@ -15,6 +15,9 @@ import oru.inf.InfException;
  */
 public class RegAlienAdmin extends javax.swing.JFrame {
     private InfDB mibdb;
+    private int plats;
+    private int ansvarig;
+    private String alienID;
 
     /**
      * Creates new form RegAlienAdmin
@@ -32,76 +35,30 @@ public class RegAlienAdmin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        DatumField = new javax.swing.JTextField();
-        NamnField = new javax.swing.JTextField();
-        TelField = new javax.swing.JTextField();
-        LösenordField = new javax.swing.JPasswordField();
-        jLabel1 = new javax.swing.JLabel();
-        AnsvAgentField = new javax.swing.JTextField();
         okAlienRegKnapp = new javax.swing.JButton();
-        PlatsField = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        rasCB1 = new javax.swing.JComboBox<>();
+        DatumFIELD = new javax.swing.JTextField();
+        platsCB1 = new javax.swing.JComboBox<>();
+        NamnFIELD = new javax.swing.JTextField();
+        agentCB1 = new javax.swing.JComboBox<>();
+        TelFIELD = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        LösenordFIELD = new javax.swing.JPasswordField();
+        armBoogFIELD = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLabel2.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel2.setText("Datum:");
-
-        jLabel3.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel3.setText("Namn:");
-
-        jLabel4.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel4.setText("Lösenord:");
-
-        jLabel5.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel5.setText("Telefon:");
-
-        jLabel6.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel6.setText("Plats:");
-
-        jLabel7.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel7.setText("Ansvarig agent:");
-
-        DatumField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DatumFieldActionPerformed(evt);
-            }
-        });
-
-        NamnField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NamnFieldActionPerformed(evt);
-            }
-        });
-
-        TelField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TelFieldActionPerformed(evt);
-            }
-        });
-
-        LösenordField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LösenordFieldActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel1.setText("Här kan du registrera nya aliens!");
-
-        AnsvAgentField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AnsvAgentFieldActionPerformed(evt);
-            }
-        });
 
         okAlienRegKnapp.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         okAlienRegKnapp.setText("OK");
@@ -111,141 +68,313 @@ public class RegAlienAdmin extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel2.setText("Datum:");
+
         jLabel8.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel8.setText("Alien-ID:");
 
-        jLabel9.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel9.setText("ID:et anges automatiskt");
+        jLabel3.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel3.setText("Namn:");
 
-        jLabel10.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel10.setText("Ras:");
+        jLabel19.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel19.setText("Registreras Automatiskt.");
+
+        jLabel4.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel4.setText("Lösenord:");
+
+        jLabel16.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel16.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel16.setText("YYYY-MM-DD");
+
+        jLabel5.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel5.setText("Telefon:");
+
+        jLabel15.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel15.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel15.setText("Min. 1 tecken. Max 6 tecken.");
+
+        jLabel6.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel6.setText("Plats:");
+
+        jLabel12.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel12.setText("Ras:");
+
+        jLabel7.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel7.setText("Ansvarig agent:");
+
+        rasCB1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Boglodite", "Squid", "Worm" }));
+        rasCB1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                rasCB1ItemStateChanged(evt);
+            }
+        });
+
+        DatumFIELD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DatumFIELDActionPerformed(evt);
+            }
+        });
+
+        platsCB1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Örebro", "Västerås", "Vilhelmina", "Borås" }));
+        platsCB1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                platsCB1ActionPerformed(evt);
+            }
+        });
+
+        NamnFIELD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NamnFIELDActionPerformed(evt);
+            }
+        });
+
+        agentCB1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Agent O", "Agent K", "Agent J", "Agent Z" }));
+
+        TelFIELD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TelFIELDActionPerformed(evt);
+            }
+        });
+
+        jLabel13.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel13.setText("Antal Armar/Boogies:");
+
+        LösenordFIELD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LösenordFIELDActionPerformed(evt);
+            }
+        });
+
+        armBoogFIELD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                armBoogFIELDActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel1.setText("Registrera en ny Alien");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel10))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(DatumField, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
-                                .addComponent(NamnField)
-                                .addComponent(TelField)
-                                .addComponent(LösenordField)
-                                .addComponent(AnsvAgentField)
-                                .addComponent(PlatsField))
-                            .addComponent(jLabel9))))
-                .addContainerGap(114, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(350, Short.MAX_VALUE)
                 .addComponent(okAlienRegKnapp, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(14, 14, 14)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGap(69, 69, 69)
+                            .addComponent(jLabel1)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel13)
+                                .addComponent(jLabel8)
+                                .addComponent(jLabel2)
+                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel7)
+                                .addComponent(jLabel5)
+                                .addComponent(jLabel4)
+                                .addComponent(jLabel3)
+                                .addComponent(jLabel12))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(armBoogFIELD)
+                                    .addGap(155, 155, 155))
+                                .addComponent(jLabel19)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(agentCB1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(platsCB1, 0, 95, Short.MAX_VALUE)
+                                        .addComponent(rasCB1, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(DatumFIELD, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(NamnFIELD, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(TelFIELD, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(LösenordFIELD, javax.swing.GroupLayout.Alignment.LEADING))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel15))))))
+                    .addGap(14, 14, 14)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(78, 78, 78)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(DatumField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(NamnField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(LösenordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(TelField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(PlatsField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(AnsvAgentField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel9))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addContainerGap(302, Short.MAX_VALUE)
                 .addComponent(okAlienRegKnapp)
                 .addContainerGap())
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(30, 30, 30)
+                    .addComponent(jLabel1)
+                    .addGap(18, 18, 18)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel8)
+                        .addComponent(jLabel19))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(DatumFIELD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel2)
+                        .addComponent(jLabel16))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel3)
+                        .addComponent(NamnFIELD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel4)
+                        .addComponent(LösenordFIELD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel15))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel5)
+                        .addComponent(TelFIELD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel6)
+                        .addComponent(platsCB1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel7)
+                        .addComponent(agentCB1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel12)
+                        .addComponent(rasCB1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel13)
+                        .addComponent(armBoogFIELD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(31, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void DatumFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DatumFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_DatumFieldActionPerformed
-
-    private void NamnFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NamnFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NamnFieldActionPerformed
-
-    private void TelFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TelFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TelFieldActionPerformed
-
-    private void LösenordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LösenordFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_LösenordFieldActionPerformed
-
-    private void AnsvAgentFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnsvAgentFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AnsvAgentFieldActionPerformed
-
     private void okAlienRegKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okAlienRegKnappActionPerformed
         /** Lokala variabeldeklarationer. Dessa ska hämta värdet på det vi skriver in när man registrerar en ny
         * alien och ta lokalvariablerna som sedan sätts in i insert metoden för databasen så att informationen vi skriver in sätts in i databasen.
         */
-        String namn = NamnField.getText();
-        String lösen = LösenordField.getText();
-        String telefon = TelField.getText();
-        String datum = DatumField.getText();
-        int plats = Integer.parseInt( PlatsField.getText());
-        int ansvarig = Integer.parseInt( AnsvAgentField.getText());
-        if(Valideringsklass.giltigtLosenord(lösen) && Valideringsklass.värdeExisterar(NamnField) && Valideringsklass.värdeExisterar(DatumField) && Valideringsklass.värdeExisterar(PlatsField) && Valideringsklass.värdeExisterar(AnsvAgentField)){
-            try{
+            String namn = NamnFIELD.getText();
+            String lösen = LösenordFIELD.getText();
+            String telefon = TelFIELD.getText();
+            String datum = DatumFIELD.getText();
+            getValdPlats();
+            getValdAgent();
+            if(Valideringsklass.giltigtLosenord(lösen) && Valideringsklass.värdeExisterar(NamnFIELD) && Valideringsklass.värdeExisterar(DatumFIELD)){
+                try{
                 // Instansierar databasen.
-                mibdb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
-                int id = Integer.parseInt(mibdb.getAutoIncrement("Alien", "Alien_ID"));
-                mibdb.insert("INSERT INTO Alien VALUES(" + id + " , " + "'" + datum + "'" + " , " + "'" + lösen + "'" + " , " + "'" + namn + "'" + " , " + "'" + telefon + "'" + " , " + plats + " , " + ansvarig + ")");
-                JOptionPane.showMessageDialog(null, "Grattis! En ny alien har registrerats i systemet.");
+                    mibdb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
+                    alienID = mibdb.getAutoIncrement("Alien", "Alien_ID");
+                    mibdb.insert("INSERT INTO Alien VALUES(" + alienID + " , " + "'" + datum + "'" + " , " + "'" + lösen + "'" + " , " + "'" + namn + "'" + " , " + "'" + telefon + "'" + " , " + plats + " , " + ansvarig + ")");
+                    setRas();
+                    JOptionPane.showMessageDialog(null, "Grattis! En ny alien har registrerats i systemet.");
 
-            }
-            catch(InfException e){
-                JOptionPane.showMessageDialog(null, "Gick inte att ansluta.");
+                }
+                catch(InfException e){
+                    JOptionPane.showMessageDialog(null, "Gick inte att ansluta.");
 
             }
         }
 
     }//GEN-LAST:event_okAlienRegKnappActionPerformed
+
+    private void rasCB1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_rasCB1ItemStateChanged
+        if(rasCB1.getSelectedItem().equals("Worm")){
+            armBoogFIELD.setText("0");
+            armBoogFIELD.setEnabled(false);}
+        else{
+            armBoogFIELD.setEnabled(true);}
+    }//GEN-LAST:event_rasCB1ItemStateChanged
+
+    private void getValdPlats(){
+      String vp = platsCB1.getSelectedItem().toString();
+      switch (vp){
+          case "Örebro": 
+              plats = 1;
+              break;
+          case "Västerås":
+              plats = 2;
+              break;
+          case "Vilhelmina":
+              plats = 3;
+              break;
+          case "Borås":
+              plats = 4;
+              break;
+      }
+    }
+      
+   
+    private void getValdAgent(){
+    
+        String va = agentCB1.getSelectedItem().toString();
+        switch (va){
+            case "Agent O":
+            ansvarig = 1;
+                break;
+            case "Agent K":
+            ansvarig = 2;
+                break;
+            case "Agent J":
+            ansvarig = 3;
+                break;
+            case "Agent Z":
+            ansvarig = 4;
+                break;
+      }
+  
+  }
+    
+      private void setRas(){
+  String vr = rasCB1.getSelectedItem().toString();
+  int antal = Integer.parseInt(armBoogFIELD.getText());
+  try{
+      switch (vr){
+      case "Boglodite":
+          mibdb.insert("INSERT INTO Boglodite VALUES(" + alienID + "," + antal +")");
+          break;
+      case "Squid":
+          mibdb.insert("INSERT INTO Squid VALUES(" + alienID + "," + antal +")");
+          break;
+      case "Worm":
+          mibdb.insert("INSERT INTO Worm (Alien_ID) VALUES(" + alienID +")");
+          break;
+        }
+  }
+  
+  catch(InfException e){System.out.println("bruh");}
+  }
+    private void DatumFIELDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DatumFIELDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DatumFIELDActionPerformed
+
+    private void NamnFIELDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NamnFIELDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NamnFIELDActionPerformed
+
+    private void TelFIELDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TelFIELDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TelFIELDActionPerformed
+
+    private void LösenordFIELDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LösenordFIELDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_LösenordFIELDActionPerformed
+
+    private void armBoogFIELDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_armBoogFIELDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_armBoogFIELDActionPerformed
+
+    private void platsCB1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_platsCB1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_platsCB1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -283,14 +412,18 @@ public class RegAlienAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField AnsvAgentField;
-    private javax.swing.JTextField DatumField;
-    private javax.swing.JPasswordField LösenordField;
-    private javax.swing.JTextField NamnField;
-    private javax.swing.JTextField PlatsField;
-    private javax.swing.JTextField TelField;
+    private javax.swing.JTextField DatumFIELD;
+    private javax.swing.JPasswordField LösenordFIELD;
+    private javax.swing.JTextField NamnFIELD;
+    private javax.swing.JTextField TelFIELD;
+    private javax.swing.JComboBox<String> agentCB1;
+    private javax.swing.JTextField armBoogFIELD;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -298,7 +431,8 @@ public class RegAlienAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JButton okAlienRegKnapp;
+    private javax.swing.JComboBox<String> platsCB1;
+    private javax.swing.JComboBox<String> rasCB1;
     // End of variables declaration//GEN-END:variables
 }
