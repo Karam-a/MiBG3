@@ -314,7 +314,6 @@ public class RegAlienAdmin extends javax.swing.JFrame {
       
    
     private void getValdAgent(){
-    
         String va = agentCB1.getSelectedItem().toString();
         switch (va){
             case "Agent O":
@@ -330,23 +329,22 @@ public class RegAlienAdmin extends javax.swing.JFrame {
             ansvarig = 4;
                 break;
       }
-  
   }
     
-      private void setRas(){
-  String vr = rasCB1.getSelectedItem().toString();
-  int antal = Integer.parseInt(armBoogFIELD.getText());
-  try{
-      switch (vr){
-      case "Boglodite":
-          mibdb.insert("INSERT INTO Boglodite VALUES(" + alienID + "," + antal +")");
-          break;
-      case "Squid":
-          mibdb.insert("INSERT INTO Squid VALUES(" + alienID + "," + antal +")");
-          break;
-      case "Worm":
-          mibdb.insert("INSERT INTO Worm (Alien_ID) VALUES(" + alienID +")");
-          break;
+    private void setRas(){
+        String vr = rasCB1.getSelectedItem().toString();
+        int antal = Integer.parseInt(armBoogFIELD.getText());
+            try{
+                    switch (vr){
+                    case "Boglodite":
+                        mibdb.insert("INSERT INTO Boglodite VALUES(" + alienID + "," + antal +")");
+                        break;
+                    case "Squid":
+                        mibdb.insert("INSERT INTO Squid VALUES(" + alienID + "," + antal +")");
+                        break;
+                    case "Worm":
+                        mibdb.insert("INSERT INTO Worm (Alien_ID) VALUES(" + alienID +")");
+                        break;
         }
   }
   
