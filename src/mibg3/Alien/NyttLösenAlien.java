@@ -37,7 +37,7 @@ public class NyttLösenAlien extends javax.swing.JFrame {
         nyttLösen = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         jLabel1.setText("Här kan du ändra ditt lösenord!");
