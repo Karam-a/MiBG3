@@ -86,6 +86,7 @@ public class ändraInfoAgent extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Redigera Agentinformation");
 
         agentCB.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 

@@ -37,6 +37,7 @@ private InfDB mibdb;
         OKknapp = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Registrera Vapen");
 
         kaliber.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         kaliber.setText("Kaliber:");

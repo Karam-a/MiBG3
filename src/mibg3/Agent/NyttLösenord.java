@@ -38,6 +38,7 @@ private InfDB mibdb;
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Ändra Lösenord");
 
         jInternalFrame1.setVisible(true);
 

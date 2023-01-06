@@ -36,6 +36,7 @@ public class AgentMeny extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Agentmeny");
 
         jInternalFrame1.setVisible(true);
 

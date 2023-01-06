@@ -38,6 +38,7 @@ public class teknikReg extends javax.swing.JFrame {
         namnField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Registrera Teknik");
 
         OKknapp.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         OKknapp.setText("OK");

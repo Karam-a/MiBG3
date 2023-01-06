@@ -39,6 +39,7 @@ public class KommunikationReg extends javax.swing.JFrame {
         överföringField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Registrera Kommunikationsutrustning");
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         jLabel1.setText("Vänligen ange uppgifter:");

@@ -78,6 +78,7 @@ private ArrayList<String> namn;
         returnArmBoogLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Alieninformation");
 
         alienInformationMainLabel.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         alienInformationMainLabel.setText("Här kan du se och ändra information om aliens.");
@@ -251,8 +252,8 @@ private ArrayList<String> namn;
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(rasLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(returnArmBoogLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                                .addComponent(returnArmBoogLabel)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(ändraAgentField)
@@ -556,7 +557,15 @@ private ArrayList<String> namn;
     }//GEN-LAST:event_ändraPlatsActionPerformed
 
     private void ändraRasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ändraRasActionPerformed
-        try{
+        if (ändraRasCB.getSelectedItem().equals(getRas()) && ändraRasAntalArmBoog.getText().equals(getArmBoog())){
+        JOptionPane.showMessageDialog(null, "Alien " + getAlienNamn() + " är redan registrerad som en " + getRas() + " med " + getArmBoog() +" armar/boogies.");
+        return;
+        }
+        else if(ändraRasCB.getSelectedItem().equals(getRas())){
+        JOptionPane.showMessageDialog(null, "Alien " + getAlienNamn() + " är redan registrerad som en " + getRas() + ".");
+        return;
+        }  
+           else try{
             int antAB = Integer.parseInt(ändraRasAntalArmBoog.getText());
             String valdRas = ändraRasCB.getSelectedItem().toString();
             switch (valdRas){
@@ -578,6 +587,7 @@ private ArrayList<String> namn;
         catch(InfException e){JOptionPane.showMessageDialog(null, "Rasändring misslyckades, vänligen försök igen.");}
         JOptionPane.showMessageDialog(null, "Rasbyte lyckades! Alien " + aNamn+ " är nu "+ getRas() + "!");
         ändraRasAntalArmBoog.setText("");
+        returnArmBoogLabel.setText(getArmBoog());
         returnAlienRasLabel.setText(getRas());
     }//GEN-LAST:event_ändraRasActionPerformed
 

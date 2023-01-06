@@ -30,6 +30,7 @@ public class AgentInlogg extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Agentinlogg");
 
         jInternalFrame1.setVisible(true);
 

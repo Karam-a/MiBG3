@@ -82,6 +82,7 @@ private ArrayList<String> namn;
         ändraPlatsField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Alieninformation");
 
         rasLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         rasLabel.setText("Ras:");

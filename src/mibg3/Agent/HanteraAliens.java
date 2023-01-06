@@ -35,6 +35,7 @@ public class HanteraAliens extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Hantera Aliens");
 
         jInternalFrame1.setVisible(true);
 

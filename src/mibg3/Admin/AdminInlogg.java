@@ -41,6 +41,7 @@ public class AdminInlogg extends javax.swing.JFrame {
         jLabel2.setText("jLabel2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Administratörsinloggning");
 
         jInternalFrame1.setVisible(true);
 
