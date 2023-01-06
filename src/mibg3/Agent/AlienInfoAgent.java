@@ -18,13 +18,11 @@ private String ansvAg;
 private String nuvPlats;
 private String faktOmr;
 private String aRas;
+private String aArm;
 private ArrayList<String> namn;
-//instansiering till Combo Box, värden i CB ändras automatiskt efter de aliens som finns i databasen.
-//private String cbNyckel;
-//private String cbVärde;
 
 
-//Kontruktor. Skapar en HashMap av alla aliens i systemet, som sedan blir alternativen i vår combo box. ÄNDRA INTE ANNARS FÅR JAG RYCK, TACK PUSS O HEJ.
+
     public AlienInfoAgent() {
         try{
             //ansluter till databasen
@@ -77,8 +75,9 @@ private ArrayList<String> namn;
         ändraRas = new javax.swing.JButton();
         ändraRasAntalArmBoog = new javax.swing.JTextField();
         rasLabel1 = new javax.swing.JLabel();
+        returnArmBoogLabel = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         alienInformationMainLabel.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         alienInformationMainLabel.setText("Här kan du se och ändra information om aliens.");
@@ -205,7 +204,11 @@ private ArrayList<String> namn;
         });
 
         rasLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        rasLabel1.setText("Antal Armar/Boogies (Endast vid rasbyte):");
+        rasLabel1.setText("Antal Armar/Boogies:");
+
+        returnArmBoogLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        returnArmBoogLabel.setForeground(new java.awt.Color(255, 51, 51));
+        returnArmBoogLabel.setText(getArmBoog());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -245,8 +248,11 @@ private ArrayList<String> namn;
                                 .addComponent(nuvarandePlatsLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(returnAlienNuvPlatsLabel))
-                            .addComponent(rasLabel1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(rasLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(returnArmBoogLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(ändraAgentField)
@@ -339,8 +345,9 @@ private ArrayList<String> namn;
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ändraRasAntalArmBoog, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rasLabel1))
-                .addContainerGap(40, Short.MAX_VALUE))
+                    .addComponent(rasLabel1)
+                    .addComponent(returnArmBoogLabel))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pack();
@@ -423,6 +430,27 @@ private ArrayList<String> namn;
         return aRas;
     }
     
+    private String getArmBoog(){
+        try{
+        String ras = getRas();
+        switch (ras){
+            case "Squid":
+               aArm = mibdb.fetchSingle("SELECT Antal_Armar FROM Squid WHERE Alien_ID=" + getAlienID());
+               break;
+            case "Boglodite":
+                aArm = mibdb.fetchSingle("SELECT Antal_Boogies FROM Boglodite WHERE Alien_ID=" + getAlienID());
+                break;
+            case "Worm":
+                aArm = "0";
+                break;
+            case "Alien Saknar Ras.":
+                aArm = "Ras Saknas.";
+        }
+    }
+        catch(InfException e){errorLol();}
+        return aArm;
+    }
+    
     private void taBortFranRas(){
    try{
        String rasCheck = getRas();
@@ -453,6 +481,7 @@ private ArrayList<String> namn;
        returnAlienRegDatumLabel.setText(getRegDat());
        returnAlienTelNrLabel.setText(getTelNr());
        returnAlienRasLabel.setText(getRas());
+       returnArmBoogLabel.setText(getArmBoog());
        
     }//GEN-LAST:event_alienValCBActionPerformed
 
@@ -612,6 +641,7 @@ private ArrayList<String> namn;
     private javax.swing.JLabel returnAlienRasLabel;
     private javax.swing.JLabel returnAlienRegDatumLabel;
     private javax.swing.JLabel returnAlienTelNrLabel;
+    private javax.swing.JLabel returnArmBoogLabel;
     private javax.swing.JLabel telNrLabel;
     private javax.swing.JButton ändraAgent;
     private javax.swing.JTextField ändraAgentField;

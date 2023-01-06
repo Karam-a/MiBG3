@@ -35,7 +35,7 @@ public class AgentMeny extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jInternalFrame1.setVisible(true);
 
@@ -86,9 +86,7 @@ public class AgentMeny extends javax.swing.JFrame {
                         .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton1)
                             .addComponent(knappAgentHanteraUtrustning)
-                            .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                                .addComponent(knappAgentHanteraAliens)
-                                .addGap(36, 36, 36))))
+                            .addComponent(knappAgentHanteraAliens)))
                     .addComponent(jSeparator1))
                 .addGap(0, 0, Short.MAX_VALUE))
         );

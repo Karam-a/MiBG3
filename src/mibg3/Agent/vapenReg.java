@@ -36,7 +36,7 @@ private InfDB mibdb;
         benämningField = new javax.swing.JTextField();
         OKknapp = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         kaliber.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         kaliber.setText("Kaliber:");

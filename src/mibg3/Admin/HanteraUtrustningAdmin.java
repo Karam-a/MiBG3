@@ -63,7 +63,7 @@ public class HanteraUtrustningAdmin extends javax.swing.JFrame {
         utrustningCB = new javax.swing.JComboBox<>();
         avregKnapp = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         jLabel1.setText(message());
