@@ -364,7 +364,7 @@ private void namnLista(){
     }
 
 private String getAlienNamn(){
-    namnLista();        
+        namnLista();        
           aNamn = alienValCB.getSelectedItem().toString();
           return aNamn;
     }
