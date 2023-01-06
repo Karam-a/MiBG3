@@ -58,7 +58,7 @@ public class RegAlienAdmin extends javax.swing.JFrame {
         armBoogFIELD = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         okAlienRegKnapp.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         okAlienRegKnapp.setText("OK");
