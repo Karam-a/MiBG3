@@ -5,8 +5,6 @@ import javax.swing.JOptionPane;
 import mibg3.Valideringsklass;
 import oru.inf.InfDB;
 import oru.inf.InfException;
-import java.time.LocalDateTime;  
-import java.time.format.DateTimeFormatter; 
 
 public class RegAlien extends javax.swing.JFrame {
     private InfDB mibdb;
@@ -276,7 +274,6 @@ public class RegAlien extends javax.swing.JFrame {
         }
         catch(InfException e){
             JOptionPane.showMessageDialog(null, "Gick inte att ansluta.");
-            
         }
             }
             
