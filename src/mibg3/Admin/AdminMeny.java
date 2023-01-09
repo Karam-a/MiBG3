@@ -24,7 +24,7 @@ public class AdminMeny extends javax.swing.JFrame {
         jToggleButton3 = new javax.swing.JToggleButton();
         jSeparator1 = new javax.swing.JSeparator();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Administratörsmeny");
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
