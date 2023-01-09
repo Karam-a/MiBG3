@@ -16,6 +16,8 @@ import javax.swing.JOptionPane;
 public class SökOC extends javax.swing.JFrame {
     private InfDB mibdb;
     private ArrayList<String> områdeslista;
+    private String agentNamn;
+    private String områdeNamn;
 
     /**
      * Creates new form SökOC
@@ -44,8 +46,32 @@ public class SökOC extends javax.swing.JFrame {
         catch(InfException e){
             errorMessage();
         }
-        
+        }
+    
+    private String message(){
+        namnlista();
+        return "Vänligen välj ett område.";
     }
+   
+    private String getOmrådeNamn(){
+        områdeNamn = områdeValCB.getSelectedItem().toString();
+        return områdeNamn;
+    }
+   
+    private String getAgentNamn(){
+        String områdeID = "";
+        String agentID = "";
+        try{
+        getOmrådeNamn();
+        områdeID = mibdb.fetchSingle("SELECT Omrades_ID FROM Omrade WHERE Benamning =" + "'" + områdeNamn + "'");
+        agentID = mibdb.fetchSingle("SELECT Agent_ID FROM Omradeschef WHERE Omrade =" + "'" + områdeID + "'");
+        agentNamn = mibdb.fetchSingle("SELECT Namn FROM Agent WHERE Agent_ID =" + "'"  + agentID + "'");
+    }
+        catch(InfException e){
+            errorMessage();
+        }
+        return agentNamn;
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -58,21 +84,26 @@ public class SökOC extends javax.swing.JFrame {
 
         områdeValCB = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
-        namnLabel = new javax.swing.JLabel();
         meddelande = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         områdeValCB.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        områdeValCB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                områdeValCBActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel1.setText("Områdeschef:");
 
-        namnLabel.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        namnLabel.setText("jLabel2");
-
         meddelande.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        meddelande.setText("jLabel2");
+        meddelande.setText(message());
+
+        jLabel2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel2.setText(getAgentNamn());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -85,9 +116,9 @@ public class SökOC extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(namnLabel))
+                        .addComponent(jLabel2))
                     .addComponent(meddelande))
-                .addContainerGap(128, Short.MAX_VALUE))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -99,12 +130,17 @@ public class SökOC extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(namnLabel))
+                    .addComponent(jLabel2))
                 .addContainerGap(50, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void områdeValCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_områdeValCBActionPerformed
+        // TODO add your handling code here:
+        jLabel2.setText(getAgentNamn());
+    }//GEN-LAST:event_områdeValCBActionPerformed
 
     /**
      * @param args the command line arguments
@@ -143,8 +179,8 @@ public class SökOC extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel meddelande;
-    private javax.swing.JLabel namnLabel;
     private javax.swing.JComboBox<String> områdeValCB;
     // End of variables declaration//GEN-END:variables
 }
