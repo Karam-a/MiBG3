@@ -40,7 +40,9 @@ private ArrayList<String> namn;
             logInSomAdmKnapp.setVisible(true);
         }
         else{
-        logInSomAdmKnapp.setVisible(false);}            
+        logInSomAdmKnapp.setVisible(false);
+        }
+         
  }
 
    
@@ -655,6 +657,9 @@ private ArrayList<String> namn;
         //Vid ett "nej" returnerar den till menyn. Inget förändras i databasen eller programmet. 
         else{
         JOptionPane.showMessageDialog(null, "Ingen alien har tagits bort från systemet.");
+         this.dispose();
+         AlienInfoAgent aIA = new AlienInfoAgent();
+         aIA.setVisible(true);
         }
     }//GEN-LAST:event_taBortAlienKnappActionPerformed
 
