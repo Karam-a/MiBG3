@@ -1,10 +1,10 @@
 package mibg3.Agent;
 import javax.swing.JOptionPane;
-import mibg3.Valideringsklass;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 import java.util.ArrayList;
-import java.lang.Iterable;
+import javax.swing.JPopupMenu;
+import mibg3.Agent.AgentInlogg;
 
 // Instansiering av variabler som presenteras i framens utvalda labels. Även databsen.
 public class AlienInfoAgent extends javax.swing.JFrame {
@@ -19,11 +19,14 @@ private String nuvPlats;
 private String faktOmr;
 private String aRas;
 private String aArm;
+private static String agentInloggad;
 private ArrayList<String> namn;
-
+JPopupMenu adminKravs = new JPopupMenu();
 
 
     public AlienInfoAgent() {
+        String tlf;
+        agentInloggad = tlf.getInloggadAgentID();
         try{
             //ansluter till databasen
         mibdb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
@@ -32,10 +35,8 @@ private ArrayList<String> namn;
         catch(InfException e){
             JOptionPane.showMessageDialog(null, "Kunde inte ansluta till databasen, vänligen försök igen.");
         }
-        initComponents();
-       // namnLista();
-        
-    }
+            initComponents();
+ }
 
    
     @SuppressWarnings("unchecked")
@@ -76,6 +77,7 @@ private ArrayList<String> namn;
         ändraRasAntalArmBoog = new javax.swing.JTextField();
         rasLabel1 = new javax.swing.JLabel();
         returnArmBoogLabel = new javax.swing.JLabel();
+        taBortAlienKnapp = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Alieninformation");
@@ -211,6 +213,8 @@ private ArrayList<String> namn;
         returnArmBoogLabel.setForeground(new java.awt.Color(255, 51, 51));
         returnArmBoogLabel.setText(getArmBoog());
 
+        taBortAlienKnapp.setText("Ta bort alien");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -285,7 +289,10 @@ private ArrayList<String> namn;
                         .addGap(82, 82, 82)
                         .addComponent(alienLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(alienValCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(alienValCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(taBortAlienKnapp)
+                        .addGap(99, 99, 99)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
@@ -299,7 +306,8 @@ private ArrayList<String> namn;
                 .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(alienLabel)
-                    .addComponent(alienValCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(alienValCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(taBortAlienKnapp))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -348,7 +356,7 @@ private ArrayList<String> namn;
                     .addComponent(ändraRasAntalArmBoog, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(rasLabel1)
                     .addComponent(returnArmBoogLabel))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         pack();
@@ -652,6 +660,7 @@ private ArrayList<String> namn;
     private javax.swing.JLabel returnAlienRegDatumLabel;
     private javax.swing.JLabel returnAlienTelNrLabel;
     private javax.swing.JLabel returnArmBoogLabel;
+    private javax.swing.JButton taBortAlienKnapp;
     private javax.swing.JLabel telNrLabel;
     private javax.swing.JButton ändraAgent;
     private javax.swing.JTextField ändraAgentField;
