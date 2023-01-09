@@ -4,6 +4,8 @@
  */
 package mibg3.Admin;
 
+import mibg3.Agent.RegAlien;
+
 /**
  *
  * @author d-aly
@@ -89,7 +91,7 @@ public class HanteraAlienAdmin extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        RegAlienAdmin meny = new RegAlienAdmin();
+        RegAlien meny = new RegAlien();
         meny.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
