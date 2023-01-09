@@ -3,8 +3,7 @@ import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 import java.util.ArrayList;
-import javax.swing.JPopupMenu;
-import mibg3.Agent.AgentInlogg;
+import static mibg3.Agent.AgentInlogg.getInloggadAgentID;
 
 // Instansiering av variabler som presenteras i framens utvalda labels. Även databsen.
 public class AlienInfoAgent extends javax.swing.JFrame {
@@ -21,21 +20,27 @@ private String aRas;
 private String aArm;
 private static String agentInloggad;
 private ArrayList<String> namn;
-JPopupMenu adminKravs = new JPopupMenu();
 
 
     public AlienInfoAgent() {
-        String tlf;
-        agentInloggad = tlf.getInloggadAgentID();
+        
         try{
             //ansluter till databasen
-        mibdb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
+            mibdb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
 
         }
         catch(InfException e){
             JOptionPane.showMessageDialog(null, "Kunde inte ansluta till databasen, vänligen försök igen.");
         }
-            initComponents();
+        initComponents();
+        
+        agentInloggad = getInloggadAgentID();
+        if(agentInloggad != null){
+            taBortAlienKnapp.setEnabled(false);
+            logInSomAdmKnapp.setVisible(true);
+        }
+        else{
+        logInSomAdmKnapp.setVisible(false);}            
  }
 
    
@@ -78,6 +83,8 @@ JPopupMenu adminKravs = new JPopupMenu();
         rasLabel1 = new javax.swing.JLabel();
         returnArmBoogLabel = new javax.swing.JLabel();
         taBortAlienKnapp = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        logInSomAdmKnapp = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Alieninformation");
@@ -213,7 +220,17 @@ JPopupMenu adminKravs = new JPopupMenu();
         returnArmBoogLabel.setForeground(new java.awt.Color(255, 51, 51));
         returnArmBoogLabel.setText(getArmBoog());
 
+        taBortAlienKnapp.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        taBortAlienKnapp.setForeground(new java.awt.Color(255, 51, 51));
         taBortAlienKnapp.setText("Ta bort alien");
+        taBortAlienKnapp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                taBortAlienKnappActionPerformed(evt);
+            }
+        });
+
+        logInSomAdmKnapp.setText("Ej inloggad som Admin");
+        logInSomAdmKnapp.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -286,13 +303,20 @@ JPopupMenu adminKravs = new JPopupMenu();
                                     .addComponent(ändraPlats, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(ändraRas, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(82, 82, 82)
+                        .addGap(39, 39, 39)
                         .addComponent(alienLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(alienValCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(taBortAlienKnapp)
-                        .addGap(99, 99, 99)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(74, 74, 74))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(logInSomAdmKnapp, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(taBortAlienKnapp)
+                                .addGap(16, 16, 16)))))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
@@ -307,7 +331,9 @@ JPopupMenu adminKravs = new JPopupMenu();
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(alienLabel)
                     .addComponent(alienValCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(taBortAlienKnapp))
+                    .addComponent(taBortAlienKnapp)
+                    .addComponent(jLabel1)
+                    .addComponent(logInSomAdmKnapp))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -611,6 +637,27 @@ JPopupMenu adminKravs = new JPopupMenu();
             ändraRasAntalArmBoog.setEnabled(true);}
     }//GEN-LAST:event_ändraRasCBItemStateChanged
 
+    private void taBortAlienKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taBortAlienKnappActionPerformed
+        String tlfNamn = getAlienNamn();
+        int bekr = JOptionPane.showConfirmDialog(null, "Är du säker på att du vill ta bort " + getAlienNamn() + " från systemet? DET GÅR INTE ATT ÅNGRA!"  , "Bekräfta borttagning av " + tlfNamn, JOptionPane.YES_NO_OPTION);
+        if (bekr == JOptionPane.YES_OPTION){
+            try{            
+                taBortFranRas();
+                mibdb.delete("DELETE FROM Alien WHERE Alien_ID="+getAlienID());
+                JOptionPane.showMessageDialog(null, tlfNamn + " är nu borttagen från systemet.");
+                //Vid genomförande startar den om fönstret, som på nytt går igenom databasen och hämtar alla Aliens.
+                this.dispose();
+                AlienInfoAgent ailInf = new AlienInfoAgent();
+                ailInf.setVisible(true);
+                }
+            catch(InfException e){JOptionPane.showMessageDialog(null, "Något gick fel, försök igen.");}
+        }
+        //Vid ett "nej" returnerar den till menyn. Inget förändras i databasen eller programmet. 
+        else{
+        JOptionPane.showMessageDialog(null, "Ingen alien har tagits bort från systemet.");
+        }
+    }//GEN-LAST:event_taBortAlienKnappActionPerformed
+
 
     public static void main(String args[]) {
         try {
@@ -647,7 +694,9 @@ JPopupMenu adminKravs = new JPopupMenu();
     private javax.swing.JLabel alienNamnLabel;
     private javax.swing.JComboBox<String> alienValCB;
     private javax.swing.JLabel ansvarigAgentLabel;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel logInSomAdmKnapp;
     private javax.swing.JLabel nuvarandePlatsLabel;
     private javax.swing.JLabel rasLabel;
     private javax.swing.JLabel rasLabel1;
