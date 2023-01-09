@@ -1,17 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package mibg3.Agent;
 
 import javax.swing.JOptionPane;
 import mibg3.Valideringsklass;
 import oru.inf.InfDB;
 import oru.inf.InfException;
+import java.time.LocalDateTime;  
+import java.time.format.DateTimeFormatter; 
 
-/**
- * @author Dalya
- */
 public class RegAlien extends javax.swing.JFrame {
     private InfDB mibdb;
 
@@ -309,7 +305,6 @@ public class RegAlien extends javax.swing.JFrame {
         else{
             armBoogField.setEnabled(true);}
     }//GEN-LAST:event_rasCBItemStateChanged
-
 
   private void getValdPlats(){
       String vp = platsCB.getSelectedItem().toString();
