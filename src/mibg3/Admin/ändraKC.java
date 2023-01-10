@@ -4,16 +4,27 @@
  */
 package mibg3.Admin;
 
+import oru.inf.InfDB;
+import oru.inf.InfException;
+import javax.swing.JOptionPane;
+import mibg3.Valideringsklass;
 /**
  *
  * @author d-aly
  */
 public class ändraKC extends javax.swing.JFrame {
+    private InfDB mibdb;
 
     /**
      * Creates new form ändraKC
      */
     public ändraKC() {
+        try{
+        mibdb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
+        }
+        catch(InfException e){
+            JOptionPane.showMessageDialog(null, "Kunde inte ansluta till databasen.");
+        }
         initComponents();
     }
 
@@ -31,7 +42,7 @@ public class ändraKC extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         bekräftaKnapp = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel1.setText("Namn på agent:");
@@ -43,6 +54,11 @@ public class ändraKC extends javax.swing.JFrame {
 
         bekräftaKnapp.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         bekräftaKnapp.setText("Bekräfta");
+        bekräftaKnapp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bekräftaKnappActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -79,6 +95,31 @@ public class ändraKC extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bekräftaKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bekräftaKnappActionPerformed
+        // TODO add your handling code here:
+        try{
+            int bekr = JOptionPane.showConfirmDialog(null, "Är du säker på att du vill ändra den nuvarande kontorschefen?"  , "Bekräfta ändring av kontorschef", JOptionPane.YES_NO_OPTION);
+            if (bekr == JOptionPane.YES_OPTION){
+            String namn;
+            String agentID;
+            namn = namnField.getText();
+            if(Valideringsklass.värdeExisterar(namnField)){
+                String nuvarandeChef = mibdb.fetchSingle("SELECT Agent_ID FROM Kontorschef WHERE Kontorsbeteckning = 'Örebrokontoret'");
+                mibdb.delete("DELETE FROM Kontorschef WHERE Kontorsbeteckning = 'Örebrokontoret'");
+                agentID = mibdb.fetchSingle("SELECT Agent_ID FROM Agent WHERE Namn =" + "'" + namn + "'");
+                mibdb.insert("INSERT INTO Kontorschef VALUES(" + "'" + agentID + "'" + ", 'Örebrokontoret')");
+                mibdb.delete("DELETE FROM Faltagent WHERE Agent_ID = "+ "'" + agentID + "'");
+                mibdb.insert("INSERT INTO Faltagent VALUES(" + "'" + nuvarandeChef + "'" + ")");
+                JOptionPane.showMessageDialog(null, "Du har nu gjort " + namn + " till den nya kontorschefen!");
+            }
+            }
+        }
+            catch(InfException e){
+                    JOptionPane.showMessageDialog(null, "Det gick inte att ansluta till databasen.");
+                    }
+        
+    }//GEN-LAST:event_bekräftaKnappActionPerformed
 
    
 
