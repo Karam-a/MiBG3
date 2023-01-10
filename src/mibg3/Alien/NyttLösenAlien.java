@@ -18,7 +18,11 @@ public class NyttLösenAlien extends javax.swing.JFrame {
      * Creates new form NyttLösenAlien
      */
     public NyttLösenAlien() {
+        try{
+        mibdb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
         initComponents();
+    }
+    catch(InfException e){JOptionPane.showMessageDialog(null, "Kunde inte ansluta till databasen.");}
     }
 
     /**
@@ -122,7 +126,7 @@ public class NyttLösenAlien extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
          try{
-            mibdb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
+            
             String nuvarandeLösen;
             String sammaLös = sammaLösen.getText();
             String nyttLös = nyttLösen.getText();
@@ -133,7 +137,7 @@ public class NyttLösenAlien extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Du har ändrat ditt lösenord!");
             }
             else{
-                JOptionPane.showMessageDialog(null, "Fel användare.");
+                JOptionPane.showMessageDialog(null, "Du gjorde en liten fucky-wucky. Försök igenm.");
             }
         }
         catch(InfException e){

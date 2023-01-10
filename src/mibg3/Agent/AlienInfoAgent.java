@@ -404,7 +404,13 @@ private ArrayList<String> namn;
        }
     }
    
-    private String getAlienNamn(){
+   private void uppdatera(){
+    this.dispose();
+         AlienInfoAgent aIA = new AlienInfoAgent();
+         aIA.setVisible(true);
+    }
+   
+   private String getAlienNamn(){
     namnLista();        
           aNamn = alienValCB.getSelectedItem().toString();
           return aNamn;
@@ -508,6 +514,7 @@ private ArrayList<String> namn;
    catch(InfException e){JOptionPane.showMessageDialog(null, "Något gick fel med ändring av rasen, försök igen.");}
     }
     
+ 
   //Efter ändring körs metoden igen, och uppdaterar den nuvarande sidan.
     private void alienValCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alienValCBActionPerformed
        aNamn = alienValCB.getSelectedItem().toString();
@@ -532,7 +539,8 @@ private ArrayList<String> namn;
             String namn = ändraNamnField.getText();
             mibdb.update("UPDATE Alien SET Namn ="+ "'" + namn + "'" + "WHERE Namn ="+ "'" + aNamn + "'");
             JOptionPane.showMessageDialog(null, "Namnet är ändrat.");
-            returnAlienNamnLabel.setText(aNamn);
+            ändraNamnField.setText(aNamn);
+            uppdatera();
             }
         catch(InfException e){
             JOptionPane.showMessageDialog(null, "Det gick inte att ändra namnet.");
@@ -648,18 +656,14 @@ private ArrayList<String> namn;
                 mibdb.delete("DELETE FROM Alien WHERE Alien_ID="+getAlienID());
                 JOptionPane.showMessageDialog(null, tlfNamn + " är nu borttagen från systemet.");
                 //Vid genomförande startar den om fönstret, som på nytt går igenom databasen och hämtar alla Aliens.
-                this.dispose();
-                AlienInfoAgent ailInf = new AlienInfoAgent();
-                ailInf.setVisible(true);
+                uppdatera();
                 }
             catch(InfException e){JOptionPane.showMessageDialog(null, "Något gick fel, försök igen.");}
         }
         //Vid ett "nej" returnerar den till menyn. Inget förändras i databasen eller programmet. 
         else{
         JOptionPane.showMessageDialog(null, "Ingen alien har tagits bort från systemet.");
-         this.dispose();
-         AlienInfoAgent aIA = new AlienInfoAgent();
-         aIA.setVisible(true);
+         uppdatera();
         }
     }//GEN-LAST:event_taBortAlienKnappActionPerformed
 
