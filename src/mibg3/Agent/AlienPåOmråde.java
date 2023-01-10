@@ -50,7 +50,7 @@ public class AlienPåOmråde extends javax.swing.JFrame {
         listP3 = mibdb.fetchColumn("SELECT NAMN from ALIEN where PLATS = 3");
         listP4 = mibdb.fetchColumn("SELECT NAMN from ALIEN where PLATS = 4");
     }
-    catch(InfException E){JOptionPane.showMessageDialog(null, "Finns ingen data att hämta. Fuck you");}
+    catch(InfException E){JOptionPane.showMessageDialog(null, "Finns ingen data att hämta.");}
     }
     
     //Setter som tillåter den inhämtade datan att placeras i tabellerna. Görs genom att skapa ett nytt objekt som tilldelas en rad i jFrame-tabellen.
