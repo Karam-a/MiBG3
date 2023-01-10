@@ -5,6 +5,7 @@
 package mibg3.Alien;
 
 import javax.swing.JOptionPane;
+import mibg3.Inloggningsruta;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
@@ -41,6 +42,7 @@ public class AlienInlogg extends javax.swing.JFrame {
         jTextField2 = new javax.swing.JTextField();
         jPasswordField1 = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
+        tillbakaKnapp = new javax.swing.JButton();
 
         jTextField1.setText("jTextField1");
 
@@ -86,6 +88,13 @@ public class AlienInlogg extends javax.swing.JFrame {
             }
         });
 
+        tillbakaKnapp.setText("Tillbaka");
+        tillbakaKnapp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tillbakaKnappActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -108,6 +117,8 @@ public class AlienInlogg extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(tillbakaKnapp, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
         );
@@ -128,7 +139,9 @@ public class AlienInlogg extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(tillbakaKnapp))
                 .addGap(0, 19, Short.MAX_VALUE))
         );
 
@@ -171,6 +184,11 @@ public class AlienInlogg extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void tillbakaKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tillbakaKnappActionPerformed
+       this.dispose();
+        new Inloggningsruta().setVisible(true);
+    }//GEN-LAST:event_tillbakaKnappActionPerformed
+
     public static String getInloggadAlien(){
             return inloggadAlien;
     }
@@ -185,5 +203,6 @@ public class AlienInlogg extends javax.swing.JFrame {
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JButton tillbakaKnapp;
     // End of variables declaration//GEN-END:variables
 }

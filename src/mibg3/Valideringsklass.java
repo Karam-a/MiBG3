@@ -26,10 +26,7 @@ public class Valideringsklass {
     
     
     public static boolean giltigtLosenord(String losenord){
-        /**
-         * Den här metoden ska kolla om lösenordet man skriver in är ett giltigt antal tecken
-         * som ska vara 6 baserat på hur vi såg det på databasen. 
-         */
+        // metoden kollar på antalet tecken som står angivna i textfältet. Är det över 6 tecken returneras false.
        boolean giltigt;
         if(losenord.length() >= 7){
             giltigt = false;
