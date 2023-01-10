@@ -7,11 +7,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 public class Valideringsklass {
-    /**
-     * I den här klassen kollar vi valideringen av saker när man loggar in.
-     * @param varde
-     * @return 
-     */
 
     public static boolean värdeExisterar(JTextField varde) {
         /**
@@ -85,7 +80,6 @@ public class Valideringsklass {
     
     
 
-    public void main(String args[]) {
-    }
+ 
 
 }
