@@ -4,7 +4,12 @@ package mibg3;
 import mibg3.Admin.AdminInlogg;
 import mibg3.Alien.AlienInlogg;
 import mibg3.Agent.AgentInlogg;
-
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 public class Inloggningsruta extends javax.swing.JFrame {
 
@@ -24,6 +29,7 @@ public class Inloggningsruta extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        vadArDetVarstaSomKanHandaKnapp = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Användarval");
@@ -57,6 +63,13 @@ public class Inloggningsruta extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setText("Loggar du in som Alien, Agent eller Administratör?");
 
+        vadArDetVarstaSomKanHandaKnapp.setText("?");
+        vadArDetVarstaSomKanHandaKnapp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vadArDetVarstaSomKanHandaKnappActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
         jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
         jInternalFrame1Layout.setHorizontalGroup(
@@ -67,7 +80,9 @@ public class Inloggningsruta extends javax.swing.JFrame {
                         .addGap(33, 33, 33)
                         .addComponent(jLabel2))
                     .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                        .addGap(167, 167, 167)
+                        .addContainerGap()
+                        .addComponent(vadArDetVarstaSomKanHandaKnapp, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(102, 102, 102)
                         .addComponent(jLabel1))
                     .addGroup(jInternalFrame1Layout.createSequentialGroup()
                         .addGap(87, 87, 87)
@@ -82,7 +97,9 @@ public class Inloggningsruta extends javax.swing.JFrame {
             jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrame1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(vadArDetVarstaSomKanHandaKnapp))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addGap(39, 39, 39)
@@ -127,7 +144,17 @@ public class Inloggningsruta extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void vadArDetVarstaSomKanHandaKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vadArDetVarstaSomKanHandaKnappActionPerformed
+        kör();
+    }//GEN-LAST:event_vadArDetVarstaSomKanHandaKnappActionPerformed
 
+    private void kör(){
+        try{
+    Desktop.getDesktop().browse(new URI("https://www.youtube.com/watch?v=dQw4w9WgXcQ"));
+    }
+        catch(IOException | URISyntaxException e){
+        System.out.println("Attans, det gick inte!");}
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -136,6 +163,7 @@ public class Inloggningsruta extends javax.swing.JFrame {
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton vadArDetVarstaSomKanHandaKnapp;
     // End of variables declaration//GEN-END:variables
 
 
