@@ -1,6 +1,7 @@
 
 package mibg3.Agent;
 
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import mibg3.Valideringsklass;
 import oru.inf.InfDB;
@@ -12,6 +13,7 @@ public class RegAlien extends javax.swing.JFrame {
  private int plats;
  private int ansvarig;
  private String alienID;
+ private ArrayList<String> alienNamn;
  
     public RegAlien() {
         try{
@@ -254,6 +256,15 @@ public class RegAlien extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    private void fyllLista(){
+        try{
+        alienNamn = mibdb.fetchColumn("SELECT Namn FROM Alien");
+        }
+        catch(InfException e){
+            JOptionPane.showMessageDialog(null, "Det gick inte att ansluta till databasen.");
+        }
+    }
     private void DatumFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DatumFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_DatumFieldActionPerformed
@@ -268,8 +279,13 @@ public class RegAlien extends javax.swing.JFrame {
             String datum = DatumField.getText();
             getValdPlats();
             getValdAgent();
+            fyllLista();
             if(Valideringsklass.giltigtLosenord(lösen) && Valideringsklass.värdeExisterar(NamnField) && Valideringsklass.värdeExisterar(DatumField)){
-        try{
+                if(alienNamn.contains(namn)){
+                    JOptionPane.showMessageDialog(null, "Det finns redan en Alien med samma namn, vänligen ange ett nytt namn och försök igen.");
+                }
+                
+            else try{
             alienID = mibdb.getAutoIncrement("Alien", "Alien_ID");
             mibdb.insert("INSERT INTO Alien VALUES(" + alienID + " , " + "'" + datum + "'" + " , " + "'" + lösen + "'" + " , " + "'" + namn + "'" + " , " + "'" + telefon + "'" + " , " + plats + " , " + ansvarig + ")");
             setRas();
@@ -279,8 +295,10 @@ public class RegAlien extends javax.swing.JFrame {
         catch(InfException e){
             JOptionPane.showMessageDialog(null, "Gick inte att ansluta.");
         }
+            } 
+               else{
+            JOptionPane.showMessageDialog(null,"Ett eller flera fält är felaktigt formaterade, vänligen kontrollera fälten och försök igen.");
             }
-            
     }//GEN-LAST:event_okAlienRegKnappActionPerformed
 
     private void NamnFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NamnFieldActionPerformed

@@ -123,8 +123,7 @@ public class HanteraUtrustningAdmin extends javax.swing.JFrame {
     private void delVap(){
         try{
             mibdb.delete("DELETE FROM Vapen WHERE Utrustnings_ID = " + "'" + id + "'");
-            JOptionPane.showMessageDialog(null, "Utrustningen togs bort.");
-            uppdatera();}
+        }
         catch(InfException e){
             JOptionPane.showMessageDialog(null, "Det gick inte att avregistrera utrustningen av typen vapen.");
         }
@@ -133,8 +132,6 @@ public class HanteraUtrustningAdmin extends javax.swing.JFrame {
     private void delKom(){
         try{
             mibdb.delete("DELETE FROM Kommunikation WHERE Utrustnings_ID = " + "'" + id + "'");
-            JOptionPane.showMessageDialog(null, "Utrustningen togs bort.");
-            uppdatera(); 
         }
         catch(InfException e){
             JOptionPane.showMessageDialog(null, "Det gick inte att avregistrera utrustningen av typen kommunikation.");
@@ -143,8 +140,7 @@ public class HanteraUtrustningAdmin extends javax.swing.JFrame {
     
     private void delTek(){
         try{mibdb.delete("DELETE FROM Teknik WHERE Utrustnings_ID = " + "'" + id + "'");
-            JOptionPane.showMessageDialog(null, "Utrustningen togs bort.");
-            uppdatera();}
+        }
         catch(InfException e){
             JOptionPane.showMessageDialog(null, "Det gick inte att avregistrera utrustningen av typen teknik.");
         }
@@ -176,18 +172,21 @@ public class HanteraUtrustningAdmin extends javax.swing.JFrame {
             delInnehar();
             delUtr();
             JOptionPane.showMessageDialog(null, "Avregistrering lyckad!");
+            uppdatera();
             }
             else if (mibdb.fetchColumn("SELECT * FROM Kommunikation WHERE Utrustnings_ID =" + "'" + id + "'").contains(id) && id !=null){
             delKom();
             delInnehar();
             delUtr();
             JOptionPane.showMessageDialog(null, "Avregistrering lyckad!");
+            uppdatera();
             }
             else if(mibdb.fetchColumn("SELECT * FROM Teknik WHERE Utrustnings_ID =" + "'" + id + "'").contains(id) && id !=null){
             delTek();
             delInnehar();
             delUtr();
             JOptionPane.showMessageDialog(null, "Avregistrering lyckad!");
+            uppdatera();
             }
             else{
                 JOptionPane.showMessageDialog(null, "Något gick fel.");

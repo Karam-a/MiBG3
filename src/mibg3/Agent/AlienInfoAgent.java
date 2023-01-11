@@ -88,6 +88,8 @@ private ArrayList<String> namn;
         taBortAlienKnapp = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         logInSomAdmKnapp = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Alieninformation");
@@ -235,6 +237,10 @@ private ArrayList<String> namn;
         logInSomAdmKnapp.setText("Ej inloggad som Admin");
         logInSomAdmKnapp.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
+        jLabel2.setText("Ange ett nummer");
+
+        jLabel3.setText("Ange ett nummer");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -260,7 +266,9 @@ private ArrayList<String> namn;
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(ansvarigAgentLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(returnAlienAnsAgentLabel))
+                                .addComponent(returnAlienAnsAgentLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel3))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(rasLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -272,12 +280,14 @@ private ArrayList<String> namn;
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(nuvarandePlatsLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(returnAlienNuvPlatsLabel))
+                                .addComponent(returnAlienNuvPlatsLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel2))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(rasLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(returnArmBoogLabel)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(ändraAgentField)
@@ -367,13 +377,15 @@ private ArrayList<String> namn;
                     .addComponent(ansvarigAgentLabel)
                     .addComponent(returnAlienAnsAgentLabel)
                     .addComponent(ändraAgent)
-                    .addComponent(ändraAgentField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ändraAgentField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nuvarandePlatsLabel)
                     .addComponent(returnAlienNuvPlatsLabel)
                     .addComponent(ändraPlats)
-                    .addComponent(ändraPlatsField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ändraPlatsField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rasLabel)
@@ -689,6 +701,8 @@ private ArrayList<String> namn;
     private javax.swing.JComboBox<String> alienValCB;
     private javax.swing.JLabel ansvarigAgentLabel;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel logInSomAdmKnapp;
     private javax.swing.JLabel nuvarandePlatsLabel;

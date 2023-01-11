@@ -4,6 +4,7 @@
  */
 package mibg3.Admin;
 
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import mibg3.Valideringsklass;
 import oru.inf.InfDB;
@@ -15,6 +16,7 @@ import oru.inf.InfException;
  */
 public class RegAgent extends javax.swing.JFrame {
     private InfDB mibdb;
+    private ArrayList<String> agentNamn;
 
     /**
      * Creates new form RegAgent
@@ -231,6 +233,14 @@ public class RegAgent extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_TelFieldActionPerformed
 
+    private void fyllLista(){
+        try{
+            agentNamn = mibdb.fetchColumn("SELECT Namn FROM Agent");
+    }
+        catch(InfException e){
+            JOptionPane.showMessageDialog(null, "Kunde inte ansluta till databasen.");
+        }
+    }
     private void okAlienRegKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okAlienRegKnappActionPerformed
         /** Lokala variabeldeklarationer. Dessa ska hämta värdet på det vi skriver in när man registrerar en ny
         * alien och ta lokalvariablerna som sedan sätts in i insert metoden för databasen så att informationen vi skriver in sätts in i databasen.
@@ -240,14 +250,18 @@ public class RegAgent extends javax.swing.JFrame {
         String telefon = TelField.getText();
         String lösen = LösenordField.getText();
         String omrade = omradeCB.getSelectedItem().toString();
+        fyllLista();
         if(admCheckBox.isSelected()){
         admin = "J";
         }
         else{
         admin = "N";
         }
-        if(Valideringsklass.giltigtLosenord(lösen) && Valideringsklass.värdeExisterar(NamnField) && Valideringsklass.värdeExisterar(TelField) && Valideringsklass.giltigtDatum(AnstDatumField)==true);{
-            try{
+        if(Valideringsklass.giltigtLosenord(lösen) && Valideringsklass.värdeExisterar(NamnField) && Valideringsklass.värdeExisterar(TelField) && Valideringsklass.giltigtDatum(AnstDatumField));{
+        if(agentNamn.contains(namn)){
+            JOptionPane.showMessageDialog(null, "Det finns redan en Agent med samma namn, vänligen ange ett nytt namn och försök igen.");
+        }
+          else try{
                 String område = mibdb.fetchSingle("SELECT Omrades_ID FROM Omrade WHERE Benamning =" + "'" + omrade + "'");
                 int id = Integer.parseInt(mibdb.getAutoIncrement("Agent", "Agent_ID"));
                 mibdb.insert("INSERT INTO Agent VALUES(" + id + " , " + "'" + namn + "'" + " , " + "'" + telefon + "'" + " , " + "'" + AnstDatumField.getText() + "'" + " , " + "'" + admin + "'" + " , " + "'" + lösen + "'" + " , " + område + ")");
@@ -255,8 +269,7 @@ public class RegAgent extends javax.swing.JFrame {
 
             }
             catch(InfException e){
-                JOptionPane.showMessageDialog(null, "Kontrollera att fälten är korrekt formaterade.");
-
+                JOptionPane.showMessageDialog(null, "Ett problem uppstod. Fälten kan vara felaktigt formaterade eller så lämnades fälten tomma. Vänligen försök igen.");
             }
         }
 
