@@ -151,34 +151,36 @@ public class AgentInlogg extends javax.swing.JFrame {
     }//GEN-LAST:event_losFieldActionPerformed
 
     private void okKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okKnappActionPerformed
+        //Inloggning för agent. Validerar att värden är angivna i fälten, för att sedan logga in användaren.
         if(Valideringsklass.värdeExisterar(anvField) && Valideringsklass.värdeExisterar(losField)){
         try{
-        String användarnamn = anvField.getText();
-        String lösenord = losField.getText();
-        String inLoggID;
-        String lösen;
-        String namn;
-        String agentCheck; 
+            String användarnamn = anvField.getText();
+            String lösenord = losField.getText();
+            String inLoggID;
+            String lösen;
+            String namn;
+            String agentCheck; 
        
         
-        inLoggID = mibdb.fetchSingle("SELECT Agent_ID FROM Agent WHERE Namn=" + "'" + användarnamn + "'");
-        lösen = mibdb.fetchSingle("SELECT Losenord FROM Agent WHERE Agent_ID =" + "'" + inLoggID + "'");
-        namn = mibdb.fetchSingle("SELECT Namn FROM Agent WHERE Agent_ID ="+"'" +inLoggID+"'");
-        agentCheck = mibdb.fetchSingle("SELECT administrator FROM agent WHERE Agent_ID = " + "'" + inLoggID + "'");
+            inLoggID = mibdb.fetchSingle("SELECT Agent_ID FROM Agent WHERE Namn=" + "'" + användarnamn + "'");
+            lösen = mibdb.fetchSingle("SELECT Losenord FROM Agent WHERE Agent_ID =" + "'" + inLoggID + "'");
+            namn = mibdb.fetchSingle("SELECT Namn FROM Agent WHERE Agent_ID ="+"'" +inLoggID+"'");
+            agentCheck = mibdb.fetchSingle("SELECT administrator FROM agent WHERE Agent_ID = " + "'" + inLoggID + "'");
         
-        
-        if(lösenord.equals(lösen) && (agentCheck.equals("N"))){
-            AgentMeny meny = new AgentMeny(namn);
-            meny.setVisible(true);
-            inloggadAgentID = inLoggID;
-            agentNamn = namn;
-            this.dispose();
+            //Lösenords- och administratörsstatus- kontroll. Kontrollerar att användaren inte är en administratör. Är användaren administratör så får man ett felmeddelande som hänvisar
+            //till admin-inloggen.
+            if(lösenord.equals(lösen) && (agentCheck.equals("N"))){
+                AgentMeny meny = new AgentMeny(namn);
+                meny.setVisible(true);
+                inloggadAgentID = inLoggID;
+                agentNamn = namn;
+                this.dispose();
         }
-        else if(agentCheck.equals("J")){
+            else if(agentCheck.equals("J")){
             JOptionPane.showMessageDialog(null, "Du har angett inloggningsuppgifter för en administratör. Vänligen logga in som Admin.");
         }
-        else{
-            JOptionPane.showMessageDialog(null, "Du har angett fel lösenord eller användarnamn. Vänligen försök igen.");
+            else{
+                JOptionPane.showMessageDialog(null, "Du har angett fel lösenord eller användarnamn. Vänligen försök igen.");
         }
         }
         catch(InfException e){
@@ -189,12 +191,12 @@ public class AgentInlogg extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Kontrollera formatteringen på fälten och försök igen.");
         }
     }//GEN-LAST:event_okKnappActionPerformed
-
+    //Tar användaren tillbaka till inloggningsrutan med ett knapptryck.
     private void tillbakaKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tillbakaKnappActionPerformed
-       this.dispose();
+        this.dispose();
         new Inloggningsruta().setVisible(true);
     }//GEN-LAST:event_tillbakaKnappActionPerformed
-
+    //Getter-metod som returnerar ID:et för användaren.
     public static String getInloggadAgentID(){
     return inloggadAgentID;
     }

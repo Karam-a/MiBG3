@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 public class AlienPaOmrade extends javax.swing.JFrame {
-    //initierar  databasen, även modellen bakom de fyra tabellerna.
+    //Initierar  databasen, även modellen bakom de fyra tabellerna.
     private InfDB mibdb;
     private DefaultTableModel modP1;
     private DefaultTableModel modP2;
@@ -44,13 +44,15 @@ public class AlienPaOmrade extends javax.swing.JFrame {
     
     //Setter-metod som tillämpar inhämtad data från databasen till Arraylists.
     private void hamtaData(){
-    try{
-        listP1 = mibdb.fetchColumn("SELECT Namn from Alien where Plats = 1");
-        listP2= mibdb.fetchColumn("SELECT Namn from ALIEN where PLATS = 2");
-        listP3 = mibdb.fetchColumn("SELECT NAMN from ALIEN where PLATS = 3");
-        listP4 = mibdb.fetchColumn("SELECT NAMN from ALIEN where PLATS = 4");
+         try{
+                listP1 = mibdb.fetchColumn("SELECT Namn from Alien where Plats = 1");
+                listP2= mibdb.fetchColumn("SELECT Namn from ALIEN where PLATS = 2");
+                listP3 = mibdb.fetchColumn("SELECT NAMN from ALIEN where PLATS = 3");
+                listP4 = mibdb.fetchColumn("SELECT NAMN from ALIEN where PLATS = 4");
     }
-    catch(InfException E){JOptionPane.showMessageDialog(null, "Finns ingen data att hämta.");}
+        catch(InfException e){
+                JOptionPane.showMessageDialog(null, "Finns ingen data att hämta.");
+        }
     }
     
     //Setter som tillåter den inhämtade datan att placeras i tabellerna. Görs genom att skapa ett nytt objekt som tilldelas en rad i jFrame-tabellen.
@@ -63,16 +65,16 @@ public class AlienPaOmrade extends javax.swing.JFrame {
         
         //For-each loop som lägger in objekt i tabellerna. 
         for(String namn : listP1){
-        modP1.addRow(new Object[]{namn});
+            modP1.addRow(new Object[]{namn});
         }
         for(String namn2 : listP2){
-        modP2.addRow(new Object[]{namn2});
+            modP2.addRow(new Object[]{namn2});
         }
         for(String namn3 : listP3){
-        modP3.addRow(new Object[]{namn3});
+            modP3.addRow(new Object[]{namn3});
         }
         for(String namn4 : listP4){
-        modP4.addRow(new Object[]{namn4});
+            modP4.addRow(new Object[]{namn4});
         }
         }
     

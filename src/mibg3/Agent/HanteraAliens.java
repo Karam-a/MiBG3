@@ -125,29 +125,31 @@ public class HanteraAliens extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void regAlienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regAlienActionPerformed
+        //Startar en RegAlien ruta för att registrera aliens.
         RegAlien meny = new RegAlien();
         meny.setVisible(true);
     }//GEN-LAST:event_regAlienActionPerformed
 
     private void alienInfoKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alienInfoKnappActionPerformed
+        //Startar en AlienInfoAgent ruta för agent.
         AlienInfoAgent meny = new AlienInfoAgent();
         meny.setVisible(true);
     }//GEN-LAST:event_alienInfoKnappActionPerformed
 
     private void sokEfterOmrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sokEfterOmrActionPerformed
-        // TODO add your handling code here:
+        //Startar en AlienPaOmrade ruta för agent.
         AlienPaOmrade meny = new AlienPaOmrade();
         meny.setVisible(true);
     }//GEN-LAST:event_sokEfterOmrActionPerformed
 
     private void sokEfterRasKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sokEfterRasKnappActionPerformed
-        // TODO add your handling code here:
+        //Startar en sokEfterRas ruta för agent.
         sokEfterRas meny = new sokEfterRas();
         meny.setVisible(true);
     }//GEN-LAST:event_sokEfterRasKnappActionPerformed
 
     private void sokDatumKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sokDatumKnappActionPerformed
-        // TODO add your handling code here:
+        //Startar en tvaDatum ruta för agent (för att kunna söka på aliens registrerade mellan två datum).
         tvaDatum meny = new tvaDatum();
         meny.setVisible(true);
     }//GEN-LAST:event_sokDatumKnappActionPerformed

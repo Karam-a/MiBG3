@@ -1,4 +1,3 @@
-
 package mibg3.Agent;
 
 import java.util.ArrayList;
@@ -8,14 +7,16 @@ import oru.inf.InfDB;
 import oru.inf.InfException;
 
 public class RegAlien extends javax.swing.JFrame {
+    //Instansiering av variabler som presenteras i framens utvalda labels.
     private InfDB mibdb;
-
- private int plats;
- private int ansvarig;
- private String alienID;
- private ArrayList<String> alienNamn;
+    private int plats;
+    private int ansvarig;
+    private String alienID;
+    private ArrayList<String> alienNamn;
+    private ArrayList<String> agentNamn;
  
     public RegAlien() {
+        //Kopplar till databasen.
         try{
             mibdb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
         }
@@ -68,7 +69,7 @@ public class RegAlien extends javax.swing.JFrame {
         setTitle("Registrera Alien");
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel1.setText("Registrera en ny Alien");
+        jLabel1.setText(message());
 
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel2.setText("Datum:");
@@ -146,8 +147,6 @@ public class RegAlien extends javax.swing.JFrame {
         });
 
         platsCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Örebro", "Västerås", "Vilhelmina", "Borås" }));
-
-        agentCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Agent O", "Agent K", "Agent J", "Agent Z" }));
 
         jLabel13.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel13.setText("Antal Armar/Boogies:");
@@ -256,13 +255,30 @@ public class RegAlien extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    private void fyllLista(){
+    private String message(){
+        //Metod för att sätta texten till jLabeln längst upp i rutan. fyllAgentNamn() kallas här också efter det inte gick i konstruktorn.
+        fyllAgentNamn();
+        return "Registrera en ny Alien";
+    }
+    private void fyllAgentNamn(){
+        //Fyller combo-boxen med agentnamn från databasen.
         try{
-        alienNamn = mibdb.fetchColumn("SELECT Namn FROM Alien");
+                agentNamn = mibdb.fetchColumn("SELECT Namn FROM Agent");
+                for(String namn : agentNamn){
+                    agentCB.addItem(namn);
+            }
         }
         catch(InfException e){
-            JOptionPane.showMessageDialog(null, "Det gick inte att ansluta till databasen.");
+                    JOptionPane.showMessageDialog(null, "Det gick inte att ansluta till databasen.");
+        }
+    }
+    private void fyllLista(){
+        //Metod för att hämta alla aliennamn.
+        try{
+                alienNamn = mibdb.fetchColumn("SELECT Namn FROM Alien");
+        }
+        catch(InfException e){
+                JOptionPane.showMessageDialog(null, "Det gick inte att ansluta till databasen.");
         }
     }
     private void DatumFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DatumFieldActionPerformed
@@ -272,6 +288,8 @@ public class RegAlien extends javax.swing.JFrame {
     private void okAlienRegKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okAlienRegKnappActionPerformed
      /** Lokala variabeldeklarationer. Dessa ska hämta värdet på det vi skriver in när man registrerar en ny
       * alien och ta lokalvariablerna som sedan sätts in i insert metoden för databasen så att informationen vi skriver in sätts in i databasen.
+      * getValdPlats(), getValdAgent() och fyllLista() kallas internt för att hämta platsen, agenten och fylla combo-boxen med namn.
+      * fyllLista() används här för att kontrollera att namnet vi skriver in inte redan finns i databasen.
       */
             String namn = NamnField.getText();
             String lösen = LösenordField.getText();
@@ -286,18 +304,18 @@ public class RegAlien extends javax.swing.JFrame {
                 }
                 
             else try{
-            alienID = mibdb.getAutoIncrement("Alien", "Alien_ID");
-            mibdb.insert("INSERT INTO Alien VALUES(" + alienID + " , " + "'" + datum + "'" + " , " + "'" + lösen + "'" + " , " + "'" + namn + "'" + " , " + "'" + telefon + "'" + " , " + plats + " , " + ansvarig + ")");
-            setRas();
-           JOptionPane.showMessageDialog(null, "Grattis! En ny alien har registrerats i systemet.");
+                    alienID = mibdb.getAutoIncrement("Alien", "Alien_ID");
+                    mibdb.insert("INSERT INTO Alien VALUES(" + alienID + " , " + "'" + datum + "'" + " , " + "'" + lösen + "'" + " , " + "'" + namn + "'" + " , " + "'" + telefon + "'" + " , " + plats + " , " + ansvarig + ")");
+                    setRas();
+                    JOptionPane.showMessageDialog(null, "Grattis! En ny alien har registrerats i systemet.");
           
         }
-        catch(InfException e){
-            JOptionPane.showMessageDialog(null, "Gick inte att ansluta.");
+            catch(InfException e){
+                    JOptionPane.showMessageDialog(null, "Gick inte att ansluta.");
         }
             } 
-               else{
-            JOptionPane.showMessageDialog(null,"Ett eller flera fält är felaktigt formaterade, vänligen kontrollera fälten och försök igen.");
+            else{
+                    JOptionPane.showMessageDialog(null,"Ett eller flera fält är felaktigt formaterade, vänligen kontrollera fälten och försök igen.");
             }
     }//GEN-LAST:event_okAlienRegKnappActionPerformed
 
@@ -318,6 +336,7 @@ public class RegAlien extends javax.swing.JFrame {
     }//GEN-LAST:event_armBoogFieldActionPerformed
 
     private void rasCBItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_rasCBItemStateChanged
+        //Metod som automatiskt sätter antalet armar/boogies till 0 ifall man väljer worm som ras.
         if(rasCB.getSelectedItem().equals("Worm")){
             armBoogField.setText("0");
             armBoogField.setEnabled(false);}
@@ -326,6 +345,7 @@ public class RegAlien extends javax.swing.JFrame {
     }//GEN-LAST:event_rasCBItemStateChanged
 
   private void getValdPlats(){
+      //Metod som ska returnera ID:et för platsen som väljs i combo-boxen för plats.
       String vp = platsCB.getSelectedItem().toString();
       switch (vp){
           case "Örebro": 
@@ -344,41 +364,39 @@ public class RegAlien extends javax.swing.JFrame {
   }
   
   private void getValdAgent(){
-    String va = agentCB.getSelectedItem().toString();
-    switch (va){
-        case "Agent O":
-            ansvarig = 1;
-            break;
-        case "Agent K":
-            ansvarig = 2;
-            break;
-        case "Agent J":
-            ansvarig = 3;
-            break;
-        case "Agent Z":
-            ansvarig = 4;
-            break;
-      }
+        //Hämtar den valda agentens (från combo-boxen alltså) ID för att sedan använda det i registreringen av alien.
+        String va = agentCB.getSelectedItem().toString();
+        int id = 0;
+        try{
+                id = Integer.parseInt(mibdb.fetchSingle("SELECT Agent_ID FROM Agent WHERE Namn=" + "'" + va + "'"));
+        }
+        catch(InfException e){
+                JOptionPane.showMessageDialog(null, "Något gick fel. Försök igen.");
+        }
+        ansvarig = id;
   }
   
   private void setRas(){
-  String vr = rasCB.getSelectedItem().toString();
-  int antal = Integer.parseInt(armBoogField.getText());
-  try{
-      switch (vr){
-      case "Boglodite":
-          mibdb.insert("INSERT INTO Boglodite VALUES(" + alienID + "," + antal +")");
-          break;
-      case "Squid":
-          mibdb.insert("INSERT INTO Squid VALUES(" + alienID + "," + antal +")");
-          break;
-      case "Worm":
-          mibdb.insert("INSERT INTO Worm (Alien_ID) VALUES(" + alienID +")");
-          break;
+   //Setter-metod som sätter in alien-ID på den registrerade alien i en viss ras-tabell baserat på vilken ras man väljer.
+    String vr = rasCB.getSelectedItem().toString();
+    int antal = Integer.parseInt(armBoogField.getText());
+    try{
+        switch (vr){
+        case "Boglodite":
+             mibdb.insert("INSERT INTO Boglodite VALUES(" + alienID + "," + antal +")");
+            break;
+        case "Squid":
+            mibdb.insert("INSERT INTO Squid VALUES(" + alienID + "," + antal +")");
+            break;
+        case "Worm":
+            mibdb.insert("INSERT INTO Worm (Alien_ID) VALUES(" + alienID +")");
+            break;
         }
   }
   
-  catch(InfException e){System.out.println("bruh");}
+  catch(InfException e){
+      JOptionPane.showMessageDialog(null, "Något gick fel. Försök igen.");
+  }
   }
     
 

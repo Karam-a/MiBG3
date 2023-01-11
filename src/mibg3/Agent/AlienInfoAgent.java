@@ -1,4 +1,5 @@
 package mibg3.Agent;
+
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
@@ -6,29 +7,28 @@ import java.util.ArrayList;
 import static mibg3.Agent.AgentInlogg.getInloggadAgentID;
 import mibg3.Valideringsklass;
 
-// Instansiering av variabler som presenteras i framens utvalda labels. Även databsen.
+// Instansiering av variabler som presenteras i framens utvalda labels. Även databasen.
 public class AlienInfoAgent extends javax.swing.JFrame {
 
-private InfDB mibdb;
-private String aNamn;
-private String aID;
-private String aRegDat;
-private String aTelNr;
-private String ansvAg;
-private String nuvPlats;
-private String faktOmr;
-private String aRas;
-private String aArm;
-private static String agentInloggad;
-private ArrayList<String> namn;
+    private InfDB mibdb;
+    private String aNamn;
+    private String aID;
+    private String aRegDat;
+    private String aTelNr;
+    private String ansvAg;
+    private String nuvPlats;
+    private String faktOmr;
+    private String aRas;
+    private String aArm;
+    private static String agentInloggad;
+    private ArrayList<String> namn;
 
 
     public AlienInfoAgent() {
         
         try{
-            //ansluter till databasen
+            //Ansluter till databasen.
             mibdb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
-
         }
         catch(InfException e){
             JOptionPane.showMessageDialog(null, "Kunde inte ansluta till databasen, vänligen försök igen.");
@@ -36,12 +36,12 @@ private ArrayList<String> namn;
         initComponents();
         
         agentInloggad = getInloggadAgentID();
-        if(agentInloggad != null){
-            taBortAlienKnapp.setEnabled(false);
-            logInSomAdmKnapp.setVisible(true);
+            if(agentInloggad != null){
+                taBortAlienKnapp.setEnabled(false);
+                logInSomAdmKnapp.setVisible(true);
         }
-        else{
-        logInSomAdmKnapp.setVisible(false);
+            else{
+                logInSomAdmKnapp.setVisible(false);
         }
          
  }
@@ -405,143 +405,180 @@ private ArrayList<String> namn;
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-   private void errorLol(){
-   JOptionPane.showMessageDialog(null, "Något gick fel, försök igen");}
+        private void errorLol(){
+            JOptionPane.showMessageDialog(null, "Något gick fel, försök igen");}
    
-   private void namnLista(){
-       try{
-        namn = mibdb.fetchColumn("SELECT Namn FROM Alien");
-        for(String alienNamn : namn){
-            alienValCB.addItem(alienNamn);
+        private void namnLista(){
+            //Hämtar ut alla aliennamn i databasen och sätter in dem i en arraylist.
+            try{
+                    namn = mibdb.fetchColumn("SELECT Namn FROM Alien");
+                    for(String alienNamn : namn){
+                    alienValCB.addItem(alienNamn);
         }
        }
-       catch(InfException e){
-           JOptionPane.showMessageDialog(null, "Det gick inte att ansluta till databasen.");
+            catch(InfException e){
+                    JOptionPane.showMessageDialog(null, "Det gick inte att ansluta till databasen.");
        }
     }
    
-   private void uppdatera(){
-    this.dispose();
-         AlienInfoAgent aIA = new AlienInfoAgent();
-         aIA.setVisible(true);
+        private void uppdatera(){
+            //Uppdaterar combo-boxen och öppnar om rutan på nytt så att den visar alla aktuella namn i databasen om 
+            //man exempelvis ändrat en aliens namn eller tagit bort an alien.
+            this.dispose();
+            AlienInfoAgent aIA = new AlienInfoAgent();
+            aIA.setVisible(true);
     }
    
-   private String getAlienNamn(){
-    namnLista();        
-          aNamn = alienValCB.getSelectedItem().toString();
-          return aNamn;
+        private String getAlienNamn(){
+            //Fyller combo-boxen samt hämtar den valda agentens namn. 
+            //Anledningen till att namnLista() används här och inte i konstruktorn är att den helt enkelt
+            //inte instansieras i konstruktorn och verkar bara fungera här.
+            namnLista();        
+            aNamn = alienValCB.getSelectedItem().toString();
+            return aNamn;
     }
       
     
-    private String getAlienID(){
-        try{aID = mibdb.fetchSingle("SELECT Alien_ID FROM Alien WHERE Namn=" + "'" + aNamn + "'");}
-        catch(InfException e){errorLol();}
-        return aID;
+        private String getAlienID(){
+            //Getter-metod, hämtar den valda aliens ID.
+            try{
+                aID = mibdb.fetchSingle("SELECT Alien_ID FROM Alien WHERE Namn=" + "'" + aNamn + "'");
+         }
+            catch(InfException e){
+                errorLol();
+            }
+                return aID;
     }
     
-    private String getRegDat(){
-    try{aRegDat = mibdb.fetchSingle("SELECT Registreringsdatum FROM Alien WHERE Namn=" + "'" + aNamn + "'");}
-    catch(InfException e){errorLol();}
-    return aRegDat;
+        private String getRegDat(){
+            //Getter metod, hämtar den valda aliens registreringsdatum.
+            try{
+                aRegDat = mibdb.fetchSingle("SELECT Registreringsdatum FROM Alien WHERE Namn=" + "'" + aNamn + "'");
+        }
+            catch(InfException e){errorLol();
+            }
+                return aRegDat;
     }
    
    
-    private String getTelNr(){
-    try{aTelNr = mibdb.fetchSingle("SELECT Telefon FROM Alien WHERE Namn=" + "'" + aNamn + "'");}
-    catch(InfException e){errorLol();}
-    return aTelNr;
+        private String getTelNr(){
+            //Getter-metod, hämtar den valda aliens telefonnummer.
+            try{
+                aTelNr = mibdb.fetchSingle("SELECT Telefon FROM Alien WHERE Namn=" + "'" + aNamn + "'");
+    }
+            catch(InfException e){errorLol();
+            }
+                return aTelNr;
     }
     
-    private String getAnsvarAg(){
-        String tlfAag;
+        private String getAnsvarAg(){
+            //Getter-metod, hämtar den valda aliens ansvariga agent.
+            String tlfAag;
+            try{
+                tlfAag = mibdb.fetchSingle("SELECT Ansvarig_Agent FROM Alien WHERE Namn=" + "'" + aNamn+ "'");
+                ansvAg = mibdb.fetchSingle("SELECT Namn FROM Agent WHERE Agent_ID=" + tlfAag);}
+            catch(InfException e){
+                errorLol();
+            }
+                return ansvAg;
+    }
+    
+        private String getNuvPlats(){
+            //Getter-metod, hämtar den valda aliens nuvarande plats samt område.
+            String tlfOmr;
+            String finnsI;
         try{
-        tlfAag = mibdb.fetchSingle("SELECT Ansvarig_Agent FROM Alien WHERE Namn=" + "'" + aNamn+ "'");
-        ansvAg = mibdb.fetchSingle("SELECT Namn FROM Agent WHERE Agent_ID=" + tlfAag);}
-    catch(InfException e){errorLol();}
-    return ansvAg;
+                tlfOmr = mibdb.fetchSingle("SELECT Plats FROM Alien WHERE Namn=" + "'" + aNamn + "'");
+                nuvPlats = mibdb.fetchSingle("SELECT Benamning FROM Plats WHERE Plats_ID=" + tlfOmr);
+                finnsI = mibdb.fetchSingle("SELECT Finns_I FROM Plats WHERE Plats_ID=" + tlfOmr);
+                faktOmr = mibdb.fetchSingle("SELECT Benamning FROM Omrade WHERE Omrades_ID=" + finnsI);
     }
-    
-    private String getNuvPlats(){
-        String tlfOmr;
-        String finnsI;
-    try{
-        tlfOmr = mibdb.fetchSingle("SELECT Plats FROM Alien WHERE Namn=" + "'" + aNamn + "'");
-        nuvPlats = mibdb.fetchSingle("SELECT Benamning FROM Plats WHERE Plats_ID=" + tlfOmr);
-        finnsI = mibdb.fetchSingle("SELECT Finns_I FROM Plats WHERE Plats_ID=" + tlfOmr);
-        faktOmr = mibdb.fetchSingle("SELECT Benamning FROM Omrade WHERE Omrades_ID=" + finnsI);
+        catch(InfException e){
+                errorLol();
     }
-    catch(InfException e){errorLol();}
-    return nuvPlats + ", " + faktOmr;
+                return nuvPlats + ", " + faktOmr;
     }
 
-    private String getRas(){
-        try{
-                if(mibdb.fetchColumn("SELECT * FROM Squid WHERE Alien_ID=" + "'" + aID + "'").contains(aID) && aID !=null){
-                    aRas = "Squid";}
-                else if (mibdb.fetchColumn("SELECT * FROM Boglodite WHERE Alien_ID=" + "'" + aID + "'").contains(aID) && aID !=null){
-                    aRas = "Boglodite";}
-                else if(mibdb.fetchColumn("SELECT * FROM Worm WHERE Alien_ID = "+ "'" + aID + "'").contains(aID) && aID !=null){
-                    aRas="Worm";}
-                else{
-                    aRas = "Alien Saknar Ras.";}
-            }
-        catch(InfException e){errorLol();}
-        return aRas;
+        private String getRas(){
+            //Getter-metod, hämtar den valda aliens ras.
+            try{
+                    if(mibdb.fetchColumn("SELECT * FROM Squid WHERE Alien_ID=" + "'" + aID + "'").contains(aID) && aID !=null){
+                        aRas = "Squid";
+                    }
+                    else if (mibdb.fetchColumn("SELECT * FROM Boglodite WHERE Alien_ID=" + "'" + aID + "'").contains(aID) && aID !=null){
+                        aRas = "Boglodite";
+                    }
+                    else if(mibdb.fetchColumn("SELECT * FROM Worm WHERE Alien_ID = "+ "'" + aID + "'").contains(aID) && aID !=null){
+                        aRas="Worm";
+                    }
+                    else{
+                        aRas = "Alien Saknar Ras.";
+                    }
+    }
+            catch(InfException e){
+                    errorLol();
+    }
+                return aRas;
     }
     
-    private String getArmBoog(){
-        try{
-        String ras = getRas();
-        switch (ras){
-            case "Squid":
-               aArm = mibdb.fetchSingle("SELECT Antal_Armar FROM Squid WHERE Alien_ID=" + getAlienID());
-               break;
-            case "Boglodite":
-                aArm = mibdb.fetchSingle("SELECT Antal_Boogies FROM Boglodite WHERE Alien_ID=" + getAlienID());
-                break;
-            case "Worm":
-                aArm = "0";
-                break;
-            case "Alien Saknar Ras.":
-                aArm = "Ras Saknas.";
+        private String getArmBoog(){
+            //Getter-metod, hämtar antal armar/boogies ifall man är squid eller boglodite och returnerar 0
+            //ifall man är worm alternativt att alien saknar ras ifall den inte har någon registrerad.
+            try{
+            String ras = getRas();
+            switch (ras){
+                case "Squid":
+                    aArm = mibdb.fetchSingle("SELECT Antal_Armar FROM Squid WHERE Alien_ID=" + getAlienID());
+                    break;
+                case "Boglodite":
+                    aArm = mibdb.fetchSingle("SELECT Antal_Boogies FROM Boglodite WHERE Alien_ID=" + getAlienID());
+                    break;
+                case "Worm":
+                    aArm = "0";
+                    break;
+                case "Alien Saknar Ras.":
+                    aArm = "Ras Saknas.";
         }
     }
-        catch(InfException e){errorLol();}
-        return aArm;
+            catch(InfException e){errorLol();
+            }
+                return aArm;
     }
     
-    private void taBortFranRas(){
-   try{
-       String rasCheck = getRas();
-       if("Alien Saknar Ras.".equals(rasCheck)){
-       }
-       else switch(rasCheck){
-           case "Squid":
-               mibdb.delete("DELETE FROM Squid WHERE Alien_ID=" + aID);
-               break;
-           case "Boglodite":
-               mibdb.delete("DELETE FROM Boglodite WHERE Alien_ID=" + aID);
-               break;
-           case "Worm":
-               mibdb.delete("DELETE FROM Worm WHERE Alien_ID=" + aID);
-               break;
+        private void taBortFranRas(){
+            //Metod för att ta bort en alien från en ras när man ändrar dess ras till en annan.
+            try{
+                    String rasCheck = getRas();
+                    if("Alien Saknar Ras.".equals(rasCheck)){
+            }
+            else switch(rasCheck){
+                case "Squid":
+                    mibdb.delete("DELETE FROM Squid WHERE Alien_ID=" + aID);
+                    break;
+                case "Boglodite":
+                    mibdb.delete("DELETE FROM Boglodite WHERE Alien_ID=" + aID);
+                    break;
+                case "Worm":
+                    mibdb.delete("DELETE FROM Worm WHERE Alien_ID=" + aID);
+                    break;
        }
    }
-   catch(InfException e){JOptionPane.showMessageDialog(null, "Något gick fel med ändring av rasen, försök igen.");}
+            catch(InfException e){JOptionPane.showMessageDialog(null, "Något gick fel med ändring av rasen, försök igen.");
+            }
     }
     
  
   //Efter ändring körs metoden igen, och uppdaterar den nuvarande sidan.
     private void alienValCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alienValCBActionPerformed
-       aNamn = alienValCB.getSelectedItem().toString();
-       returnAlienAnsAgentLabel.setText(getAnsvarAg());
-       returnAlienIDLabel.setText(getAlienID());
-       returnAlienNamnLabel.setText(aNamn);
-       returnAlienNuvPlatsLabel.setText(getNuvPlats());
-       returnAlienRegDatumLabel.setText(getRegDat());
-       returnAlienTelNrLabel.setText(getTelNr());
-       returnAlienRasLabel.setText(getRas());
-       returnArmBoogLabel.setText(getArmBoog());
+            aNamn = alienValCB.getSelectedItem().toString();
+            returnAlienAnsAgentLabel.setText(getAnsvarAg());
+            returnAlienIDLabel.setText(getAlienID());
+            returnAlienNamnLabel.setText(aNamn);
+            returnAlienNuvPlatsLabel.setText(getNuvPlats());
+            returnAlienRegDatumLabel.setText(getRegDat());
+            returnAlienTelNrLabel.setText(getTelNr());
+            returnAlienRasLabel.setText(getRas());
+            returnArmBoogLabel.setText(getArmBoog());
        
     }//GEN-LAST:event_alienValCBActionPerformed
 
@@ -550,115 +587,118 @@ private ArrayList<String> namn;
     }//GEN-LAST:event_alienValCBPropertyChange
 
     private void ändraNamnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ändraNamnActionPerformed
-        // TODO add your handling code here:
-        if(Valideringsklass.värdeExisterar(ändraNamnField)){
-        try{
-            String namn = ändraNamnField.getText();
-            mibdb.update("UPDATE Alien SET Namn ="+ "'" + namn + "'" + "WHERE Namn ="+ "'" + aNamn + "'");
-            JOptionPane.showMessageDialog(null, "Namnet är ändrat.");
-            ändraNamnField.setText(aNamn);
-            uppdatera();
+        //Validerar att det finns ett värde i fältet och ändrar en aliens namn samt uppdaterar rutan så att namnet visas direkt i combo-boxen.
+            if(Valideringsklass.värdeExisterar(ändraNamnField)){
+                try{
+                        String namn = ändraNamnField.getText();
+                        mibdb.update("UPDATE Alien SET Namn ="+ "'" + namn + "'" + "WHERE Namn ="+ "'" + aNamn + "'");
+                        JOptionPane.showMessageDialog(null, "Namnet är ändrat.");
+                        ändraNamnField.setText(aNamn);
+                        uppdatera();
             }
-        catch(InfException e){
-            JOptionPane.showMessageDialog(null, "Det gick inte att ändra namnet.");
+                catch(InfException e){
+                        JOptionPane.showMessageDialog(null, "Det gick inte att ändra namnet.");
         }
         }
     }//GEN-LAST:event_ändraNamnActionPerformed
 
     private void ändraRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ändraRegActionPerformed
-        // TODO add your handling code here:
-        if(Valideringsklass.värdeExisterar(ändraRegField)){
-        try{
-            String reg = ändraRegField.getText();
-            mibdb.update("UPDATE Alien SET Registreringsdatum ="+ "'" + reg + "'" + "WHERE Namn ="+ "'" + aNamn + "'");
-            JOptionPane.showMessageDialog(null, "Registreringsdatumet är ändrat.");
-            returnAlienRegDatumLabel.setText(getRegDat());
+        //Validerar att ett värde finns i fältet och sedan ändrar registreringsdatumet för en alien samt uppdaterar jLabel som visar det datumet.
+            if(Valideringsklass.värdeExisterar(ändraRegField)){
+                try{
+                        String reg = ändraRegField.getText();
+                        mibdb.update("UPDATE Alien SET Registreringsdatum ="+ "'" + reg + "'" + "WHERE Namn ="+ "'" + aNamn + "'");
+                        JOptionPane.showMessageDialog(null, "Registreringsdatumet är ändrat.");
+                        returnAlienRegDatumLabel.setText(getRegDat());
         }
-        catch(InfException e){
-            JOptionPane.showMessageDialog(null, "Det gick inte att ändra registreringsdatumet.");
+                catch(InfException e){
+                JOptionPane.showMessageDialog(null, "Det gick inte att ändra registreringsdatumet.");
         }
         }
     }//GEN-LAST:event_ändraRegActionPerformed
 
     private void ändraTelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ändraTelActionPerformed
-        // TODO add your handling code here:
-        if(Valideringsklass.värdeExisterar(ändraTelField)){
-        try{
-            String telefon = ändraTelField.getText();
-            mibdb.update("UPDATE Alien SET Telefon ="+ "'" + telefon + "'" + "WHERE Namn ="+ "'" + aNamn + "'");
-            JOptionPane.showMessageDialog(null, "Telefonnumret är ändrat.");
-            returnAlienTelNrLabel.setText(getTelNr());
+        //Validerar att ett värde finns i fältet och ändrar telefonnumret för en alien samt uppdaterar jLabeln som visar det numret.
+            if(Valideringsklass.värdeExisterar(ändraTelField)){
+                try{
+                        String telefon = ändraTelField.getText();
+                        mibdb.update("UPDATE Alien SET Telefon ="+ "'" + telefon + "'" + "WHERE Namn ="+ "'" + aNamn + "'");
+                        JOptionPane.showMessageDialog(null, "Telefonnumret är ändrat.");
+                        returnAlienTelNrLabel.setText(getTelNr());
         }
-        catch(InfException e){
-            JOptionPane.showMessageDialog(null, "Det gick inte att ändra telefonnumret.");
+                catch(InfException e){
+                        JOptionPane.showMessageDialog(null, "Det gick inte att ändra telefonnumret.");
         }
         }
     }//GEN-LAST:event_ändraTelActionPerformed
 
     private void ändraAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ändraAgentActionPerformed
-        // TODO add your handling code here:
-        if(Valideringsklass.värdeExisterar(ändraAgentField)){
-        try{
-            String agent = ändraAgentField.getText();
-            mibdb.update("UPDATE Alien SET Ansvarig_Agent ="+ "'" + agent + "'" + "WHERE Namn ="+ "'" + aNamn + "'");
-            JOptionPane.showMessageDialog(null, "Ansvarig agent är ändrad.");
-            returnAlienAnsAgentLabel.setText(getAnsvarAg());
+        //Validerar att ett värde finns i fältet och ändrar den ansvariga agenten för en alien samt uppdaterar jLabeln som visar agentens namn.
+            if(Valideringsklass.värdeExisterar(ändraAgentField)){
+                try{
+                        String agent = ändraAgentField.getText();
+                        mibdb.update("UPDATE Alien SET Ansvarig_Agent ="+ "'" + agent + "'" + "WHERE Namn ="+ "'" + aNamn + "'");
+                        JOptionPane.showMessageDialog(null, "Ansvarig agent är ändrad.");
+                        returnAlienAnsAgentLabel.setText(getAnsvarAg());
             
         }
-        catch(InfException e){
-            JOptionPane.showMessageDialog(null, "Det gick inte att ändra ansvarig agent.");
+                catch(InfException e){
+                        JOptionPane.showMessageDialog(null, "Det gick inte att ändra ansvarig agent.");
         }
         }
     }//GEN-LAST:event_ändraAgentActionPerformed
 
     private void ändraPlatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ändraPlatsActionPerformed
-        // TODO add your handling code here:
-        if(Valideringsklass.värdeExisterar(ändraPlatsField)){
-        try{
-            String plats = ändraPlatsField.getText();
-            mibdb.update("UPDATE Alien SET Plats ="+ "'" + plats + "'" + "WHERE Namn ="+ "'" + aNamn + "'");
-            JOptionPane.showMessageDialog(null, "Nuvarande plats är ändrad.");
-            returnAlienNuvPlatsLabel.setText(getNuvPlats());
+        //Validerar att ett värde finns i fältet och ändrar platsen en alien befinner sig i samt uppdaterar jLabeln som visar platens namn.
+            if(Valideringsklass.värdeExisterar(ändraPlatsField)){
+                try{
+                        String plats = ändraPlatsField.getText();
+                        mibdb.update("UPDATE Alien SET Plats ="+ "'" + plats + "'" + "WHERE Namn ="+ "'" + aNamn + "'");
+                        JOptionPane.showMessageDialog(null, "Nuvarande plats är ändrad.");
+                        returnAlienNuvPlatsLabel.setText(getNuvPlats());
         }
-        catch(InfException e){
-            JOptionPane.showMessageDialog(null, "Det gick inte att ändra den nuvarande platsen.");
+                catch(InfException e){
+                        JOptionPane.showMessageDialog(null, "Det gick inte att ändra den nuvarande platsen.");
         }
         }
     }//GEN-LAST:event_ändraPlatsActionPerformed
 
     private void ändraRasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ändraRasActionPerformed
-        if (ändraRasCB.getSelectedItem().equals(getRas()) && ändraRasAntalArmBoog.getText().equals(getArmBoog())){
-        JOptionPane.showMessageDialog(null, "Alien " + getAlienNamn() + " är redan registrerad som en " + getRas() + " med " + getArmBoog() +" armar/boogies.");
-        return;
+            //Denna metod ändrar rasen för en alien. Om du försöker registrera samma ras och antal armar/boogies kommer ett felmeddelande som säger
+            //att den redan är registrerad som den rasen med/eller antalet armar/boogies. Annars ändrar den rasen och tar även bort den från den rasen den var
+            //innan genom att kalla på taBortFranRas() via ett intert metodanrop. Dessutom uppdateras alla jLabels så att informationen är aktuell.
+            if (ändraRasCB.getSelectedItem().equals(getRas()) && ändraRasAntalArmBoog.getText().equals(getArmBoog())){
+                JOptionPane.showMessageDialog(null, "Alien " + getAlienNamn() + " är redan registrerad som en " + getRas() + " med " + getArmBoog() +" armar/boogies.");
+                return;
         }
-        else if(ändraRasCB.getSelectedItem().equals(getRas())){
-        JOptionPane.showMessageDialog(null, "Alien " + getAlienNamn() + " är redan registrerad som en " + getRas() + ".");
-        return;
+            else if(ändraRasCB.getSelectedItem().equals(getRas())){
+                JOptionPane.showMessageDialog(null, "Alien " + getAlienNamn() + " är redan registrerad som en " + getRas() + ".");
+                return;
         }  
-           else try{
-            int antAB = Integer.parseInt(ändraRasAntalArmBoog.getText());
-            String valdRas = ändraRasCB.getSelectedItem().toString();
-            switch (valdRas){
-                case "Boglodite":
-                    taBortFranRas();
-                    mibdb.insert("INSERT INTO Boglodite(Alien_ID,Antal_Boogies) VALUES(" + aID + "," + "'" + antAB + "'" + ")");
-                    break;
-                case "Squid":
-                    taBortFranRas();
-                    mibdb.insert("INSERT INTO Squid (Alien_ID,Antal_armar) VALUES(" + aID +"," +"'" + antAB + "'"+ ")");
-                    break;
-                case "Worm":
-                    taBortFranRas();
-                    mibdb.insert("INSERT INTO Worm (Alien_ID) VALUES(" + aID + ")");
-                    break;
+            else try{
+                int antAB = Integer.parseInt(ändraRasAntalArmBoog.getText());
+                String valdRas = ändraRasCB.getSelectedItem().toString();
+                switch (valdRas){
+                    case "Boglodite":
+                        taBortFranRas();
+                        mibdb.insert("INSERT INTO Boglodite(Alien_ID,Antal_Boogies) VALUES(" + aID + "," + "'" + antAB + "'" + ")");
+                        break;
+                    case "Squid":
+                        taBortFranRas();
+                        mibdb.insert("INSERT INTO Squid (Alien_ID,Antal_armar) VALUES(" + aID +"," +"'" + antAB + "'"+ ")");
+                        break;
+                    case "Worm":
+                        taBortFranRas();
+                        mibdb.insert("INSERT INTO Worm (Alien_ID) VALUES(" + aID + ")");
+                        break;
             }
             
         }
-        catch(InfException e){JOptionPane.showMessageDialog(null, "Rasändring misslyckades, vänligen försök igen.");}
-        JOptionPane.showMessageDialog(null, "Rasbyte lyckades! Alien " + aNamn+ " är nu "+ getRas() + "!");
-        ändraRasAntalArmBoog.setText("");
-        returnArmBoogLabel.setText(getArmBoog());
-        returnAlienRasLabel.setText(getRas());
+            catch(InfException e){JOptionPane.showMessageDialog(null, "Rasändring misslyckades, vänligen försök igen.");}
+                JOptionPane.showMessageDialog(null, "Rasbyte lyckades! Alien " + aNamn+ " är nu "+ getRas() + "!");
+                ändraRasAntalArmBoog.setText("");
+                returnArmBoogLabel.setText(getArmBoog());
+                returnAlienRasLabel.setText(getRas());
     }//GEN-LAST:event_ändraRasActionPerformed
 
     private void ändraRasAntalArmBoogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ändraRasAntalArmBoogActionPerformed
@@ -666,14 +706,17 @@ private ArrayList<String> namn;
     }//GEN-LAST:event_ändraRasAntalArmBoogActionPerformed
 
     private void ändraRasCBItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ändraRasCBItemStateChanged
-        if(ändraRasCB.getSelectedItem().equals("Worm")){
-            ändraRasAntalArmBoog.setText("0");
-            ändraRasAntalArmBoog.setEnabled(false);}
-        else{
-            ändraRasAntalArmBoog.setEnabled(true);}
+            //Metod som gör att man inte kan skriva in antal armar/boogies om man väljer worm då den rasen inte har den egenskapen.
+            if(ändraRasCB.getSelectedItem().equals("Worm")){
+                ändraRasAntalArmBoog.setText("0");
+                ändraRasAntalArmBoog.setEnabled(false);}
+            else{
+                ändraRasAntalArmBoog.setEnabled(true);}
     }//GEN-LAST:event_ändraRasCBItemStateChanged
 
     private void taBortAlienKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taBortAlienKnappActionPerformed
+        //Metod som tar bort en alien med en knapp. Klickar man på den får man upp en JOptionPane som frågar om man är säker på att man vill ta bort alien
+        //och klickar man YES så tas den bort från rasen samt alientabellen.
         String tlfNamn = getAlienNamn();
         int bekr = JOptionPane.showConfirmDialog(null, "Är du säker på att du vill ta bort " + getAlienNamn() + " från systemet? DET GÅR INTE ATT ÅNGRA!"  , "Bekräfta borttagning av " + tlfNamn, JOptionPane.YES_NO_OPTION);
         if (bekr == JOptionPane.YES_OPTION){
@@ -684,12 +727,14 @@ private ArrayList<String> namn;
                 //Vid genomförande startar den om fönstret, som på nytt går igenom databasen och hämtar alla Aliens.
                 uppdatera();
                 }
-            catch(InfException e){JOptionPane.showMessageDialog(null, "Något gick fel, försök igen.");}
+            catch(InfException e){
+                JOptionPane.showMessageDialog(null, "Något gick fel, försök igen.");
+            }
         }
         //Vid ett "nej" returnerar den till menyn. Inget förändras i databasen eller programmet. 
         else{
-        JOptionPane.showMessageDialog(null, "Ingen alien har tagits bort från systemet.");
-         uppdatera();
+                JOptionPane.showMessageDialog(null, "Ingen alien har tagits bort från systemet.");
+                uppdatera();
         }
     }//GEN-LAST:event_taBortAlienKnappActionPerformed
 
