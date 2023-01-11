@@ -21,6 +21,9 @@ public class AlienMeny extends javax.swing.JFrame {
      * Creates new form AlienMeny
      */
     public AlienMeny() {
+        
+        try{mibdb = new InfDB("mibdb", "3306", "mibdba", "mibkey");}
+        catch(InfException e){JOptionPane.showMessageDialog(null, "Kunde inte ansluta till databasen.");}
         initComponents();
     }
 
@@ -88,9 +91,9 @@ public class AlienMeny extends javax.swing.JFrame {
             jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrame1Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(alienRutaNamn)
-                    .addComponent(välkommenAlien))
+                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(välkommenAlien)
+                    .addComponent(alienRutaNamn))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -123,11 +126,12 @@ public class AlienMeny extends javax.swing.JFrame {
     private void InfoOmOCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InfoOmOCActionPerformed
         // TODO add your handling code here:
         try{
-            mibdb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
             String plats;
             plats = mibdb.fetchSingle("SELECT Plats FROM Alien WHERE Alien_ID = "+ "'" + (mibg3.Alien.AlienInlogg.getInloggadAlien()) + "'");
+            String omrade;
+            omrade = mibdb.fetchSingle("SELECT Finns_I FROM Plats WHERE Plats_ID =" + "'"+ plats + "'");
             String områdeschefID;
-            områdeschefID = mibdb.fetchSingle("SELECT Agent_ID FROM Omradeschef WHERE Omrade = "+ "'" + plats + "'");
+            områdeschefID = mibdb.fetchSingle("SELECT Agent_ID FROM Omradeschef WHERE Omrade = "+ "'" + omrade + "'");
             
             ocNamn = mibdb.fetchSingle("SELECT Namn FROM Agent WHERE Agent_ID = "+ "'" + områdeschefID + "'");
             ocTel = mibdb.fetchSingle("SELECT Telefon FROM Agent WHERE Agent_ID = "+ "'" + områdeschefID + "'");

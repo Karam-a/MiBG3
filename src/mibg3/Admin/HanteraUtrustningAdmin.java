@@ -114,21 +114,40 @@ public class HanteraUtrustningAdmin extends javax.swing.JFrame {
         utrNamn = utrustningCB.getSelectedItem().toString();
         return utrNamn;
     }
-   
+    private void uppdatera(){
+        this.dispose();
+        HanteraUtrustningAdmin tlf = new HanteraUtrustningAdmin();
+        tlf.setVisible(true);
+   }
     
     private void delVap(){
-    try{mibdb.delete("DELETE FROM Vapen WHERE Utrustnings_ID = " + "'" + id + "'");}
-    catch(InfException e){JOptionPane.showMessageDialog(null, "Det gick inte att avregistrera utrustningen av typen vapen.");}
+        try{
+            mibdb.delete("DELETE FROM Vapen WHERE Utrustnings_ID = " + "'" + id + "'");
+            JOptionPane.showMessageDialog(null, "Utrustningen togs bort.");
+            uppdatera();}
+        catch(InfException e){
+            JOptionPane.showMessageDialog(null, "Det gick inte att avregistrera utrustningen av typen vapen.");
+        }
     }
     
     private void delKom(){
-        try{mibdb.delete("DELETE FROM Kommunikation WHERE Utrustnings_ID = " + "'" + id + "'");}
-        catch(InfException e){JOptionPane.showMessageDialog(null, "Det gick inte att avregistrera utrustningen av typen kommunikation.");}
+        try{
+            mibdb.delete("DELETE FROM Kommunikation WHERE Utrustnings_ID = " + "'" + id + "'");
+            JOptionPane.showMessageDialog(null, "Utrustningen togs bort.");
+            uppdatera(); 
+        }
+        catch(InfException e){
+            JOptionPane.showMessageDialog(null, "Det gick inte att avregistrera utrustningen av typen kommunikation.");
+        }
     }
     
     private void delTek(){
-        try{mibdb.delete("DELETE FROM Teknik WHERE Utrustnings_ID = " + "'" + id + "'");}
-        catch(InfException e){JOptionPane.showMessageDialog(null, "Det gick inte att avregistrera utrustningen av typen teknik.");}
+        try{mibdb.delete("DELETE FROM Teknik WHERE Utrustnings_ID = " + "'" + id + "'");
+            JOptionPane.showMessageDialog(null, "Utrustningen togs bort.");
+            uppdatera();}
+        catch(InfException e){
+            JOptionPane.showMessageDialog(null, "Det gick inte att avregistrera utrustningen av typen teknik.");
+        }
     }
     
     private void delUtr(){

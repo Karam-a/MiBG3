@@ -40,9 +40,10 @@ private InfDB mibdb;
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        nuvarandeLösenKnapp = new javax.swing.JPasswordField();
-        nyttLösenKnapp = new javax.swing.JPasswordField();
+        nuvarandeLösenField = new javax.swing.JPasswordField();
+        nyttLösenField = new javax.swing.JPasswordField();
         okKnapp = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Ändra Lösenord");
@@ -50,7 +51,7 @@ private InfDB mibdb;
         jInternalFrame1.setVisible(true);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        jLabel1.setText("Här kan du ändra ditt lösenord!");
+        jLabel1.setText("Ändra ditt lösenord");
 
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel2.setText("Nuvarande lösenord:");
@@ -58,9 +59,9 @@ private InfDB mibdb;
         jLabel3.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel3.setText("Nytt lösenord:");
 
-        nuvarandeLösenKnapp.addActionListener(new java.awt.event.ActionListener() {
+        nuvarandeLösenField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nuvarandeLösenKnappActionPerformed(evt);
+                nuvarandeLösenFieldActionPerformed(evt);
             }
         });
 
@@ -72,27 +73,33 @@ private InfDB mibdb;
             }
         });
 
+        jLabel4.setText("Max 6 tecken");
+
         javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
         jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
         jInternalFrame1Layout.setHorizontalGroup(
             jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrame1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(okKnapp, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21))
             .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
                     .addGroup(jInternalFrame1Layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(nuvarandeLösenKnapp, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
-                            .addComponent(nyttLösenKnapp))))
-                .addContainerGap(46, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrame1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(okKnapp, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
+                            .addComponent(nuvarandeLösenField, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
+                            .addComponent(nyttLösenField))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jInternalFrame1Layout.createSequentialGroup()
+                        .addGap(66, 66, 66)
+                        .addComponent(jLabel1)))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
         jInternalFrame1Layout.setVerticalGroup(
             jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -102,11 +109,12 @@ private InfDB mibdb;
                 .addGap(37, 37, 37)
                 .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(nuvarandeLösenKnapp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nuvarandeLösenField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
                 .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(nyttLösenKnapp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nyttLösenField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addComponent(okKnapp)
                 .addContainerGap())
@@ -129,9 +137,9 @@ private InfDB mibdb;
     private void okKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okKnappActionPerformed
         // TODO add your handling code here:
             String nuvarandeLösen;
-            String sammaLösen = nuvarandeLösenKnapp.getText();
-            String nyttLösen = nyttLösenKnapp.getText();
-        if(Valideringsklass.värdeExisterar(nuvarandeLösenKnapp) && Valideringsklass.värdeExisterar(nyttLösenKnapp) && Valideringsklass.giltigtLosenord(nyttLösen)){
+            String sammaLösen = nuvarandeLösenField.getText();
+            String nyttLösen = nyttLösenField.getText();
+        if(Valideringsklass.värdeExisterar(nuvarandeLösenField) && Valideringsklass.värdeExisterar(nyttLösenField) && Valideringsklass.giltigtLosenord(nyttLösen)){
                     try{
                         nuvarandeLösen = mibdb.fetchSingle("SELECT Losenord FROM Agent WHERE Agent_ID = "+ "'" + (mibg3.Agent.AgentInlogg.getInloggadAgentID()) + "'");
                             if(nuvarandeLösen.equals(sammaLösen)){
@@ -146,13 +154,13 @@ private InfDB mibdb;
         }
         }
         else{
-                    JOptionPane.showMessageDialog(null, "Lösenord du angav är felaktigt eller längre än 6 tecken. Vänligen försök igen.");
+                    JOptionPane.showMessageDialog(null, "Lösenordet du angav är längre än 6 tecken eller lämnades tomt. Vänligen försök igen.");
                     }
     }//GEN-LAST:event_okKnappActionPerformed
 
-    private void nuvarandeLösenKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuvarandeLösenKnappActionPerformed
+    private void nuvarandeLösenFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuvarandeLösenFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nuvarandeLösenKnappActionPerformed
+    }//GEN-LAST:event_nuvarandeLösenFieldActionPerformed
 
 
 
@@ -161,8 +169,9 @@ private InfDB mibdb;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPasswordField nuvarandeLösenKnapp;
-    private javax.swing.JPasswordField nyttLösenKnapp;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPasswordField nuvarandeLösenField;
+    private javax.swing.JPasswordField nyttLösenField;
     private javax.swing.JButton okKnapp;
     // End of variables declaration//GEN-END:variables
 }
