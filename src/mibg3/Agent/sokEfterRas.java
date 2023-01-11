@@ -47,8 +47,11 @@ public class sokEfterRas extends javax.swing.JFrame {
     }
     
     private void fyllTabeller(){
-        //tabellB, tabellW och tabellS är jTables i rutan. tabellB1, W1 och S1
-        //tilldelas värdena för tabellB, W och S.
+       /* Koden hämtar modellen (Inställningar och data) till tabellerna B, W och S och anger dem som varsin enskilda variabel.
+        * TabellB, tabellW och tabellS är jTables i rutan. tabellB1, W1 och S1 tilldelas värdena för tabellB, W och S.
+         */
+        
+        
         hämtaData();
         tabellB1 = (DefaultTableModel) tabellB.getModel();
         tabellW1 = (DefaultTableModel) tabellW.getModel();
