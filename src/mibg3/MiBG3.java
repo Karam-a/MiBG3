@@ -11,15 +11,14 @@ private static InfDB idb;
 
 // Main-metoden loggar in användaren till SQL-databasen.
     public static void main(String[] args) {
-         {   
-          try { idb=new InfDB("mibdb", "3306","mibdba","mibkey");
+    {   
+        try { idb=new InfDB("mibdb", "3306","mibdba","mibkey");
 
-          } catch (InfException ex)
-          {
-              Logger.getLogger(MiBG3.class.getName()).log(Level.SEVERE, null, ex);
+          } catch (InfException ex){
+                Logger.getLogger(MiBG3.class.getName()).log(Level.SEVERE, null, ex);
 
           }
-         }
+     }
 /** Startar programmet. Kallar på metoden "Inloggningsruta" där användaren 
 * sedan väljer om de är en alien, agent eller admin.
 */
