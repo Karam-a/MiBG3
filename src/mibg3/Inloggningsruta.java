@@ -64,6 +64,7 @@ public class Inloggningsruta extends javax.swing.JFrame {
         jLabel2.setText("Loggar du in som Alien, Agent eller Administratör?");
 
         vadArDetVarstaSomKanHandaKnapp.setFont(new java.awt.Font("Segoe UI", 0, 8)); // NOI18N
+        vadArDetVarstaSomKanHandaKnapp.setForeground(new java.awt.Color(255, 51, 51));
         vadArDetVarstaSomKanHandaKnapp.setText("vad är det värsta som kan hända?");
         vadArDetVarstaSomKanHandaKnapp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
