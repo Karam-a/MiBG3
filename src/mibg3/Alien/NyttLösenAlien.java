@@ -4,6 +4,7 @@
  */
 package mibg3.Alien;
 import javax.swing.JOptionPane;
+import mibg3.Valideringsklass;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
@@ -123,24 +124,27 @@ public class NyttLösenAlien extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-         try{
-            
-            String nuvarandeLösen;
+        String nuvarandeLösen;
             String sammaLös = sammaLösen.getText();
             String nyttLös = nyttLösen.getText();
-            
+        if(Valideringsklass.värdeExisterar(sammaLösen) && Valideringsklass.värdeExisterar(nyttLösen) && Valideringsklass.giltigtLosenord(nyttLös)){
+         try{
             nuvarandeLösen = mibdb.fetchSingle("SELECT Losenord FROM Alien WHERE Alien_ID = "+ "'" + (mibg3.Alien.AlienInlogg.getInloggadAlien()) + "'");
             if(nuvarandeLösen.equals(sammaLös)){
                 mibdb.update("UPDATE Alien SET Losenord = "+ "'" + nyttLös + "'" + " WHERE Losenord ="+ "'" + nuvarandeLösen + "'");
                 JOptionPane.showMessageDialog(null, "Du har ändrat ditt lösenord!");
             }
             else{
-                JOptionPane.showMessageDialog(null, "Du gjorde en liten fucky-wucky. Försök igenm.");
+                JOptionPane.showMessageDialog(null, "Du har angett fel lösenord. Försök igen.");
             }
         }
         catch(InfException e){
             JOptionPane.showMessageDialog(null, "Kunde inte ansluta till databasen.");
             
+        }
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Kontrollera formatteringen på fälten och försök igen.");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

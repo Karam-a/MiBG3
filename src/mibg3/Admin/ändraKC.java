@@ -95,6 +95,7 @@ public class ändraKC extends javax.swing.JFrame {
 
     private void bekräftaKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bekräftaKnappActionPerformed
         // TODO add your handling code here:
+        if(Valideringsklass.värdeExisterar(namnField)){
         try{
             int bekr = JOptionPane.showConfirmDialog(null, "Är du säker på att du vill ändra den nuvarande kontorschefen?"  , "Bekräfta ändring av kontorschef", JOptionPane.YES_NO_OPTION);
             if (bekr == JOptionPane.YES_OPTION){
@@ -115,6 +116,10 @@ public class ändraKC extends javax.swing.JFrame {
             catch(InfException e){
                     JOptionPane.showMessageDialog(null, "Det gick inte att ansluta till databasen.");
                     }
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Kontrollera formatteringen på fältet och försök igen.");
+        }
         
     }//GEN-LAST:event_bekräftaKnappActionPerformed
 

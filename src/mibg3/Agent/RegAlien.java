@@ -14,6 +14,12 @@ public class RegAlien extends javax.swing.JFrame {
  private String alienID;
  
     public RegAlien() {
+        try{
+            mibdb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
+        }
+        catch(InfException e){
+            JOptionPane.showMessageDialog(null, "Kunde inte ansluta till databasen.");
+        }
         initComponents();
     }
 
@@ -264,8 +270,6 @@ public class RegAlien extends javax.swing.JFrame {
             getValdAgent();
             if(Valideringsklass.giltigtLosenord(lösen) && Valideringsklass.värdeExisterar(NamnField) && Valideringsklass.värdeExisterar(DatumField)){
         try{
-            // Instansierar databasen.
-            mibdb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
             alienID = mibdb.getAutoIncrement("Alien", "Alien_ID");
             mibdb.insert("INSERT INTO Alien VALUES(" + alienID + " , " + "'" + datum + "'" + " , " + "'" + lösen + "'" + " , " + "'" + namn + "'" + " , " + "'" + telefon + "'" + " , " + plats + " , " + ansvarig + ")");
             setRas();

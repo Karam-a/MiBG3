@@ -8,6 +8,7 @@ import oru.inf.InfDB;
 import oru.inf.InfException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import mibg3.Valideringsklass;
 
 /**
  *
@@ -109,8 +110,18 @@ public class ändraInfoAgent extends javax.swing.JFrame {
         jLabel6.setText("Ange ett nummer");
 
         ändraOmrådeKnapp.setText("Ändra");
+        ändraOmrådeKnapp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ändraOmrådeKnappActionPerformed(evt);
+            }
+        });
 
         ändraTelKnapp.setText("Ändra");
+        ändraTelKnapp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ändraTelKnappActionPerformed(evt);
+            }
+        });
 
         ändraLösenKnapp.setText("Ändra");
         ändraLösenKnapp.addActionListener(new java.awt.event.ActionListener() {
@@ -148,7 +159,7 @@ public class ändraInfoAgent extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(11, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel7)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -233,6 +244,7 @@ public class ändraInfoAgent extends javax.swing.JFrame {
 
     private void ändraNamnKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ändraNamnKnappActionPerformed
         // TODO add your handling code here:
+        if(Valideringsklass.värdeExisterar(ändraNamnField)){
         try{
             String nyttNamn = ändraNamnField.getText();
             mibdb.update("UPDATE Agent SET Namn =" + "'" + nyttNamn + "'" + "WHERE Namn =" + "'" + hämtaNamn() + "'");
@@ -241,17 +253,26 @@ public class ändraInfoAgent extends javax.swing.JFrame {
         catch(InfException e){
             errorMessage();
         }
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Kontrollera formatteringen på fältet och försök igen.");
+        }
     }//GEN-LAST:event_ändraNamnKnappActionPerformed
 
     private void ändraLösenKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ändraLösenKnappActionPerformed
         // TODO add your handling code here:
+        String nyttLösen = ändraLösenordField.getText();
+        if(Valideringsklass.värdeExisterar(ändraLösenordField) && Valideringsklass.giltigtLosenord(nyttLösen)){
         try{
-            String nyttLösen = ändraLösenordField.getText();
             mibdb.update("UPDATE Agent SET Losenord =" + "'" + nyttLösen + "'" + "WHERE Namn =" + "'" + hämtaNamn() + "'");
             JOptionPane.showMessageDialog(null, "Lösenordet är ändrat.");
         }
         catch(InfException e){
             errorMessage();
+        }
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Kontrollera formatteringen på fältet och försök igen.");
         }
     }//GEN-LAST:event_ändraLösenKnappActionPerformed
 
@@ -267,6 +288,40 @@ public class ändraInfoAgent extends javax.swing.JFrame {
              JOptionPane.showMessageDialog(null, hämtaNamn() + " är borttagen som Administratör!");
              }
        catch(InfException e){JOptionPane.showMessageDialog(null, "Något gick fel, försök igen");}    }//GEN-LAST:event_admNEJActionPerformed
+
+    private void ändraTelKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ändraTelKnappActionPerformed
+        // TODO add your handling code here:
+        if(Valideringsklass.värdeExisterar(ändraTelField)){
+        try{
+           String nyTel = ändraTelField.getText();
+           mibdb.update("UPDATE Agent SET Telefon="+ "'" + nyTel + "'" + "WHERE Namn =" + "'" + hämtaNamn() + "'");
+           JOptionPane.showMessageDialog(null, "Telefonnumret är ändrat!");
+        }
+        catch(InfException e){
+            errorMessage();
+        }
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Kontrollera formatteringen på fältet och försök igen.");
+        }
+    }//GEN-LAST:event_ändraTelKnappActionPerformed
+
+    private void ändraOmrådeKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ändraOmrådeKnappActionPerformed
+        // TODO add your handling code here:
+        if(Valideringsklass.värdeExisterar(ändraOmrådeField)){
+        try{
+            String nyttOmr = ändraOmrådeField.getText();
+            mibdb.update("UPDATE Agent SET Omrade ="+ "'" + nyttOmr + "'" + "WHERE Namn ="+ "'" + hämtaNamn() + "'");
+            JOptionPane.showMessageDialog(null, "Området är ändrat!");
+        }
+        catch(InfException e){
+            errorMessage();
+        }
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Kontrollera formatteringen på fältet och försök igen.");
+        }
+    }//GEN-LAST:event_ändraOmrådeKnappActionPerformed
 
  
 

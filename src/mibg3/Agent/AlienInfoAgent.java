@@ -4,6 +4,7 @@ import oru.inf.InfDB;
 import oru.inf.InfException;
 import java.util.ArrayList;
 import static mibg3.Agent.AgentInlogg.getInloggadAgentID;
+import mibg3.Valideringsklass;
 
 // Instansiering av variabler som presenteras i framens utvalda labels. Även databsen.
 public class AlienInfoAgent extends javax.swing.JFrame {
@@ -535,6 +536,7 @@ private ArrayList<String> namn;
 
     private void ändraNamnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ändraNamnActionPerformed
         // TODO add your handling code here:
+        if(Valideringsklass.värdeExisterar(ändraNamnField)){
         try{
             String namn = ändraNamnField.getText();
             mibdb.update("UPDATE Alien SET Namn ="+ "'" + namn + "'" + "WHERE Namn ="+ "'" + aNamn + "'");
@@ -545,10 +547,12 @@ private ArrayList<String> namn;
         catch(InfException e){
             JOptionPane.showMessageDialog(null, "Det gick inte att ändra namnet.");
         }
+        }
     }//GEN-LAST:event_ändraNamnActionPerformed
 
     private void ändraRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ändraRegActionPerformed
         // TODO add your handling code here:
+        if(Valideringsklass.värdeExisterar(ändraRegField)){
         try{
             String reg = ändraRegField.getText();
             mibdb.update("UPDATE Alien SET Registreringsdatum ="+ "'" + reg + "'" + "WHERE Namn ="+ "'" + aNamn + "'");
@@ -558,10 +562,12 @@ private ArrayList<String> namn;
         catch(InfException e){
             JOptionPane.showMessageDialog(null, "Det gick inte att ändra registreringsdatumet.");
         }
+        }
     }//GEN-LAST:event_ändraRegActionPerformed
 
     private void ändraTelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ändraTelActionPerformed
         // TODO add your handling code here:
+        if(Valideringsklass.värdeExisterar(ändraTelField)){
         try{
             String telefon = ändraTelField.getText();
             mibdb.update("UPDATE Alien SET Telefon ="+ "'" + telefon + "'" + "WHERE Namn ="+ "'" + aNamn + "'");
@@ -571,10 +577,12 @@ private ArrayList<String> namn;
         catch(InfException e){
             JOptionPane.showMessageDialog(null, "Det gick inte att ändra telefonnumret.");
         }
+        }
     }//GEN-LAST:event_ändraTelActionPerformed
 
     private void ändraAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ändraAgentActionPerformed
         // TODO add your handling code here:
+        if(Valideringsklass.värdeExisterar(ändraAgentField)){
         try{
             String agent = ändraAgentField.getText();
             mibdb.update("UPDATE Alien SET Ansvarig_Agent ="+ "'" + agent + "'" + "WHERE Namn ="+ "'" + aNamn + "'");
@@ -585,10 +593,12 @@ private ArrayList<String> namn;
         catch(InfException e){
             JOptionPane.showMessageDialog(null, "Det gick inte att ändra ansvarig agent.");
         }
+        }
     }//GEN-LAST:event_ändraAgentActionPerformed
 
     private void ändraPlatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ändraPlatsActionPerformed
         // TODO add your handling code here:
+        if(Valideringsklass.värdeExisterar(ändraPlatsField)){
         try{
             String plats = ändraPlatsField.getText();
             mibdb.update("UPDATE Alien SET Plats ="+ "'" + plats + "'" + "WHERE Namn ="+ "'" + aNamn + "'");
@@ -597,6 +607,7 @@ private ArrayList<String> namn;
         }
         catch(InfException e){
             JOptionPane.showMessageDialog(null, "Det gick inte att ändra den nuvarande platsen.");
+        }
         }
     }//GEN-LAST:event_ändraPlatsActionPerformed
 

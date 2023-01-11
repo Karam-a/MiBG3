@@ -6,6 +6,7 @@ package mibg3.Alien;
 
 import javax.swing.JOptionPane;
 import mibg3.Inloggningsruta;
+import mibg3.Valideringsklass;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
@@ -21,6 +22,12 @@ public class AlienInlogg extends javax.swing.JFrame {
     private static String inloggadAlien;
     InfDB mibdb;
     public AlienInlogg() {
+        try{
+            mibdb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
+        }
+        catch(InfException e){
+            JOptionPane.showMessageDialog(null, "Kunde inte ansluta till databasen.");
+        }
         initComponents();
     }
 
@@ -162,8 +169,8 @@ public class AlienInlogg extends javax.swing.JFrame {
 
     private void okKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okKnappActionPerformed
         // TODO add your handling code here:
+        if(Valideringsklass.värdeExisterar(anvField) && Valideringsklass.värdeExisterar(losField)){
         try{
-            mibdb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
             String användarnamn = anvField.getText();
             String lösenord = losField.getText();
             String namn;
@@ -185,6 +192,10 @@ public class AlienInlogg extends javax.swing.JFrame {
         catch(InfException e){
             JOptionPane.showMessageDialog(null, "Kunde inte ansluta.");
         
+        }
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Kontrollera formatteringen på fälten och försök igen.");
         }
     }//GEN-LAST:event_okKnappActionPerformed
 

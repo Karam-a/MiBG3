@@ -5,6 +5,7 @@
 package mibg3.Agent;
 
 import javax.swing.JOptionPane;
+import mibg3.Valideringsklass;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
@@ -19,6 +20,12 @@ public class KommunikationReg extends javax.swing.JFrame {
      * Creates new form KommunikationReg
      */
     public KommunikationReg() {
+        try{
+            mibdb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
+        }
+        catch(InfException e){
+            JOptionPane.showMessageDialog(null, "Kunde inte ansluta till databasen.");
+        }
         initComponents();
     }
 
@@ -108,8 +115,8 @@ public class KommunikationReg extends javax.swing.JFrame {
 
     private void OKknappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OKknappActionPerformed
         // TODO add your handling code here:
+        if(Valideringsklass.värdeExisterar(benämningField) && Valideringsklass.värdeExisterar(överföringField)){
         try{
-            mibdb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
             String benämning = benämningField.getText();
             String överföringsteknik = överföringField.getText();
             String tlfNID = "";
@@ -121,6 +128,10 @@ public class KommunikationReg extends javax.swing.JFrame {
         }
         catch(InfException e){
             JOptionPane.showMessageDialog(null, "Det gick inte att registrera utrustningen.");
+        }
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Kontrollera formatteringen på fälten och försök igen.");
         }
     }//GEN-LAST:event_OKknappActionPerformed
 

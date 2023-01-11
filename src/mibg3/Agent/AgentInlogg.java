@@ -7,11 +7,17 @@ import oru.inf.InfDB;
 import oru.inf.InfException;
 
 public class AgentInlogg extends javax.swing.JFrame {
-
+    private InfDB mibdb;
     private static String inloggadAgentID;
     private static String agentNamn;
   
     public AgentInlogg() {
+        try{
+            mibdb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
+        }
+        catch(InfException e){
+            JOptionPane.showMessageDialog(null, "Kunde inte ansluta till databasen.");
+        }
         inloggadAgentID = "";
         agentNamn = "";
         initComponents();
@@ -145,9 +151,8 @@ public class AgentInlogg extends javax.swing.JFrame {
     }//GEN-LAST:event_losFieldActionPerformed
 
     private void okKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okKnappActionPerformed
-
+        if(Valideringsklass.värdeExisterar(anvField) && Valideringsklass.värdeExisterar(losField)){
         try{
-        mibdb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
         String användarnamn = anvField.getText();
         String lösenord = losField.getText();
         String inLoggID;
@@ -179,6 +184,10 @@ public class AgentInlogg extends javax.swing.JFrame {
         catch(InfException e){
             JOptionPane.showMessageDialog(null, "Kunde inte ansluta till databasen.");
         }
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Kontrollera formatteringen på fälten och försök igen.");
+        }
     }//GEN-LAST:event_okKnappActionPerformed
 
     private void tillbakaKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tillbakaKnappActionPerformed
@@ -189,8 +198,6 @@ public class AgentInlogg extends javax.swing.JFrame {
     public static String getInloggadAgentID(){
     return inloggadAgentID;
     }
-
-    private InfDB mibdb;
   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

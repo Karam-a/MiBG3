@@ -5,6 +5,7 @@
 package mibg3.Agent;
 
 import javax.swing.JOptionPane;
+import mibg3.Valideringsklass;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 /**
@@ -17,6 +18,12 @@ private InfDB mibdb;
      * Creates new form NyttLösenord
      */
     public NyttLösenord() {
+        try{
+            mibdb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
+        }
+        catch(InfException e){
+            JOptionPane.showMessageDialog(null, "Kunde inte ansluta till databasen.");
+        }
         initComponents();
     }
 
@@ -121,25 +128,26 @@ private InfDB mibdb;
 
     private void okKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okKnappActionPerformed
         // TODO add your handling code here:
-        try{
-            mibdb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
             String nuvarandeLösen;
             String sammaLösen = nuvarandeLösenKnapp.getText();
             String nyttLösen = nyttLösenKnapp.getText();
-            
-            nuvarandeLösen = mibdb.fetchSingle("SELECT Losenord FROM Agent WHERE Agent_ID = "+ "'" + (mibg3.Agent.AgentInlogg.getInloggadAgentID()) + "'");
-            if(nuvarandeLösen.equals(sammaLösen)){
+        if(Valideringsklass.värdeExisterar(nuvarandeLösenKnapp) && Valideringsklass.värdeExisterar(nyttLösenKnapp) && Valideringsklass.giltigtLosenord(nyttLösen)){
+                    try{
+                        nuvarandeLösen = mibdb.fetchSingle("SELECT Losenord FROM Agent WHERE Agent_ID = "+ "'" + (mibg3.Agent.AgentInlogg.getInloggadAgentID()) + "'");
+                            if(nuvarandeLösen.equals(sammaLösen)){
                 mibdb.update("UPDATE Agent SET Losenord = "+ "'" + nyttLösen + "'" + " WHERE Losenord ="+ "'" + nuvarandeLösen + "'");
                 JOptionPane.showMessageDialog(null, "Du har ändrat ditt lösenord!");
             }
-            else{
-                JOptionPane.showMessageDialog(null, "Lösenordet du angav är felaktigt eller längre än 6 tecken. Vänligen försök igen.");
-            }
+            
         }
         catch(InfException e){
             JOptionPane.showMessageDialog(null, "Kunde inte ansluta till databasen.");
             
         }
+        }
+        else{
+                    JOptionPane.showMessageDialog(null, "Lösenord du angav är felaktigt eller längre än 6 tecken. Vänligen försök igen.");
+                    }
     }//GEN-LAST:event_okKnappActionPerformed
 
     private void nuvarandeLösenKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuvarandeLösenKnappActionPerformed

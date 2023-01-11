@@ -8,6 +8,7 @@ import oru.inf.InfDB;
 import oru.inf.InfException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import mibg3.Valideringsklass;
 /**
  *
  * @author d-aly
@@ -30,15 +31,15 @@ public class tvåDatum extends javax.swing.JFrame {
     }
     
     private void kollaDatum(){
+         if(Valideringsklass.värdeExisterar(startDatumField) && Valideringsklass.värdeExisterar(slutDatumField) && Valideringsklass.giltigtDatum(startDatumField) && Valideringsklass.giltigtDatum(slutDatumField));{
         try{
-            String datum1 = startDatumField.getText();
-            String datum2 = slutDatumField.getText();
-            alienNamn = mibdb.fetchColumn("SELECT Namn FROM Alien WHERE Registreringsdatum > " + "'" + datum1 + "'" + "AND Registreringsdatum <" + "'"  + datum2 + "'");
+            alienNamn = mibdb.fetchColumn("SELECT Namn FROM Alien WHERE Registreringsdatum > " + "'" + startDatumField.getText() + "'" + "AND Registreringsdatum <" + "'"  + slutDatumField.getText() + "'");
             JOptionPane.showMessageDialog(null, alienNamn);
         }
         catch(InfException e){
-            JOptionPane.showMessageDialog(null, "Kunde inte ansluta till databasen.");
+            JOptionPane.showMessageDialog(null, "Kunde inte hitta några aliens mellan angivna datum.");
         }
+         }
     }
 
     /**

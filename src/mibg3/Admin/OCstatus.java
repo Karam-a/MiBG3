@@ -5,6 +5,7 @@
 package mibg3.Admin;
 
 import javax.swing.JOptionPane;
+import mibg3.Valideringsklass;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
@@ -107,6 +108,7 @@ public class OCstatus extends javax.swing.JFrame {
 
     private void okKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okKnappActionPerformed
         // TODO add your handling code here:
+        if(Valideringsklass.värdeExisterar(namnField) && Valideringsklass.värdeExisterar(områdeField)){
         int bekr = JOptionPane.showConfirmDialog(null, "Är du säker på att du vill ändra agentens status till områdeschef?" , "Bekräfta ändring", JOptionPane.YES_NO_OPTION);
         if(bekr == JOptionPane.YES_OPTION){
         try{
@@ -123,7 +125,10 @@ public class OCstatus extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Det gick inte att ändra agenten till områdeschef, vänligen försök igen.");
         }
         }
-        
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Kontrollera formatteringen på fälten och försök igen.");
+        }
     }//GEN-LAST:event_okKnappActionPerformed
 
   

@@ -1,6 +1,7 @@
 package mibg3.Admin;
 import javax.swing.JOptionPane;
 import mibg3.Inloggningsruta;
+import mibg3.Valideringsklass;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
@@ -9,6 +10,12 @@ public class AdminInlogg extends javax.swing.JFrame {
     private String inloggadID;
     
     public AdminInlogg() {
+        try{
+            mibdb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
+        }
+        catch(InfException e){
+            JOptionPane.showMessageDialog(null, "Kunde inte ansluta till databasen.");
+        }
         initComponents();
     }
 
@@ -146,8 +153,8 @@ public class AdminInlogg extends javax.swing.JFrame {
 
     private void okKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okKnappActionPerformed
         //Inloggning för Admin. 
+        if(Valideringsklass.värdeExisterar(anvNamnField) && Valideringsklass.värdeExisterar(angeLosen)){
         try{
-            mibdb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
             String användarnamn = anvNamnField.getText();
             String lösenord = angeLosen.getText();
             String anvID;
@@ -172,6 +179,10 @@ public class AdminInlogg extends javax.swing.JFrame {
         }
         catch(InfException e){
             JOptionPane.showMessageDialog(null, "Kunde inte ansluta.");
+        }
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Kontrollera formatteringen på fälten och försök igen.");
         }
     }//GEN-LAST:event_okKnappActionPerformed
 

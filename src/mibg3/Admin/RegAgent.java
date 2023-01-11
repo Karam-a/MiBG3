@@ -20,6 +20,12 @@ public class RegAgent extends javax.swing.JFrame {
      * Creates new form RegAgent
      */
     public RegAgent() {
+        try{
+            mibdb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
+        }
+        catch(InfException e){
+            JOptionPane.showMessageDialog(null, "Kunde inte ansluta till databasen.");
+        }
         initComponents();
     }
 
@@ -118,7 +124,7 @@ public class RegAgent extends javax.swing.JFrame {
             }
         });
 
-        omradeCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Svealand", "Götaland", "Norrland", " " }));
+        omradeCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Svealand", "Götaland", "Norrland" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -233,7 +239,7 @@ public class RegAgent extends javax.swing.JFrame {
         String namn = NamnField.getText();
         String telefon = TelField.getText();
         String lösen = LösenordField.getText();
-        String omrade= omradeCB.getSelectedItem().toString();
+        String omrade = omradeCB.getSelectedItem().toString();
         if(admCheckBox.isSelected()){
         admin = "J";
         }
@@ -242,11 +248,9 @@ public class RegAgent extends javax.swing.JFrame {
         }
         if(Valideringsklass.giltigtLosenord(lösen) && Valideringsklass.värdeExisterar(NamnField) && Valideringsklass.värdeExisterar(TelField) && Valideringsklass.giltigtDatum(AnstDatumField)==true);{
             try{
-                // Instansierar databasen.
-                JOptionPane.showMessageDialog(null, admin + namn + telefon + lösen + omrade + AnstDatumField.getText());
-                mibdb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
+                String område = mibdb.fetchSingle("SELECT Omrades_ID FROM Omrade WHERE Benamning =" + "'" + omrade + "'");
                 int id = Integer.parseInt(mibdb.getAutoIncrement("Agent", "Agent_ID"));
-                mibdb.insert("INSERT INTO Agent VALUES(" + id + " , " + "'" + namn + "'" + " , " + "'" + telefon + "'" + " , " + "'" + AnstDatumField.getText() + "'" + " , " + "'" + admin + "'" + " , " + "'" + lösen + "'" + " , " + omrade + ")");
+                mibdb.insert("INSERT INTO Agent VALUES(" + id + " , " + "'" + namn + "'" + " , " + "'" + telefon + "'" + " , " + "'" + AnstDatumField.getText() + "'" + " , " + "'" + admin + "'" + " , " + "'" + lösen + "'" + " , " + område + ")");
                 JOptionPane.showMessageDialog(null, "Grattis! En ny agent har registrerats i systemet.");
 
             }

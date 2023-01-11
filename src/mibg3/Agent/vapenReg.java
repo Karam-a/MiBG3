@@ -5,6 +5,7 @@
 package mibg3.Agent;
 
 import javax.swing.JOptionPane;
+import mibg3.Valideringsklass;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 /**
@@ -17,6 +18,12 @@ private InfDB mibdb;
      * Creates new form vapenReg
      */
     public vapenReg() {
+        try{
+            mibdb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
+        }
+        catch(InfException e){
+            JOptionPane.showMessageDialog(null, "Kunde inte ansluta till databasen.");
+        }
         initComponents();
     }
 
@@ -105,8 +112,8 @@ private InfDB mibdb;
 
     private void OKknappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OKknappActionPerformed
         // TODO add your handling code here:
+        if(Valideringsklass.värdeExisterar(benämningField) && Valideringsklass.värdeExisterar(kaliberField)){
         try{
-            mibdb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
             String benämning = benämningField.getText();
             String kaliberv = kaliberField.getText();
             String nästaid = mibdb.getAutoIncrement("Utrustning", "Utrustnings_ID");
@@ -116,6 +123,10 @@ private InfDB mibdb;
         }
         catch(InfException e){
             JOptionPane.showMessageDialog(null, "Det gick inte att registrera utrustningen.");
+        }
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Kontrollera formatteringen på fälten och försök igen.");
         }
     }//GEN-LAST:event_OKknappActionPerformed
 
