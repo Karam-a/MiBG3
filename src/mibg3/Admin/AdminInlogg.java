@@ -5,7 +5,9 @@ import oru.inf.InfDB;
 import oru.inf.InfException;
 
 public class AdminInlogg extends javax.swing.JFrame {
-
+    private InfDB mibdb;
+    private String inloggadID;
+    
     public AdminInlogg() {
         initComponents();
     }
@@ -20,9 +22,9 @@ public class AdminInlogg extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        angeLosen = new javax.swing.JPasswordField();
+        anvNamnField = new javax.swing.JTextField();
+        okKnapp = new javax.swing.JButton();
         tillbakaKnapp = new javax.swing.JButton();
 
         jLabel2.setText("jLabel2");
@@ -40,22 +42,22 @@ public class AdminInlogg extends javax.swing.JFrame {
 
         jLabel6.setText("Lösenord:");
 
-        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+        angeLosen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField1ActionPerformed(evt);
+                angeLosenActionPerformed(evt);
             }
         });
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        anvNamnField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                anvNamnFieldActionPerformed(evt);
             }
         });
 
-        jButton1.setText("OK");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        okKnapp.setText("OK");
+        okKnapp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                okKnappActionPerformed(evt);
             }
         });
 
@@ -71,6 +73,12 @@ public class AdminInlogg extends javax.swing.JFrame {
         jInternalFrame1Layout.setHorizontalGroup(
             jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrame1Layout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(anvNamnField, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jInternalFrame1Layout.createSequentialGroup()
                 .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jInternalFrame1Layout.createSequentialGroup()
                         .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -83,18 +91,13 @@ public class AdminInlogg extends javax.swing.JFrame {
                                 .addGap(74, 74, 74)
                                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                                .addGap(43, 43, 43)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(angeLosen, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 111, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrame1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(tillbakaKnapp)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(okKnapp, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(tillbakaKnapp)))
                 .addContainerGap())
         );
         jInternalFrame1Layout.setVerticalGroup(
@@ -107,15 +110,15 @@ public class AdminInlogg extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(anvNamnField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(angeLosen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(tillbakaKnapp))
+                    .addComponent(tillbakaKnapp)
+                    .addComponent(okKnapp))
                 .addGap(12, 12, 12))
         );
 
@@ -133,34 +136,34 @@ public class AdminInlogg extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+    private void angeLosenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_angeLosenActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField1ActionPerformed
+    }//GEN-LAST:event_angeLosenActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void anvNamnFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anvNamnFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_anvNamnFieldActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void okKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okKnappActionPerformed
         //Inloggning för Admin. 
         try{
             mibdb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
-            String användarnamn = jTextField2.getText();
-            String lösenord = jPasswordField1.getText();
-            String namn;
+            String användarnamn = anvNamnField.getText();
+            String lösenord = angeLosen.getText();
+            String anvID;
             String lösen;
             String checkAdmin;
             
             
-            namn = mibdb.fetchSingle("SELECT Agent_ID FROM Agent WHERE Namn = " + "'" + användarnamn + "'");
-            lösen = mibdb.fetchSingle("SELECT Losenord FROM Agent WHERE Agent_ID = " + "'" + namn + "'");
-            checkAdmin = mibdb.fetchSingle("SELECT Administrator FROM Agent WHERE Agent_ID = " + "'" + namn + "'");
+            anvID = mibdb.fetchSingle("SELECT Agent_ID FROM Agent WHERE Namn = " + "'" + användarnamn + "'");
+            lösen = mibdb.fetchSingle("SELECT Losenord FROM Agent WHERE Agent_ID = " + "'" + anvID + "'");
+            checkAdmin = mibdb.fetchSingle("SELECT Administrator FROM Agent WHERE Agent_ID = " + "'" + anvID + "'");
            
             //Adminkontroll, om databasen anger agenten som Admin får denna tillgång. 
             if(lösenord.equals(lösen) && (checkAdmin.equals("J"))){
                 AdminMeny meny = new AdminMeny();
                 meny.setVisible(true);
-                inloggadID = namn;
+                inloggadID = anvID;
                 this.dispose();
             }
             else{
@@ -170,7 +173,7 @@ public class AdminInlogg extends javax.swing.JFrame {
         catch(InfException e){
             JOptionPane.showMessageDialog(null, "Kunde inte ansluta.");
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_okKnappActionPerformed
 
     private void tillbakaKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tillbakaKnappActionPerformed
         this.dispose();
@@ -178,20 +181,19 @@ public class AdminInlogg extends javax.swing.JFrame {
     }//GEN-LAST:event_tillbakaKnappActionPerformed
 
 
-    private InfDB mibdb;
-    private String inloggadID;
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JPasswordField angeLosen;
+    private javax.swing.JTextField anvNamnField;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JButton okKnapp;
     private javax.swing.JButton tillbakaKnapp;
     // End of variables declaration//GEN-END:variables
 }

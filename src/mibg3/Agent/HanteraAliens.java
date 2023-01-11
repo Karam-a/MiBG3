@@ -16,8 +16,9 @@ public class HanteraAliens extends javax.swing.JFrame {
         regAlien = new javax.swing.JButton();
         alienInfoKnapp = new javax.swing.JButton();
         sokEfterRasKnapp = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        sokEfterOmr = new javax.swing.JButton();
+        sokDatumKnapp = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Hantera Aliens");
@@ -25,7 +26,7 @@ public class HanteraAliens extends javax.swing.JFrame {
         jInternalFrame1.setVisible(true);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        jLabel1.setText("Hitta och ändra information om aliens");
+        jLabel1.setText("Hitta och ändra alieninformation");
 
         regAlien.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         regAlien.setText("Registrera alien");
@@ -51,19 +52,19 @@ public class HanteraAliens extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jButton1.setText("Sök efter område");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        sokEfterOmr.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        sokEfterOmr.setText("Sök efter område");
+        sokEfterOmr.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                sokEfterOmrActionPerformed(evt);
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jButton2.setText("Sök mellan två angivna datum");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        sokDatumKnapp.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        sokDatumKnapp.setText("Sök mellan två angivna datum");
+        sokDatumKnapp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                sokDatumKnappActionPerformed(evt);
             }
         });
 
@@ -73,35 +74,39 @@ public class HanteraAliens extends javax.swing.JFrame {
             jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrame1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                            .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(regAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(sokEfterRasKnapp, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(alienInfoKnapp, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jButton1)))))
-                .addContainerGap(169, Short.MAX_VALUE))
+                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(sokDatumKnapp, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jInternalFrame1Layout.createSequentialGroup()
+                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(regAlien, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(sokEfterRasKnapp, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(alienInfoKnapp, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(sokEfterOmr)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jInternalFrame1Layout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addComponent(jLabel1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         jInternalFrame1Layout.setVerticalGroup(
             jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(52, 52, 52)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(regAlien)
                     .addComponent(alienInfoKnapp))
                 .addGap(18, 18, 18)
                 .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(sokEfterRasKnapp)
-                    .addComponent(jButton1))
+                    .addComponent(sokEfterOmr))
                 .addGap(18, 18, 18)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(sokDatumKnapp, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -129,11 +134,11 @@ public class HanteraAliens extends javax.swing.JFrame {
         meny.setVisible(true);
     }//GEN-LAST:event_alienInfoKnappActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void sokEfterOmrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sokEfterOmrActionPerformed
         // TODO add your handling code here:
         AlienPåOmråde meny = new AlienPåOmråde();
         meny.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_sokEfterOmrActionPerformed
 
     private void sokEfterRasKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sokEfterRasKnappActionPerformed
         // TODO add your handling code here:
@@ -141,21 +146,22 @@ public class HanteraAliens extends javax.swing.JFrame {
         meny.setVisible(true);
     }//GEN-LAST:event_sokEfterRasKnappActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void sokDatumKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sokDatumKnappActionPerformed
         // TODO add your handling code here:
         tvåDatum meny = new tvåDatum();
         meny.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_sokDatumKnappActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton alienInfoKnapp;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSlider jSlider1;
     private javax.swing.JButton regAlien;
+    private javax.swing.JButton sokDatumKnapp;
+    private javax.swing.JButton sokEfterOmr;
     private javax.swing.JButton sokEfterRasKnapp;
     // End of variables declaration//GEN-END:variables
 }

@@ -45,7 +45,6 @@ public class AlienMeny extends javax.swing.JFrame {
         jInternalFrame1.setVisible(true);
 
         alienRutaNamn.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        alienRutaNamn.setText("<ALIEN>");
 
         välkommenAlien.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         välkommenAlien.setText("Välkommen");
@@ -72,7 +71,7 @@ public class AlienMeny extends javax.swing.JFrame {
             jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jSeparator1)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrame1Layout.createSequentialGroup()
-                .addGap(0, 17, Short.MAX_VALUE)
+                .addGap(0, 50, Short.MAX_VALUE)
                 .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrame1Layout.createSequentialGroup()
                         .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -81,7 +80,7 @@ public class AlienMeny extends javax.swing.JFrame {
                         .addGap(43, 43, 43))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrame1Layout.createSequentialGroup()
                         .addComponent(välkommenAlien)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(52, 52, 52)
                         .addComponent(alienRutaNamn)
                         .addGap(14, 14, 14))))
         );

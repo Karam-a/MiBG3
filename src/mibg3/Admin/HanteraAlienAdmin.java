@@ -17,30 +17,30 @@ public class HanteraAlienAdmin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        hantAlienLabel = new javax.swing.JLabel();
+        regAlienKnapp = new javax.swing.JButton();
+        alienInfoKnapp = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Hantera Aliens");
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        jLabel1.setText("Hantera Aliens");
+        hantAlienLabel.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        hantAlienLabel.setText("Hantera Aliens");
 
-        jButton1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jButton1.setText("Registrera alien");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        regAlienKnapp.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        regAlienKnapp.setText("Registrera alien");
+        regAlienKnapp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                regAlienKnappActionPerformed(evt);
             }
         });
 
-        jButton3.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jButton3.setText("Alieninformation");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        alienInfoKnapp.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        alienInfoKnapp.setText("Alieninformation");
+        alienInfoKnapp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                alienInfoKnappActionPerformed(evt);
             }
         });
 
@@ -51,9 +51,9 @@ public class HanteraAlienAdmin extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jButton1)
-                    .addComponent(jButton3))
+                    .addComponent(hantAlienLabel)
+                    .addComponent(regAlienKnapp)
+                    .addComponent(alienInfoKnapp))
                 .addContainerGap(38, Short.MAX_VALUE))
             .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
@@ -61,35 +61,35 @@ public class HanteraAlienAdmin extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addComponent(jLabel1)
+                .addComponent(hantAlienLabel)
                 .addGap(5, 5, 5)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(regAlienKnapp, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(alienInfoKnapp, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void regAlienKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regAlienKnappActionPerformed
         // TODO add your handling code here:
         RegAlien meny = new RegAlien();
         meny.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_regAlienKnappActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void alienInfoKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alienInfoKnappActionPerformed
         AlienInfoAgent meny = new AlienInfoAgent();
         meny.setVisible(true);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_alienInfoKnappActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton alienInfoKnapp;
+    private javax.swing.JLabel hantAlienLabel;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JButton regAlienKnapp;
     // End of variables declaration//GEN-END:variables
 }

@@ -35,19 +35,20 @@ public class RegAgent extends javax.swing.JFrame {
         NamnField = new javax.swing.JTextField();
         AnstDatumField = new javax.swing.JTextField();
         LösenordField = new javax.swing.JPasswordField();
-        jLabel1 = new javax.swing.JLabel();
+        regAgLabel = new javax.swing.JLabel();
         TelField = new javax.swing.JTextField();
         AGID = new javax.swing.JLabel();
         okAlienRegKnapp = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        AdminField = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        OmrådeField = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        namnLabel = new javax.swing.JLabel();
+        telLabel = new javax.swing.JLabel();
+        omrLabel = new javax.swing.JLabel();
+        anstDatLabel = new javax.swing.JLabel();
+        losLabel = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel1 = new javax.swing.JLabel();
+        admCheckBox = new javax.swing.JCheckBox();
+        omradeCB = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Registrera Agenter");
@@ -70,8 +71,8 @@ public class RegAgent extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel1.setText("Här kan du registrera nya agenter!");
+        regAgLabel.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        regAgLabel.setText("Registrera Agent");
 
         TelField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -90,99 +91,119 @@ public class RegAgent extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel3.setText("Namn:");
+        namnLabel.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        namnLabel.setText("Namn:");
 
-        jLabel4.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel4.setText("Telefon:");
+        telLabel.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        telLabel.setText("Telefon:");
 
-        jLabel8.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel8.setText("Område:");
+        omrLabel.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        omrLabel.setText("Område:");
 
-        jLabel5.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel5.setText("Anställningsdatum:");
+        anstDatLabel.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        anstDatLabel.setText("Anställningsdatum:");
 
-        jLabel6.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel6.setText("Administratör:");
-
-        jLabel7.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel7.setText("Lösenord:");
+        losLabel.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        losLabel.setText("Lösenord:");
 
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel2.setText("ID:et anges automatiskt");
+
+        jLabel1.setText("YYYY-MM-DD");
+
+        admCheckBox.setText("Gör till Administratör");
+        admCheckBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                admCheckBoxActionPerformed(evt);
+            }
+        });
+
+        omradeCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Svealand", "Götaland", "Norrland", " " }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
+            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(okAlienRegKnapp, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(regAgLabel)
+                        .addGap(70, 70, 70))))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(AGID)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel6))
+                            .addComponent(anstDatLabel)
+                            .addComponent(telLabel)
+                            .addComponent(namnLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(NamnField)
-                                .addComponent(AnstDatumField)
-                                .addComponent(LösenordField)
-                                .addComponent(AdminField)
-                                .addComponent(OmrådeField)
-                                .addComponent(TelField, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel2))))
-                .addContainerGap(99, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(okAlienRegKnapp, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                            .addComponent(jLabel2)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(NamnField)
+                                    .addComponent(AnstDatumField)
+                                    .addComponent(TelField, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(67, 67, 67)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(admCheckBox)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(losLabel)
+                                    .addComponent(omrLabel))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(LösenordField)
+                                    .addComponent(omradeCB, 0, 95, Short.MAX_VALUE))))))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(79, 79, 79)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(AGID)
-                            .addComponent(jLabel2))))
+                .addContainerGap()
+                .addComponent(regAgLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
+                    .addComponent(AGID)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(namnLabel)
                     .addComponent(NamnField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
+                    .addComponent(telLabel)
                     .addComponent(TelField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(AnstDatumField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(anstDatLabel)
+                    .addComponent(AnstDatumField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(AdminField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
+                    .addComponent(losLabel)
                     .addComponent(LösenordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(OmrådeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                    .addComponent(omrLabel)
+                    .addComponent(omradeCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(admCheckBox)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(okAlienRegKnapp)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -208,47 +229,58 @@ public class RegAgent extends javax.swing.JFrame {
         /** Lokala variabeldeklarationer. Dessa ska hämta värdet på det vi skriver in när man registrerar en ny
         * alien och ta lokalvariablerna som sedan sätts in i insert metoden för databasen så att informationen vi skriver in sätts in i databasen.
         */
+        String admin;
         String namn = NamnField.getText();
         String telefon = TelField.getText();
-        String datum = AnstDatumField.getText();
-        String admin = AdminField.getText();
         String lösen = LösenordField.getText();
-        int plats = Integer.parseInt( OmrådeField.getText());
-        if(Valideringsklass.giltigtLosenord(lösen) && Valideringsklass.värdeExisterar(NamnField) && Valideringsklass.värdeExisterar(AdminField) && Valideringsklass.värdeExisterar(OmrådeField) && Valideringsklass.värdeExisterar(TelField)){
+        String omrade= omradeCB.getSelectedItem().toString();
+        if(admCheckBox.isSelected()){
+        admin = "J";
+        }
+        else{
+        admin = "N";
+        }
+        if(Valideringsklass.giltigtLosenord(lösen) && Valideringsklass.värdeExisterar(NamnField) && Valideringsklass.värdeExisterar(TelField) && Valideringsklass.giltigtDatum(AnstDatumField)==true);{
             try{
                 // Instansierar databasen.
+                JOptionPane.showMessageDialog(null, admin + namn + telefon + lösen + omrade + AnstDatumField.getText());
                 mibdb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
                 int id = Integer.parseInt(mibdb.getAutoIncrement("Agent", "Agent_ID"));
-                mibdb.insert("INSERT INTO Agent VALUES(" + id + " , " + "'" + namn + "'" + " , " + "'" + telefon + "'" + " , " + "'" + datum + "'" + " , " + "'" + admin + "'" + " , " + "'" + lösen + "'" + " , " + plats + ")");
+                mibdb.insert("INSERT INTO Agent VALUES(" + id + " , " + "'" + namn + "'" + " , " + "'" + telefon + "'" + " , " + "'" + AnstDatumField.getText() + "'" + " , " + "'" + admin + "'" + " , " + "'" + lösen + "'" + " , " + omrade + ")");
                 JOptionPane.showMessageDialog(null, "Grattis! En ny agent har registrerats i systemet.");
 
             }
             catch(InfException e){
-                JOptionPane.showMessageDialog(null, "Gick inte att ansluta.");
+                JOptionPane.showMessageDialog(null, "Kontrollera att fälten är korrekt formaterade.");
 
             }
         }
 
     }//GEN-LAST:event_okAlienRegKnappActionPerformed
 
+    private void admCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_admCheckBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_admCheckBoxActionPerformed
+
   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AGID;
-    private javax.swing.JTextField AdminField;
     private javax.swing.JTextField AnstDatumField;
     private javax.swing.JPasswordField LösenordField;
     private javax.swing.JTextField NamnField;
-    private javax.swing.JTextField OmrådeField;
     private javax.swing.JTextField TelField;
+    private javax.swing.JCheckBox admCheckBox;
+    private javax.swing.JLabel anstDatLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel losLabel;
+    private javax.swing.JLabel namnLabel;
     private javax.swing.JButton okAlienRegKnapp;
+    private javax.swing.JLabel omrLabel;
+    private javax.swing.JComboBox<String> omradeCB;
+    private javax.swing.JLabel regAgLabel;
+    private javax.swing.JLabel telLabel;
     // End of variables declaration//GEN-END:variables
 }

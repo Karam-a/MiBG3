@@ -33,8 +33,8 @@ public class AgentMeny extends javax.swing.JFrame {
         knappAgentHanteraAliens = new javax.swing.JButton();
         knappAgentHanteraUtrustning = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        andraLosen = new javax.swing.JButton();
+        sokOCKnapp = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Agentmeny");
@@ -63,19 +63,19 @@ public class AgentMeny extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton1.setText("Ändra lösenord");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        andraLosen.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        andraLosen.setText("Ändra lösenord");
+        andraLosen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                andraLosenActionPerformed(evt);
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton2.setText("Sök områdeschef");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        sokOCKnapp.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        sokOCKnapp.setText("Sök områdeschef");
+        sokOCKnapp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                sokOCKnappActionPerformed(evt);
             }
         });
 
@@ -98,11 +98,11 @@ public class AgentMeny extends javax.swing.JFrame {
                     .addGroup(jInternalFrame1Layout.createSequentialGroup()
                         .addComponent(knappAgentHanteraAliens)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1))
+                        .addComponent(andraLosen))
                     .addGroup(jInternalFrame1Layout.createSequentialGroup()
                         .addComponent(knappAgentHanteraUtrustning)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2)))
+                        .addComponent(sokOCKnapp)))
                 .addContainerGap(22, Short.MAX_VALUE))
             .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
@@ -118,11 +118,11 @@ public class AgentMeny extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(knappAgentHanteraAliens, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(andraLosen, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(knappAgentHanteraUtrustning, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(sokOCKnapp, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
@@ -152,29 +152,29 @@ public class AgentMeny extends javax.swing.JFrame {
         meny.setVisible(true);
     }//GEN-LAST:event_knappAgentHanteraAliensActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void andraLosenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_andraLosenActionPerformed
         // TODO add your handling code here:
         new NyttLösenord().setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_andraLosenActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void sokOCKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sokOCKnappActionPerformed
         // TODO add your handling code here:
         SökOC meny = new SökOC();
         meny.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_sokOCKnappActionPerformed
 
    public static String hämtaAgentNamn(){
         return ettNamn;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton andraLosen;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JButton knappAgentHanteraAliens;
     private javax.swing.JButton knappAgentHanteraUtrustning;
+    private javax.swing.JButton sokOCKnapp;
     // End of variables declaration//GEN-END:variables
 }

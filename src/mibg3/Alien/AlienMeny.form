@@ -43,7 +43,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Component id="jSeparator1" alignment="0" max="32767" attributes="0"/>
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace min="0" pref="17" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="50" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -54,7 +54,7 @@
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <Component id="välkommenAlien" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                           <Component id="alienRutaNamn" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                       </Group>
@@ -68,7 +68,7 @@
                   <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="alienRutaNamn" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="välkommenAlien" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="välkommenAlien" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
@@ -87,7 +87,6 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="24" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="&lt;ALIEN&gt;"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="v&#xe4;lkommenAlien">

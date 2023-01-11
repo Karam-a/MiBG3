@@ -26,43 +26,43 @@ public class HanteraAgent extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton3 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        agInfKNapp = new javax.swing.JButton();
+        hantAgMenytitel = new javax.swing.JLabel();
+        regAg = new javax.swing.JButton();
+        taBortUtrKnapp = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
-        jButton2 = new javax.swing.JButton();
+        andraKCKnapp = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Hantera Agenter");
 
-        jButton3.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jButton3.setText("Agentinformation");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        agInfKNapp.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        agInfKNapp.setText("Agentinformation");
+        agInfKNapp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                agInfKNappActionPerformed(evt);
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        jLabel1.setText("Hantera Agenter");
+        hantAgMenytitel.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        hantAgMenytitel.setText("Hantera Agenter");
 
-        jButton1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jButton1.setText("Registrera agent");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        regAg.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        regAg.setText("Registrera agent");
+        regAg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                regAgActionPerformed(evt);
             }
         });
 
-        jButton6.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jButton6.setText("Ta bort utrustning");
+        taBortUtrKnapp.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        taBortUtrKnapp.setText("Ta bort utrustning");
 
-        jButton2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jButton2.setText("Ändra kontorschef");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        andraKCKnapp.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        andraKCKnapp.setText("Ändra kontorschef");
+        andraKCKnapp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                andraKCKnappActionPerformed(evt);
             }
         });
 
@@ -74,60 +74,60 @@ public class HanteraAgent extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2)
-                    .addComponent(jLabel1)
-                    .addComponent(jButton1)
-                    .addComponent(jButton3)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(andraKCKnapp)
+                    .addComponent(hantAgMenytitel)
+                    .addComponent(regAg)
+                    .addComponent(agInfKNapp)
+                    .addComponent(taBortUtrKnapp, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(43, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(hantAgMenytitel)
                 .addGap(5, 5, 5)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(11, 11, 11)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(regAg, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(agInfKNapp, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(taBortUtrKnapp, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
+                .addComponent(andraKCKnapp, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
                 .addGap(18, 18, 18))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void regAgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regAgActionPerformed
         // TODO add your handling code here:
         RegAgent meny = new RegAgent();
         meny.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_regAgActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void agInfKNappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agInfKNappActionPerformed
         // TODO add your handling code here:
         AgentInfo meny = new AgentInfo();
         meny.setVisible(true);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_agInfKNappActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void andraKCKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_andraKCKnappActionPerformed
         // TODO add your handling code here:
         ändraKC meny = new ändraKC();
         meny.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_andraKCKnappActionPerformed
 
  
  
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton agInfKNapp;
+    private javax.swing.JButton andraKCKnapp;
+    private javax.swing.JLabel hantAgMenytitel;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JButton regAg;
+    private javax.swing.JButton taBortUtrKnapp;
     // End of variables declaration//GEN-END:variables
 }

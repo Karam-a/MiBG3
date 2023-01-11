@@ -33,13 +33,14 @@ public class HanteraUtrustning extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         kommunikationKnapp = new javax.swing.JButton();
         vapenKommunikation = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        teknikKnapp = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Hantera Utrustning");
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        jLabel1.setText("Vänligen välj vilken typ av utrustning du vill registrera.");
+        jLabel1.setText("Välj utrustningstyp att registrera");
 
         kommunikationKnapp.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         kommunikationKnapp.setText("Kommunikation");
@@ -57,11 +58,11 @@ public class HanteraUtrustning extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jButton3.setText("Teknik");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        teknikKnapp.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        teknikKnapp.setText("Teknik");
+        teknikKnapp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                teknikKnappActionPerformed(evt);
             }
         });
 
@@ -70,29 +71,32 @@ public class HanteraUtrustning extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(25, 25, 25))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(kommunikationKnapp)
-                .addGap(80, 80, 80)
+                .addGap(18, 18, 18)
                 .addComponent(vapenKommunikation, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton3)
-                .addGap(58, 58, 58))
+                .addGap(18, 18, 18)
+                .addComponent(teknikKnapp)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
+                .addGap(14, 14, 14)
                 .addComponent(jLabel1)
-                .addGap(58, 58, 58)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(kommunikationKnapp, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(vapenKommunikation, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(29, Short.MAX_VALUE))
+                    .addComponent(teknikKnapp, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         pack();
@@ -110,18 +114,19 @@ public class HanteraUtrustning extends javax.swing.JFrame {
         meny.setVisible(true);
     }//GEN-LAST:event_vapenKommunikationActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void teknikKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_teknikKnappActionPerformed
         // TODO add your handling code here:
         teknikReg meny = new teknikReg();
         meny.setVisible(true);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_teknikKnappActionPerformed
 
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JButton kommunikationKnapp;
+    private javax.swing.JButton teknikKnapp;
     private javax.swing.JButton vapenKommunikation;
     // End of variables declaration//GEN-END:variables
 }

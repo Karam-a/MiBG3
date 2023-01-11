@@ -5,6 +5,9 @@ import java.util.Date;
 import java.text.ParseException;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 public class Valideringsklass {
 
@@ -53,30 +56,16 @@ public class Valideringsklass {
         }
     }
 
-    public static boolean giltigtDatum(String datum) {
-
-        if (datum.trim().equals("") && !datum.isEmpty()) {
-            return true;
-        } else {
-
-            SimpleDateFormat datumFormat = new SimpleDateFormat("yyyy-mm-dd");
-            datumFormat.setLenient(false);
-
-            try {
-                Date jDatum = datumFormat.parse(datum);
-
-            } catch (ParseException e) {
-
-                return false;
-            }
-
-            return true;
-        }
-
+    
+    public static boolean giltigtDatum(JTextField textField) {
+    String dateString = textField.getText();
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-mm-dd");
+    try {
+        LocalDate date = LocalDate.parse(dateString, formatter);
+        return true;
+    } catch (DateTimeParseException e) {
+        return false;
     }
+}
     
-    
-
- 
-
 }

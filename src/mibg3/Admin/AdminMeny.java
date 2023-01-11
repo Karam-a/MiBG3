@@ -16,47 +16,47 @@ public class AdminMeny extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jToggleButton1 = new javax.swing.JToggleButton();
-        jToggleButton2 = new javax.swing.JToggleButton();
-        jLabel2 = new javax.swing.JLabel();
-        jToggleButton3 = new javax.swing.JToggleButton();
+        välkomenLabel = new javax.swing.JLabel();
+        minProfilKnapp = new javax.swing.JButton();
+        hanteraAliensKnapp = new javax.swing.JToggleButton();
+        hanteraAgentKnapp = new javax.swing.JToggleButton();
+        valjAltLbel = new javax.swing.JLabel();
+        hanteraUtrKnapp = new javax.swing.JToggleButton();
         jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Administratörsmeny");
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        jLabel1.setText("Välkommen!");
+        välkomenLabel.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        välkomenLabel.setText("Välkommen!");
 
-        jButton1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jButton1.setText("Min profil");
+        minProfilKnapp.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        minProfilKnapp.setText("Min profil");
 
-        jToggleButton1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jToggleButton1.setText("Hantera aliens");
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+        hanteraAliensKnapp.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        hanteraAliensKnapp.setText("Hantera aliens");
+        hanteraAliensKnapp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
+                hanteraAliensKnappActionPerformed(evt);
             }
         });
 
-        jToggleButton2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jToggleButton2.setText("Hantera agenter");
-        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
+        hanteraAgentKnapp.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        hanteraAgentKnapp.setText("Hantera agenter");
+        hanteraAgentKnapp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton2ActionPerformed(evt);
+                hanteraAgentKnappActionPerformed(evt);
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel2.setText("Välj ett alternativ nedan:");
+        valjAltLbel.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        valjAltLbel.setText("Välj ett alternativ nedan:");
 
-        jToggleButton3.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jToggleButton3.setText("Hantera utrustning");
-        jToggleButton3.addActionListener(new java.awt.event.ActionListener() {
+        hanteraUtrKnapp.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        hanteraUtrKnapp.setText("Hantera utrustning");
+        hanteraUtrKnapp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton3ActionPerformed(evt);
+                hanteraUtrKnappActionPerformed(evt);
             }
         });
 
@@ -70,20 +70,20 @@ public class AdminMeny extends javax.swing.JFrame {
                         .addGap(19, 19, 19)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(minProfilKnapp, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jToggleButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(hanteraAgentKnapp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jToggleButton1)
+                                .addComponent(hanteraAliensKnapp)
                                 .addGap(18, 18, 18)
-                                .addComponent(jToggleButton3))))
+                                .addComponent(hanteraUtrKnapp))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(78, 78, 78)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(34, 34, 34)
-                                .addComponent(jLabel1))
-                            .addComponent(jLabel2))))
+                                .addComponent(välkomenLabel))
+                            .addComponent(valjAltLbel))))
                 .addContainerGap(17, Short.MAX_VALUE))
             .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
@@ -91,51 +91,51 @@ public class AdminMeny extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(välkomenLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
+                .addComponent(valjAltLbel)
                 .addGap(4, 4, 4)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(4, 4, 4)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(minProfilKnapp, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(hanteraAgentKnapp, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jToggleButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(hanteraUtrKnapp, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(hanteraAliensKnapp, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+    private void hanteraAliensKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hanteraAliensKnappActionPerformed
         // TODO add your handling code here:
         HanteraAlienAdmin meny = new HanteraAlienAdmin();
         meny.setVisible(true);
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
+    }//GEN-LAST:event_hanteraAliensKnappActionPerformed
 
-    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
+    private void hanteraAgentKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hanteraAgentKnappActionPerformed
         // TODO add your handling code here:
         HanteraAgent meny = new HanteraAgent();
         meny.setVisible(true);
-    }//GEN-LAST:event_jToggleButton2ActionPerformed
+    }//GEN-LAST:event_hanteraAgentKnappActionPerformed
 
-    private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
+    private void hanteraUtrKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hanteraUtrKnappActionPerformed
         // TODO add your handling code here:
         HanteraUtrustningAdmin meny = new HanteraUtrustningAdmin();
         meny.setVisible(true);
-    }//GEN-LAST:event_jToggleButton3ActionPerformed
+    }//GEN-LAST:event_hanteraUtrKnappActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JToggleButton hanteraAgentKnapp;
+    private javax.swing.JToggleButton hanteraAliensKnapp;
+    private javax.swing.JToggleButton hanteraUtrKnapp;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JToggleButton jToggleButton2;
-    private javax.swing.JToggleButton jToggleButton3;
+    private javax.swing.JButton minProfilKnapp;
+    private javax.swing.JLabel valjAltLbel;
+    private javax.swing.JLabel välkomenLabel;
     // End of variables declaration//GEN-END:variables
 }

@@ -66,7 +66,7 @@ public class ändraInfoAgent extends javax.swing.JFrame {
     private void initComponents() {
 
         agentCB = new javax.swing.JComboBox<>();
-        jLabel1 = new javax.swing.JLabel();
+        andraInfoAgLabel = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         ändraNamnField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -90,8 +90,8 @@ public class ändraInfoAgent extends javax.swing.JFrame {
 
         agentCB.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel1.setText(meddelande());
+        andraInfoAgLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        andraInfoAgLabel.setText(meddelande());
 
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel2.setText("Namn:");
@@ -185,14 +185,14 @@ public class ändraInfoAgent extends javax.swing.JFrame {
                         .addComponent(agentCB, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(40, 40, 40)
-                        .addComponent(jLabel1)))
+                        .addComponent(andraInfoAgLabel)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addComponent(jLabel1)
+                .addComponent(andraInfoAgLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -274,7 +274,7 @@ public class ändraInfoAgent extends javax.swing.JFrame {
     private javax.swing.JButton admJA;
     private javax.swing.JButton admNEJ;
     private javax.swing.JComboBox<String> agentCB;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel andraInfoAgLabel;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

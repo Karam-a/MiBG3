@@ -59,15 +59,15 @@ public class HanteraUtrustningAdmin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        hantUtrLabel = new javax.swing.JLabel();
         utrustningCB = new javax.swing.JComboBox<>();
         avregKnapp = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Hantera Utrustning");
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        jLabel1.setText(message());
+        hantUtrLabel.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        hantUtrLabel.setText(message());
 
         utrustningCB.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
@@ -87,7 +87,7 @@ public class HanteraUtrustningAdmin extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(131, 131, 131)
-                        .addComponent(jLabel1))
+                        .addComponent(hantUtrLabel))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(149, 149, 149)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -99,7 +99,7 @@ public class HanteraUtrustningAdmin extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addComponent(jLabel1)
+                .addComponent(hantUtrLabel)
                 .addGap(18, 18, 18)
                 .addComponent(utrustningCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
@@ -183,7 +183,7 @@ public class HanteraUtrustningAdmin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton avregKnapp;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel hantUtrLabel;
     private javax.swing.JComboBox<String> utrustningCB;
     // End of variables declaration//GEN-END:variables
 }

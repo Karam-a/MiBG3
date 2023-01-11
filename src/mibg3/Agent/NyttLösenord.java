@@ -35,7 +35,7 @@ private InfDB mibdb;
         jLabel3 = new javax.swing.JLabel();
         nuvarandeLösenKnapp = new javax.swing.JPasswordField();
         nyttLösenKnapp = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
+        okKnapp = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Ändra Lösenord");
@@ -57,11 +57,11 @@ private InfDB mibdb;
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jButton1.setText("OK");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        okKnapp.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        okKnapp.setText("OK");
+        okKnapp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                okKnappActionPerformed(evt);
             }
         });
 
@@ -84,7 +84,7 @@ private InfDB mibdb;
                 .addContainerGap(46, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrame1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(okKnapp, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
         );
         jInternalFrame1Layout.setVerticalGroup(
@@ -101,7 +101,7 @@ private InfDB mibdb;
                     .addComponent(jLabel3)
                     .addComponent(nyttLösenKnapp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(okKnapp)
                 .addContainerGap())
         );
 
@@ -119,7 +119,7 @@ private InfDB mibdb;
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void okKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okKnappActionPerformed
         // TODO add your handling code here:
         try{
             mibdb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
@@ -140,7 +140,7 @@ private InfDB mibdb;
             JOptionPane.showMessageDialog(null, "Kunde inte ansluta till databasen.");
             
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_okKnappActionPerformed
 
     private void nuvarandeLösenKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuvarandeLösenKnappActionPerformed
         // TODO add your handling code here:
@@ -149,12 +149,12 @@ private InfDB mibdb;
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPasswordField nuvarandeLösenKnapp;
     private javax.swing.JPasswordField nyttLösenKnapp;
+    private javax.swing.JButton okKnapp;
     // End of variables declaration//GEN-END:variables
 }
