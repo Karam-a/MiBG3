@@ -12,13 +12,13 @@ import oru.inf.InfException;
  *
  * @author d-aly
  */
-public class NyttLösenAlien extends javax.swing.JFrame {
+public class NyttLosenAlien extends javax.swing.JFrame {
     private InfDB mibdb;
 
     /**
      * Creates new form NyttLösenAlien
      */
-    public NyttLösenAlien() {
+    public NyttLosenAlien() {
         try{
         mibdb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
         initComponents();

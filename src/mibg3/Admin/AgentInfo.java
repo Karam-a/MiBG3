@@ -284,10 +284,11 @@ public class AgentInfo extends javax.swing.JFrame {
 
     private void andraAgentKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_andraAgentKnappActionPerformed
         //Vid infoändring slussas användaren till nästa ruta.
-        ändraInfoAgent meny = new ändraInfoAgent();
+        andraInfoAgent meny = new andraInfoAgent();
         meny.setVisible(true);
     }//GEN-LAST:event_andraAgentKnappActionPerformed
 
+    //Vid val av ny agent uppdateras informationsrutorna.
     private void agentValCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agentValCBActionPerformed
     uppdatera();
     }//GEN-LAST:event_agentValCBActionPerformed
@@ -314,7 +315,7 @@ public class AgentInfo extends javax.swing.JFrame {
     }//GEN-LAST:event_taBortAgentKnappActionPerformed
 
     private void andraOCStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_andraOCStatusActionPerformed
-        // TODO add your handling code here:
+        //Startar en ruta för admin att ändra områdeschef. 
         OCstatus meny = new OCstatus();
         meny.setVisible(true);
     }//GEN-LAST:event_andraOCStatusActionPerformed

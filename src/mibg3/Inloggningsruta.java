@@ -5,8 +5,6 @@ import mibg3.Admin.AdminInlogg;
 import mibg3.Alien.AlienInlogg;
 import mibg3.Agent.AgentInlogg;
 import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -129,7 +127,6 @@ public class Inloggningsruta extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
  //Användaren får val att logga in som antingen Alien, Admin eller Agent.Vid ett val slussas användaren sedan vidare till rätt jFrame. 
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
     AgentInlogg agi = new AgentInlogg();    
     agi.setVisible(true);
@@ -148,10 +145,12 @@ public class Inloggningsruta extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    //Kör metoden "kör"
     private void vadArDetVarstaSomKanHandaKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vadArDetVarstaSomKanHandaKnappActionPerformed
         kör();
     }//GEN-LAST:event_vadArDetVarstaSomKanHandaKnappActionPerformed
 
+    //Öppnar upp användarens webbläsare och söker på nedan länk.
     private void kör(){
         try{
     Desktop.getDesktop().browse(new URI("https://www.youtube.com/watch?v=dQw4w9WgXcQ"));

@@ -154,12 +154,12 @@ public class AgentMeny extends javax.swing.JFrame {
 
     private void andraLosenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_andraLosenActionPerformed
         // TODO add your handling code here:
-        new NyttLösenord().setVisible(true);
+        new NyttLosenord().setVisible(true);
     }//GEN-LAST:event_andraLosenActionPerformed
 
     private void sokOCKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sokOCKnappActionPerformed
         // TODO add your handling code here:
-        SökOC meny = new SökOC();
+        SokOC meny = new SokOC();
         meny.setVisible(true);
     }//GEN-LAST:event_sokOCKnappActionPerformed
 

@@ -44,9 +44,12 @@
                           <Component id="ändraTelField" alignment="0" max="32767" attributes="0"/>
                           <Component id="ändraOmrådeField" alignment="0" min="-2" pref="105" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-                      <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="ändraLösenKnapp" min="-2" pref="73" max="-2" attributes="0"/>
                           <Component id="ändraNamnKnapp" min="-2" pref="73" max="-2" attributes="0"/>
@@ -99,6 +102,7 @@
                           <Component id="ändraLösenordField" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="ändraLösenKnapp" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -191,7 +195,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="99" green="99" red="99" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Ange ett nummer"/>
+        <Property name="text" type="java.lang.String" value="Ange ett omr&#xe5;desnummer"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="&#xe4;ndraOmr&#xe5;deKnapp">
@@ -253,6 +257,14 @@
       </Events>
     </Component>
     <Component class="javax.swing.JSeparator" name="jSeparator1">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel8">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="99" green="99" red="99" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Max 6 tecken."/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

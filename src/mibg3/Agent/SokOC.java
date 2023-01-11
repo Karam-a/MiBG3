@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
  *
  * @author d-aly
  */
-public class SökOC extends javax.swing.JFrame {
+public class SokOC extends javax.swing.JFrame {
     private InfDB mibdb;
     private ArrayList<String> områdeslista;
     private String agentNamn;
@@ -22,7 +22,7 @@ public class SökOC extends javax.swing.JFrame {
     /**
      * Creates new form SökOC
      */
-    public SökOC() {
+    public SokOC() {
         try{
             mibdb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
         }

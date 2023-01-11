@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package mibg3.Admin;
 
 public class AdminMeny extends javax.swing.JFrame {
@@ -10,7 +6,7 @@ public class AdminMeny extends javax.swing.JFrame {
     public AdminMeny() {
         initComponents();
     }
-//Admin väljer en knapp som sedan initierar en ny ruta.
+    //Admin väljer en knapp som sedan initierar en ny ruta.
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -111,19 +107,19 @@ public class AdminMeny extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void hanteraAliensKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hanteraAliensKnappActionPerformed
-        // TODO add your handling code here:
+        //Startar en HanteraAlien ruta för admin.
         HanteraAlienAdmin meny = new HanteraAlienAdmin();
         meny.setVisible(true);
     }//GEN-LAST:event_hanteraAliensKnappActionPerformed
 
     private void hanteraAgentKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hanteraAgentKnappActionPerformed
-        // TODO add your handling code here:
+        //Startar en HanteraAgent ruta för admin.
         HanteraAgent meny = new HanteraAgent();
         meny.setVisible(true);
     }//GEN-LAST:event_hanteraAgentKnappActionPerformed
 
     private void hanteraUtrKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hanteraUtrKnappActionPerformed
-        // TODO add your handling code here:
+        //Startar en HanteraUtrustning ruta för admin.
         HanteraUtrustningAdmin meny = new HanteraUtrustningAdmin();
         meny.setVisible(true);
     }//GEN-LAST:event_hanteraUtrKnappActionPerformed

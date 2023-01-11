@@ -119,7 +119,7 @@ public class AlienMeny extends javax.swing.JFrame {
 
     private void ÄndraLösenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ÄndraLösenActionPerformed
         // TODO add your handling code here:
-        NyttLösenAlien meny = new NyttLösenAlien();
+        NyttLosenAlien meny = new NyttLosenAlien();
         meny.setVisible(true);
     }//GEN-LAST:event_ÄndraLösenActionPerformed
 
@@ -136,7 +136,7 @@ public class AlienMeny extends javax.swing.JFrame {
             ocNamn = mibdb.fetchSingle("SELECT Namn FROM Agent WHERE Agent_ID = "+ "'" + områdeschefID + "'");
             ocTel = mibdb.fetchSingle("SELECT Telefon FROM Agent WHERE Agent_ID = "+ "'" + områdeschefID + "'");
             
-            OmrådeschefINFO meny = new OmrådeschefINFO();
+            OmradeschefINFO meny = new OmradeschefINFO();
             meny.setVisible(true);
             
         }

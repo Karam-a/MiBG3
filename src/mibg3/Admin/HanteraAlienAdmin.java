@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package mibg3.Admin;
 
 import mibg3.Agent.RegAlien;
@@ -75,12 +71,13 @@ public class HanteraAlienAdmin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void regAlienKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regAlienKnappActionPerformed
-        // TODO add your handling code here:
+        //Startar en RegAlien ruta för admin.
         RegAlien meny = new RegAlien();
         meny.setVisible(true);
     }//GEN-LAST:event_regAlienKnappActionPerformed
 
     private void alienInfoKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alienInfoKnappActionPerformed
+       //Startar en AlienInfo ruta för admin.
         AlienInfoAgent meny = new AlienInfoAgent();
         meny.setVisible(true);
     }//GEN-LAST:event_alienInfoKnappActionPerformed

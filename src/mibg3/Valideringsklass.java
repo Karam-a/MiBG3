@@ -1,9 +1,5 @@
 package mibg3;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.text.ParseException;
-import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -12,10 +8,7 @@ import java.time.format.DateTimeParseException;
 public class Valideringsklass {
 
     public static boolean värdeExisterar(JTextField varde) {
-        /**
-         * Den här metoden kontrollerar att värdena på fälten man skriver in inte är tomma.
-         * Är de tomma så ska den returnera true, annars false.
-         */
+        //metoden kontrollerar att värdena på fälten man skriver in inte är tomma.
         boolean fylld;
         if(varde.getText().isEmpty()) {
             fylld = false;
@@ -39,24 +32,8 @@ public class Valideringsklass {
         }
         return giltigt;
     }
-    
-    public boolean nummerEjNamn(String nummer) {
-        if (nummer == null) {
-            return false;
-        }
 
-        try {
-            double d = Double.parseDouble(nummer);
-            return true;
-
-        } catch (NumberFormatException nf) {
-
-            return false;
-
-        }
-    }
-
-    
+    //Metoden kontrollerar att datum som anges är korrekt formaterat. 
     public static boolean giltigtDatum(JTextField textField) {
     String dateString = textField.getText();
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-mm-dd");

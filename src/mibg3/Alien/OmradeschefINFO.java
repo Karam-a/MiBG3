@@ -10,12 +10,12 @@ import oru.inf.InfException;
  *
  * @author d-aly
  */
-public class OmrådeschefINFO extends javax.swing.JFrame {
+public class OmradeschefINFO extends javax.swing.JFrame {
 
     /**
      * Creates new form OmrådeschefINFO
      */
-    public OmrådeschefINFO() {
+    public OmradeschefINFO() {
         initComponents();
     }
     private static String hämtaOCTel(){

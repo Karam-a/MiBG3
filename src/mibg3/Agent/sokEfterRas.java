@@ -14,7 +14,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author d-aly
  */
-public class sökEfterRas extends javax.swing.JFrame {
+public class sokEfterRas extends javax.swing.JFrame {
     private InfDB mibdb;
     private DefaultTableModel tabellB1;
     private DefaultTableModel tabellW1;
@@ -26,7 +26,7 @@ public class sökEfterRas extends javax.swing.JFrame {
     /**
      * Creates new form sökEfterRas
      */
-    public sökEfterRas() {
+    public sokEfterRas() {
         try{
             mibdb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
         }

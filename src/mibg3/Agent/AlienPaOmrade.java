@@ -6,7 +6,7 @@ import oru.inf.InfException;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
-public class AlienPåOmråde extends javax.swing.JFrame {
+public class AlienPaOmrade extends javax.swing.JFrame {
     //initierar  databasen, även modellen bakom de fyra tabellerna.
     private InfDB mibdb;
     private DefaultTableModel modP1;
@@ -19,7 +19,7 @@ public class AlienPåOmråde extends javax.swing.JFrame {
     private ArrayList<String> listP4;
 
     //Konstruktor.
-    public AlienPåOmråde() {
+    public AlienPaOmrade() {
           
           //Ansluter till databasen, görs i konstruktorn så det ej behöver repeteras i resten av koden.
         try{

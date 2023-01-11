@@ -136,19 +136,19 @@ public class HanteraAliens extends javax.swing.JFrame {
 
     private void sokEfterOmrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sokEfterOmrActionPerformed
         // TODO add your handling code here:
-        AlienPåOmråde meny = new AlienPåOmråde();
+        AlienPaOmrade meny = new AlienPaOmrade();
         meny.setVisible(true);
     }//GEN-LAST:event_sokEfterOmrActionPerformed
 
     private void sokEfterRasKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sokEfterRasKnappActionPerformed
         // TODO add your handling code here:
-        sökEfterRas meny = new sökEfterRas();
+        sokEfterRas meny = new sokEfterRas();
         meny.setVisible(true);
     }//GEN-LAST:event_sokEfterRasKnappActionPerformed
 
     private void sokDatumKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sokDatumKnappActionPerformed
         // TODO add your handling code here:
-        tvåDatum meny = new tvåDatum();
+        tvaDatum meny = new tvaDatum();
         meny.setVisible(true);
     }//GEN-LAST:event_sokDatumKnappActionPerformed
 

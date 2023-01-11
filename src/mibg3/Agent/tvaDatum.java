@@ -13,14 +13,14 @@ import mibg3.Valideringsklass;
  *
  * @author d-aly
  */
-public class tvåDatum extends javax.swing.JFrame {
+public class tvaDatum extends javax.swing.JFrame {
     private InfDB mibdb;
     private ArrayList<String> alienNamn;
 
     /**
      * Creates new form tvåDatum
      */
-    public tvåDatum() {
+    public tvaDatum() {
         try {
             mibdb = new InfDB("mibdb", "3306", "mibdba", "mibkey");
         }

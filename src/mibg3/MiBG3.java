@@ -14,9 +14,9 @@ private static InfDB idb;
     {   
         try { idb=new InfDB("mibdb", "3306","mibdba","mibkey");
 
-          } catch (InfException ex){
+          } 
+        catch (InfException ex){
                 Logger.getLogger(MiBG3.class.getName()).log(Level.SEVERE, null, ex);
-
           }
      }
 /** Startar programmet. Kallar på metoden "Inloggningsruta" där användaren 
@@ -24,8 +24,7 @@ private static InfDB idb;
 */
          new Inloggningsruta().setVisible(true);
         }
-    
-}
+    }
 
     
 

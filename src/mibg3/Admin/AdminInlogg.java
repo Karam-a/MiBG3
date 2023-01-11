@@ -7,7 +7,7 @@ import oru.inf.InfException;
 
 public class AdminInlogg extends javax.swing.JFrame {
     private InfDB mibdb;
-    private String inloggadID;
+    private String inloggadID; //Ger användaren ett ID som används för att identifiera den inloggade agentens ID.
     
     public AdminInlogg() {
         try{
@@ -152,7 +152,7 @@ public class AdminInlogg extends javax.swing.JFrame {
     }//GEN-LAST:event_anvNamnFieldActionPerformed
 
     private void okKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okKnappActionPerformed
-        //Inloggning för Admin. 
+        //Inloggning för Admin. Validerar att värden är angivna i fälten, för att sedan logga in användaren.
         if(Valideringsklass.värdeExisterar(anvNamnField) && Valideringsklass.värdeExisterar(angeLosen)){
         try{
             String användarnamn = anvNamnField.getText();
@@ -166,7 +166,7 @@ public class AdminInlogg extends javax.swing.JFrame {
             lösen = mibdb.fetchSingle("SELECT Losenord FROM Agent WHERE Agent_ID = " + "'" + anvID + "'");
             checkAdmin = mibdb.fetchSingle("SELECT Administrator FROM Agent WHERE Agent_ID = " + "'" + anvID + "'");
            
-            //Adminkontroll, om databasen anger agenten som Admin får denna tillgång. 
+            //Lösenords- och adminkontroll, om databasen anger agenten som Admin får denna tillgång till adminverktygen.
             if(lösenord.equals(lösen) && (checkAdmin.equals("J"))){
                 AdminMeny meny = new AdminMeny();
                 meny.setVisible(true);
@@ -186,6 +186,7 @@ public class AdminInlogg extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_okKnappActionPerformed
 
+    //Tar tillbaka användaren till inloggningsrutan med ett knapptryck.
     private void tillbakaKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tillbakaKnappActionPerformed
         this.dispose();
         new Inloggningsruta().setVisible(true);
