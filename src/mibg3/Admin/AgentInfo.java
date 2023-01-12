@@ -13,6 +13,7 @@ public class AgentInfo extends javax.swing.JFrame {
     private String agAnst;
     private String adminStatus;
     private String område;
+    private String oc;
 
     public AgentInfo() {
         try{
@@ -44,6 +45,20 @@ public class AgentInfo extends javax.swing.JFrame {
         namnLista();
         agNamn = agentValCB.getSelectedItem().toString();
         return agNamn;
+    }
+    
+    private String getOC(){
+        try{
+            String agentID;
+            agentID = mibdb.fetchSingle("SELECT Agent_ID FROM Agent WHERE Namn=" + "'" + agNamn + "'");
+            String områdeID;
+            områdeID = mibdb.fetchSingle("SELECT Omrade FROM Omradeschef WHERE Agent_ID=" +  agentID);
+            oc = mibdb.fetchSingle("SELECT Benamning FROM Omrade WHERE Omrades_ID=" + "'" + områdeID + "'");
+        }
+        catch(InfException e){
+            errorMessage();
+        }
+        return oc;
     }
     
     //Getter, hämtar vald agents telefonnummer.
@@ -94,11 +109,12 @@ public class AgentInfo extends javax.swing.JFrame {
     private void uppdatera(){
         // Användaren väljer en agent, metoden körs och uppdaterar alla jLabels med relevant info. 
         agNamn = agentValCB.getSelectedItem().toString();
-        jLabel2.setText(agNamn);
-        jLabel4.setText(getAgentTel());
-        jLabel6.setText(getAnst());
-        jLabel8.setText(getAdminStatus());
-        jLabel10.setText(getOmråde());
+        returnAgNamnLabel.setText(agNamn);
+        returnAgTelLabel.setText(getAgentTel());
+        returnAnstDatLabel.setText(getAnst());
+        returnAdmStatusLabel.setText(getAdminStatus());
+        returnOmradeLabel.setText(getOmråde());
+        returnChefOverOmrLabel.setText(getOC());
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -106,21 +122,23 @@ public class AgentInfo extends javax.swing.JFrame {
 
         agentValCB = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        returnAgNamnLabel = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        returnAgTelLabel = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        returnAnstDatLabel = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        returnAdmStatusLabel = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        returnOmradeLabel = new javax.swing.JLabel();
         andraAgentKnapp = new javax.swing.JButton();
         taBortAgentKnapp = new javax.swing.JButton();
         agInfLabel = new javax.swing.JLabel();
         valjAgLabel = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         andraOCStatus = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        returnChefOverOmrLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Agentinformation");
@@ -134,32 +152,32 @@ public class AgentInfo extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel1.setText("Namn:");
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel2.setText(getAgentNamn());
+        returnAgNamnLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        returnAgNamnLabel.setText(getAgentNamn());
 
         jLabel3.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel3.setText("Telefon:");
 
-        jLabel4.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel4.setText(getAgentTel());
+        returnAgTelLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        returnAgTelLabel.setText(getAgentTel());
 
         jLabel5.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel5.setText("Anställningsdatum:");
 
-        jLabel6.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel6.setText(getAnst());
+        returnAnstDatLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        returnAnstDatLabel.setText(getAnst());
 
         jLabel7.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel7.setText("Administratör (J/N):");
 
-        jLabel8.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel8.setText(getAdminStatus());
+        returnAdmStatusLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        returnAdmStatusLabel.setText(getAdminStatus());
 
         jLabel9.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel9.setText("Område:");
 
-        jLabel10.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel10.setText(getOmråde());
+        returnOmradeLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        returnOmradeLabel.setText(getOmråde());
 
         andraAgentKnapp.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         andraAgentKnapp.setText("Ändra");
@@ -191,6 +209,12 @@ public class AgentInfo extends javax.swing.JFrame {
             }
         });
 
+        jLabel11.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel11.setText("Chef över område:");
+
+        returnChefOverOmrLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        returnChefOverOmrLabel.setText(getOC());
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -206,23 +230,27 @@ public class AgentInfo extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel4))
+                                .addComponent(returnAgTelLabel))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel6))
+                                .addComponent(returnAnstDatLabel))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel7)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel8))
+                                .addComponent(returnAdmStatusLabel))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel9)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel10))
+                                .addComponent(returnOmradeLabel))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel2))))
+                                .addComponent(returnAgNamnLabel))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel11)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(returnChefOverOmrLabel))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(39, 39, 39)
                         .addComponent(valjAgLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -231,11 +259,11 @@ public class AgentInfo extends javax.swing.JFrame {
                     .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(12, 12, 12)
                 .addComponent(andraOCStatus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(taBortAgentKnapp)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(taBortAgentKnapp)
+                .addGap(12, 12, 12)
                 .addComponent(andraAgentKnapp)
                 .addGap(14, 14, 14))
         );
@@ -253,30 +281,33 @@ public class AgentInfo extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jLabel2))
+                    .addComponent(returnAgNamnLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jLabel4))
+                    .addComponent(returnAgTelLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jLabel6))
+                    .addComponent(returnAnstDatLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jLabel8))
+                    .addComponent(returnAdmStatusLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(jLabel10))
+                    .addComponent(returnOmradeLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(andraAgentKnapp)
-                        .addComponent(taBortAgentKnapp))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(returnChefOverOmrLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(andraAgentKnapp)
+                    .addComponent(taBortAgentKnapp)
                     .addComponent(andraOCStatus))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addGap(16, 16, 16))
         );
 
         pack();
@@ -296,10 +327,15 @@ public class AgentInfo extends javax.swing.JFrame {
     private void taBortAgentKnappActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taBortAgentKnappActionPerformed
         //Skapar en JOptionPane med valet ja/nej för att säkerställa att admin inte gör fel val.
         String namn = getAgentNamn();
+        String agentID;
         int bekr = JOptionPane.showConfirmDialog(null, "Är du säker på att du vill ta bort " + getAgentNamn() + " från systemet? DET GÅR INTE ATT ÅNGRA!"  , "Bekräfta borttagning av " + namn, JOptionPane.YES_NO_OPTION);
         if (bekr == JOptionPane.YES_OPTION){
             try{
-                mibdb.delete("DELETE FROM Agent WHERE Namn=" + "'" + getAgentNamn() + "'");
+                agentID = mibdb.fetchSingle("SELECT Agent_ID FROM Agent WHERE Namn=" + "'" + namn + "'");
+                    if(returnChefOverOmrLabel != null){
+                        mibdb.delete("DELETE FROM Omradeschef WHERE Agent_ID=" + "'" + agentID + "'");
+                    }
+                mibdb.delete("DELETE FROM Agent WHERE Namn=" + "'" + namn + "'");
                 JOptionPane.showMessageDialog(null, namn + " är nu borttagen från systemet.");
                 //Vid genomförande startar den om fönstret, som på nytt går igenom databasen och hämtar alla namn.
                 this.dispose();
@@ -328,16 +364,18 @@ public class AgentInfo extends javax.swing.JFrame {
     private javax.swing.JButton andraAgentKnapp;
     private javax.swing.JButton andraOCStatus;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel returnAdmStatusLabel;
+    private javax.swing.JLabel returnAgNamnLabel;
+    private javax.swing.JLabel returnAgTelLabel;
+    private javax.swing.JLabel returnAnstDatLabel;
+    private javax.swing.JLabel returnChefOverOmrLabel;
+    private javax.swing.JLabel returnOmradeLabel;
     private javax.swing.JButton taBortAgentKnapp;
     private javax.swing.JLabel valjAgLabel;
     // End of variables declaration//GEN-END:variables

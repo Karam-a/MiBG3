@@ -8,7 +8,6 @@ public class MiBG3 {
 private static InfDB idb;
 
 // Kör programmet via denna klass.
-
 // Main-metoden loggar in användaren till SQL-databasen.
     public static void main(String[] args) {
     {   

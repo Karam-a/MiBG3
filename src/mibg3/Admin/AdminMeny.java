@@ -13,7 +13,6 @@ public class AdminMeny extends javax.swing.JFrame {
     private void initComponents() {
 
         välkomenLabel = new javax.swing.JLabel();
-        minProfilKnapp = new javax.swing.JButton();
         hanteraAliensKnapp = new javax.swing.JToggleButton();
         hanteraAgentKnapp = new javax.swing.JToggleButton();
         valjAltLbel = new javax.swing.JLabel();
@@ -25,9 +24,6 @@ public class AdminMeny extends javax.swing.JFrame {
 
         välkomenLabel.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         välkomenLabel.setText("Välkommen!");
-
-        minProfilKnapp.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        minProfilKnapp.setText("Min profil");
 
         hanteraAliensKnapp.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         hanteraAliensKnapp.setText("Hantera aliens");
@@ -63,23 +59,20 @@ public class AdminMeny extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(minProfilKnapp, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(hanteraAgentKnapp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(hanteraAliensKnapp)
-                                .addGap(18, 18, 18)
-                                .addComponent(hanteraUtrKnapp))))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(78, 78, 78)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(34, 34, 34)
                                 .addComponent(välkomenLabel))
-                            .addComponent(valjAltLbel))))
+                            .addComponent(valjAltLbel)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(hanteraAgentKnapp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(hanteraAliensKnapp)
+                                .addGap(18, 18, 18)
+                                .addComponent(hanteraUtrKnapp)))))
                 .addContainerGap(17, Short.MAX_VALUE))
             .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
@@ -92,15 +85,13 @@ public class AdminMeny extends javax.swing.JFrame {
                 .addComponent(valjAltLbel)
                 .addGap(4, 4, 4)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(4, 4, 4)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(minProfilKnapp, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(hanteraAgentKnapp, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(hanteraAgentKnapp, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(hanteraUtrKnapp, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(hanteraAliensKnapp, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         pack();
@@ -130,7 +121,6 @@ public class AdminMeny extends javax.swing.JFrame {
     private javax.swing.JToggleButton hanteraAliensKnapp;
     private javax.swing.JToggleButton hanteraUtrKnapp;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JButton minProfilKnapp;
     private javax.swing.JLabel valjAltLbel;
     private javax.swing.JLabel välkomenLabel;
     // End of variables declaration//GEN-END:variables
